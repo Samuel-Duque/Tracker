@@ -1,4 +1,8 @@
-# Tracker
+
+
+
+# ![image](https://github.com/Samuel-Duque/Tracker/assets/131277691/9215655a-78fa-4037-bcb6-acd966cba8e0)
+
 
 **Descubra, Avalie e Compartilhe Sua Paixão pela Música!**
 
