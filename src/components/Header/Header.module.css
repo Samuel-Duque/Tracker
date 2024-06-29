@@ -10,9 +10,8 @@
   font-weight: bolder;
   color: var(--primary-color);
 }
-.nav-itens {
+.navItens {
   display: flex;
-  border: 1px solid white;
   gap: 20px;
   padding: 10px 0px;
   align-items: center;
@@ -24,14 +23,17 @@
   align-items: center;
 }
 
-.profile-img {
+.profileImg {
   width: 1.4rem;
   height: 1.4rem;
   border-radius: 50%;
 }
 
-.btn-log {
+.btnLog {
   color: white;
+  display: flex;
+  background-color: var(--primary-color);
+  padding: 6px 10px;
   border: none;
   border-radius: 5px;
   align-items: center;

@@ -1,11 +1,11 @@
 import React from "react";
-
-const App = () => {
+import Header from "./components/Header/Header.jsx";
+function App() {
   return (
     <>
-      <p>Hello There!</p>
+      <Header />
     </>
   );
-};
+}
 
 export default App;

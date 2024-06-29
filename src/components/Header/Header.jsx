@@ -1,21 +1,21 @@
 import React from "react";
-import "./Header.css";
-import "../styles/global.css";
-import downArrow from "../assets/down-arrow.svg";
-import plusIcon from "../assets/more-icon.svg";
+import style from "./Header.module.css";
+import downArrow from "../../assets/down-arrow.svg";
+import plusIcon from "../../assets/more-icon.svg";
+
 function Header() {
   return (
     <>
-      <div className="navbar">
-        <div className="logo">Tracker</div>
-        <div className="nav-itens">
-          <div className="profile">
+      <div className={style.navbar}>
+        <div className={style.logo}>Tracker</div>
+        <div className={style.navItens}>
+          <div className={style.profile}>
             <img
               src="https://www.w3schools.com/howto/img_avatar.png"
               alt="profile"
-              className="profile-img"
+              className={style.profileImg}
             />
-            <span className="username">Zythee</span>
+            <span className={style.username}>Zythee</span>
             <img src={downArrow} alt="" />
           </div>
 
@@ -26,7 +26,7 @@ function Header() {
           <a href="/">
             <img src="" alt="" />
           </a>
-          <div className="btn-log">
+          <div className={style.btnLog}>
             <img src={plusIcon} alt="" /> Log
           </div>
         </div>
