@@ -1,13 +1,15 @@
 import React from "react";
-import "./Home.css";
-import "../../styles/global.css";
+import "./HomeScreen.module.css";
 import Header from "../../components/Header/Header";
-const Home = () => {
+import TrackCard from "../../components/TrackCard/TrackCard";
+
+const HomeScreen = () => {
   return (
     <div className="home-page">
       <Header />
+      <TrackCard />
     </div>
   );
 };
 
-export default Home;
+export default HomeScreen;

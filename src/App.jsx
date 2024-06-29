@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./components/Header/Header.jsx";
+import HomeScreen from "./pages/HomeScreen/HomeScreen";
 function App() {
   return (
     <>
-      <Header />
+      <HomeScreen />
     </>
   );
 }
