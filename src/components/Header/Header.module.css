@@ -4,6 +4,12 @@
   color: white;
   justify-content: space-between;
   align-items: center;
+  padding: 30px 0px 40px 0px;
+}
+a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .logo {
   font-size: 2.5rem;
@@ -13,6 +19,7 @@
 .navItens {
   display: flex;
   gap: 20px;
+  font-weight: 400;
   padding: 10px 0px;
   align-items: center;
   justify-content: space-between;
@@ -35,8 +42,32 @@
   background-color: var(--primary-color);
   padding: 6px 10px;
   border: none;
-  border-radius: 5px;
+  gap: 5px;
+  border-radius: var(--border-radius);
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.searchIconSvg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.searchBar {
+  display: flex;
+  border: 0;
+  vertical-align: baseline;
+}
+
+.searchInput {
+  padding: 5px 10px;
+  border: 0;
+  border-radius: var(--border-radius);
+  margin-right: 10px;
+  outline: none;
+}
+
+.submitIcon {
+  position: absolute;
 }

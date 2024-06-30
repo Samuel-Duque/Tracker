@@ -7,7 +7,7 @@ const HomeScreen = () => {
   return (
     <div className="home-page">
       <Header />
-      <TrackCard />
+      {/* <TrackCard /> */}
     </div>
   );
 };
