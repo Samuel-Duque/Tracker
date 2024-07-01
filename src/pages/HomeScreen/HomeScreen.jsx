@@ -1,14 +1,17 @@
 import React from "react";
-import "./HomeScreen.module.css";
+import style from "./HomeScreen.module.css";
 import Header from "../../components/Header/Header";
 import TrackCard from "../../components/TrackCard/TrackCard";
 import Footer from "../../components/Footer/Footer";
+import Trending from "../../components/Trending/Trending";
 
 const HomeScreen = () => {
   return (
-    <div className="home-page">
-      <Header />
-      <TrackCard />
+    <div className={style.homePage}>
+      <div>
+        <Header />
+        <Trending />
+      </div>
       <Footer />
     </div>
   );

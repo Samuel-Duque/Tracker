@@ -1,0 +1,13 @@
+.trending {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tredingCards {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: var(--gray-dark);
+  padding-bottom: 20px;
+}

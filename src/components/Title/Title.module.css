@@ -1,0 +1,7 @@
+.title {
+  padding-bottom: 5px;
+  color: var(--white-color);
+  border-bottom: var(--gray-dark) 1px solid;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+}
