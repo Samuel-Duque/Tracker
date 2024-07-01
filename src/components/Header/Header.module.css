@@ -80,16 +80,24 @@ a {
 .submitIcon {
   position: absolute;
 }
-
+@media screen and (max-width: 1440px) {
+  .navbar {
+    width: 95%;
+    width: var(--container-medium);
+  }
+}
 @media screen and (max-width: 1024px) {
   .navbar {
     width: 90%;
+    width: var(--container-small);
   }
 }
 
 @media screen and (max-width: 768px) {
   .navbar {
     width: 95%;
+    width: var(--container-xsmall);
+    justify-content: center;
   }
   .navItens {
     display: none;
