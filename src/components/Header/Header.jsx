@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./Header.module.css";
-import downArrow from "../../assets/down-arrow.svg";
-import plusIcon from "../../assets/more-icon.svg";
-import searchIcon from "../../assets/search-icon.svg";
-import cancelIcon from "../../assets/cancel-icon.svg";
+import downArrow from "../../assets/icons/down-arrow.svg";
+import plusIcon from "../../assets/icons/more-icon.svg";
+import searchIcon from "../../assets/icons/search-icon.svg";
+import cancelIcon from "../../assets/icons/cancel-icon.svg";
+import profilePicDark from "../../assets/icons/profile-pic-dark.svg";
 
 function Header() {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -38,7 +39,7 @@ function Header() {
           <div className={style.navItens}>
             <div className={style.profile}>
               <img
-                src="https://www.w3schools.com/howto/img_avatar.png"
+                src={profilePicDark}
                 alt="profile"
                 className={style.profileImg}
               />

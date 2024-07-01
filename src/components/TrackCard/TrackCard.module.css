@@ -1,0 +1,37 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  border: var(--gray-dark) 1px solid;
+  border-radius: var(--border-radius);
+  width: fit-content;
+  max-width: 230px;
+}
+
+.trackCover {
+  display: flex;
+}
+
+.trackCover img {
+  display: flex;
+  width: 230px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.trackInfo {
+  display: flex;
+  background-color: var(--dark-secondary);
+  padding: 5.36px 9px;
+  font-size: var(--font-size-minor);
+  color: var(--white-color);
+  font-weight: 400;
+  justify-content: space-between;
+}
+
+.rating {
+  display: flex;
+  gap: 1.2px;
+}
+
+.rating img {
+  width: 14px;
+}

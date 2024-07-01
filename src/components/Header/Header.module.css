@@ -19,7 +19,6 @@ a {
   display: flex;
   gap: 20px;
   font-size: var(--font-size-minor);
-  font-weight: 400;
   padding: 10px 0px;
   align-items: center;
   justify-content: space-between;
@@ -46,7 +45,7 @@ a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 
 .searchIconSvg,
@@ -73,7 +72,7 @@ a {
   height: fit-content;
   padding: 5px 10px;
   border: 0;
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   outline: none;
 }
 

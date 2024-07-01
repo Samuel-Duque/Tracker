@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./Footer.module.css";
-import facebookIcon from "../../assets/facebook-icon.svg";
-import twitterIcon from "../../assets/twitter-icon.svg";
-import instagramIcon from "../../assets/instagram-icon.svg";
-import youtubeIcon from "../../assets/youtube-icon.svg";
-import tiktokIcon from "../../assets/tiktok-icon.svg";
+import facebookIcon from "../../assets/icons/facebook-icon.svg";
+import twitterIcon from "../../assets/icons/twitter-icon.svg";
+import instagramIcon from "../../assets/icons/instagram-icon.svg";
+import youtubeIcon from "../../assets/icons/youtube-icon.svg";
+import tiktokIcon from "../../assets/icons/tiktok-icon.svg";
 
 const Footer = () => {
   return (
