@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  width: var(--container);
+  width: var(--container-full);
   padding: 30px 0 40px 0;
   color: var(--white-color);
 }

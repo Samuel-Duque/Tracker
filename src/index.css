@@ -23,7 +23,10 @@
   --font-size-major: 1.5rem;
   --font-size-minor: 0.8125rem;
   --border-radius: 4px;
-  --container: 1372px;
+  --container-full: 1372px;
+  --container-medium: 1024px;
+  --container-small: 768px;
+  --container-xsmall: 375px;
   font-family: var(--font-family-base), Arial, Helvetica, sans-serif;
 }
 
