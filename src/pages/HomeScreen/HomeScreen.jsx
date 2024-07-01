@@ -7,7 +7,7 @@ import Trending from "../../components/Trending/Trending";
 
 const HomeScreen = () => {
   return (
-    <div className={style.homePage}>
+    <div className={style.homePage} data-theme="light">
       <div>
         <Header />
         <Trending />
