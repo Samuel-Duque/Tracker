@@ -37,10 +37,9 @@ a {
 }
 
 .btnLog {
-  color: white;
   display: flex;
   background-color: var(--primary-color);
-  padding: 6px 10px;
+  padding: 4px 10px;
   border: none;
   gap: 5px;
   border-radius: var(--border-radius);
@@ -49,22 +48,35 @@ a {
   cursor: pointer;
 }
 
-.searchIconSvg {
+.searchIconSvg,
+.cancelIconSvg {
   width: 1.4rem;
   height: 1.4rem;
 }
-
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .searchBar {
-  display: flex;
+  display: none;
+  gap: 10px;
   border: 0;
-  vertical-align: baseline;
+  transition: opacity 0.5s ease;
+}
+.searchBarVisible {
+  display: flex;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 .searchInput {
+  display: flex;
   padding: 5px 10px;
   border: 0;
   border-radius: var(--border-radius);
-  margin-right: 10px;
   outline: none;
 }
 
