@@ -1,10 +1,9 @@
 .navbar {
   display: flex;
-  width: 1372px;
-  color: white;
   justify-content: space-between;
-  align-items: center;
-  padding: 30px 0px 40px 0px;
+  width: var(--container);
+  padding: 30px 0 40px 0;
+  color: var(--white-color);
 }
 a {
   display: flex;
@@ -12,13 +11,14 @@ a {
   justify-content: center;
 }
 .logo {
-  font-size: 2.5rem;
-  font-weight: bolder;
+  font-size: var(--font-size-logo);
+  font-weight: 800;
   color: var(--primary-color);
 }
 .navItens {
   display: flex;
   gap: 20px;
+  font-size: var(--font-size-minor);
   font-weight: 400;
   padding: 10px 0px;
   align-items: center;
@@ -39,13 +39,14 @@ a {
 .btnLog {
   display: flex;
   background-color: var(--primary-color);
-  padding: 4px 10px;
+  padding: 6px 10px;
   border: none;
   gap: 5px;
   border-radius: var(--border-radius);
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .searchIconSvg,
@@ -53,6 +54,57 @@ a {
   width: 1.4rem;
   height: 1.4rem;
 }
+.searchBar {
+  display: none;
+  gap: 10px;
+  border: 0;
+}
+.searchBarVisible {
+  display: flex;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+.searchBar:not(.searchBarVisible) {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.searchInput {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 30px;
+  outline: none;
+}
+
+.submitIcon {
+  position: absolute;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 95%;
+  }
+  .navItens {
+    display: none;
+  }
+  .searchBar {
+    display: none;
+  }
+  .searchBarVisible {
+    display: none;
+  }
+  .searchBar:not(.searchBarVisible) {
+    display: flex;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -61,25 +113,11 @@ a {
     opacity: 1;
   }
 }
-.searchBar {
-  display: none;
-  gap: 10px;
-  border: 0;
-  transition: opacity 0.5s ease;
-}
-.searchBarVisible {
-  display: flex;
-  animation: fadeIn 0.5s ease forwards;
-}
-
-.searchInput {
-  display: flex;
-  padding: 5px 10px;
-  border: 0;
-  border-radius: var(--border-radius);
-  outline: none;
-}
-
-.submitIcon {
-  position: absolute;
+@keyframes FadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
