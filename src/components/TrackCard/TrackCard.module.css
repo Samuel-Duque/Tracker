@@ -2,7 +2,7 @@
   display: flex;
   width: 230px;
   flex-direction: column;
-  border: var(--gray-dark) 1px solid;
+  border: var(--border-color) 1px solid;
   border-radius: var(--border-radius);
   width: fit-content;
   max-width: 230px;
@@ -31,7 +31,7 @@
 .trackCover img {
   width: 100%;
   height: 100%;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-radius: var(--cover-radius) var(--cover-radius) 0 0;
 }
 
 .trackType {
@@ -47,11 +47,11 @@
 
 .trackInfo {
   display: flex;
-  background-color: var(--dark-secondary);
+  background-color: var(--secondary-color);
   padding: 5.36px 9px;
   font-size: var(--font-size-minor);
-  color: var(--white-color);
-  font-weight: 400;
+  color: var(--text-color);
+  font-weight: var(--font-weight-regular);
   justify-content: space-between;
 }
 
@@ -62,4 +62,15 @@
 
 .rating img {
   width: 14px;
+}
+
+[data-theme="light"] {
+  .trackCover img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--cover-radius);
+  }
+  .trackInfo {
+    padding: 5.36px 0;
+  }
 }
