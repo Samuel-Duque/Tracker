@@ -3,14 +3,14 @@ import style from "./HomeScreen.module.css";
 import Header from "../../components/Header/Header";
 import TrackCard from "../../components/TrackCard/TrackCard";
 import Footer from "../../components/Footer/Footer";
-import Trending from "../../components/Trending/Trending";
+import HomeCards from "../../components/HomeCards/HomeCards";
 
 const HomeScreen = () => {
   return (
     <div className={style.homePage}>
       <div>
         <Header />
-        <Trending />
+        <HomeCards />
       </div>
       <Footer />
     </div>

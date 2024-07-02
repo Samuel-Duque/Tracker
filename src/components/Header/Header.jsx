@@ -33,39 +33,37 @@ function Header() {
 
   return (
     <>
-      <body>
-        <div className={style.navbar}>
-          <div className={style.logo}>Tracker</div>
-          <div className={style.navItens}>
-            <div className={style.profile}>
-              <img
-                src={profilePicDark}
-                alt="profile"
-                className={style.profileImg}
-              />
-              <span className={style.username}>Zythee</span>
-              <img src={downArrow} alt="" />
-            </div>
-            <a href="/">Songs</a>
-            <a href="/">Lists</a>
-            <a href="/">Artists</a>
-            <a href="/">Trackers</a>
-            <fieldset className={style.searchBar}>
-              <a href="#" onClick={toggleSearch}>
-                <img src={cancelIcon} alt="" className={style.cancelIconSvg} />
-              </a>
-              <input type="text" placeholder="" className={style.searchInput} />
-            </fieldset>
-            <a href="#" onClick={toggleSearch}>
-              <img src={searchIcon} alt="" className={style.searchIconSvg} />
-            </a>
-            <a href="/" className={style.btnLog}>
-              <img src={plusIcon} alt="" />
-              Log
-            </a>
+      <div className={style.navbar}>
+        <div className={style.logo}>Tracker</div>
+        <div className={style.navItens}>
+          <div className={style.profile}>
+            <img
+              src={profilePicDark}
+              alt="profile"
+              className={style.profileImg}
+            />
+            <span className={style.username}>Zythee</span>
+            <img src={downArrow} alt="" />
           </div>
+          <a href="/">Songs</a>
+          <a href="/">Lists</a>
+          <a href="/">Artists</a>
+          <a href="/">Trackers</a>
+          <fieldset className={style.searchBar}>
+            <a href="#" onClick={toggleSearch}>
+              <img src={cancelIcon} alt="" className={style.cancelIconSvg} />
+            </a>
+            <input type="text" placeholder="" className={style.searchInput} />
+          </fieldset>
+          <a href="#" onClick={toggleSearch}>
+            <img src={searchIcon} alt="" className={style.searchIconSvg} />
+          </a>
+          <a href="/" className={style.btnLog}>
+            <img src={plusIcon} alt="" />
+            Log
+          </a>
         </div>
-      </body>
+      </div>
     </>
   );
 }

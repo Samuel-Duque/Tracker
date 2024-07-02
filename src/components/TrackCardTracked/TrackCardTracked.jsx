@@ -1,9 +1,9 @@
 import React from "react";
-import style from "./TrackCard.module.css";
+import style from "./TrackCardTracked.module.css";
 import starIcon from "../../assets/icons/star-icon.svg";
 import songIcon from "../../assets/icons/song-icon.svg";
 
-const TrackCard = ({ trackId }) => {
+const TrackCardTracked = ({ trackId }) => {
   const track = {
     title: "Please Please Please",
     coverImg:
@@ -31,4 +31,4 @@ const TrackCard = ({ trackId }) => {
   );
 };
 
-export default TrackCard;
+export default TrackCardTracked;
