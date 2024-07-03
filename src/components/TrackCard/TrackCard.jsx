@@ -5,9 +5,9 @@ import songIcon from "../../assets/icons/song-icon.svg";
 
 const TrackCard = ({ trackId }) => {
   const track = {
-    title: "Please Please Please",
+    title: "Espresso",
     coverImg:
-      "https://cdns-images.dzcdn.net/images/cover/0fd6e3b346b959a8781ccfa89b63607a/1900x1900-000000-80-0-0.jpg",
+      "https://i.scdn.co/image/ab67616d0000b273659cd4673230913b3918e0d5",
     type: "song",
     rating: 5,
   };

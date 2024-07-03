@@ -2,14 +2,14 @@ import React from "react";
 import style from "./HomeCards.module.css";
 import TrackCard from "../TrackCard/TrackCard";
 import Title from "../Title/Title";
-import TrackCardTracked from "../TrackCardTracked/TrackCardTracked";
+import TrackCardTracked from "../TrackCardReview/TrackCardReview";
 
 const HomeCards = () => {
   return (
     <div className={style.homeCards}>
-      <div className={style.trending}>
+      <div className={style.cards}>
         <Title title={"Trending"} />
-        <div className={style.tredingCards}>
+        <div className={style.trackCards}>
           <TrackCard />
           <TrackCard />
           <TrackCard />
@@ -17,9 +17,9 @@ const HomeCards = () => {
           <TrackCard />
         </div>
       </div>
-      <div className={style.homeCards}>
-        <Title title={"New from friends"} />
-        <div className={style.tredingCards}>
+      <div className={style.cards}>
+        <Title title={"New from friends"} more={true} />
+        <div className={style.trackCards}>
           <TrackCardTracked />
           <TrackCardTracked />
           <TrackCardTracked />

@@ -1,7 +1,14 @@
 .title {
+  display: flex;
+  justify-content: space-between;
   padding-bottom: 5px;
   color: var(--text-color);
   border-bottom: var(--divider-color) 1px solid;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-base);
+}
+
+.more {
+  font-size: var(--font-size-minor);
+  font-weight: var(--font-weight-regular);
 }

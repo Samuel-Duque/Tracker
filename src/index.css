@@ -11,7 +11,7 @@
   --primary-color: #2871ff;
   --secondary-color: #2e2e2e;
   --border-color: #3d3d3d;
-  --cover-radius: 0;
+  --cover-radius: 5px;
   --divider-color: #3d3d3d;
   --background-color: #111316;
   --text-color: #ffffff;
@@ -25,7 +25,7 @@
   --font-weight-semi-bold: 600;
   --font-weight-bold: 700;
   --border-radius: 5px;
-  --container-full: 1372px;
+  --container-full: 1100px;
   --container-medium: 1024px;
   --container-small: 768px;
   --container-xsmall: 375px;

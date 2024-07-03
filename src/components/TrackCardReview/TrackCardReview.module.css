@@ -1,31 +1,16 @@
 .cardContainer {
   display: flex;
-  width: 230px;
+  max-width: 210px;
   flex-direction: column;
   border: var(--border-color) 1px solid;
   border-radius: var(--border-radius);
   width: fit-content;
-  max-width: 230px;
+  position: relative;
 }
 
 .trackCover {
   position: relative;
-}
-
-.trackCover::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to bottom left,
-    rgb(0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.709) 0%,
-    rgba(0, 0, 0, 0) 15%
-  );
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-radius: var(--cover-radius) var(--cover-radius) 0 0;
 }
 
 .trackCover img {
@@ -34,6 +19,21 @@
   border-radius: var(--cover-radius) var(--cover-radius) 0 0;
 }
 
+.trackCover::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom left,
+    rgba(0, 0, 0, 0.656) 0%,
+    rgba(0, 0, 0, 0) 15%
+  );
+  z-index: 1;
+  border-radius: var(--border-radius);
+}
 .trackType {
   position: absolute;
   right: 0;
@@ -48,11 +48,19 @@
 .trackInfo {
   display: flex;
   background-color: var(--secondary-color);
-  padding: 5.36px 9px;
+  padding: 5px 5px;
   font-size: var(--font-size-minor);
   color: var(--text-color);
   font-weight: var(--font-weight-regular);
   justify-content: space-between;
+}
+
+.trackInfo span {
+  display: flex;
+  align-items: center;
+  width: 96px;
+  text-wrap: nowrap;
+  overflow: hidden;
 }
 
 .rating {
@@ -62,6 +70,11 @@
 
 .rating img {
   width: 14px;
+}
+
+.userInfo {
+  display: flex;
+  gap: 5px;
 }
 
 [data-theme="light"] {
