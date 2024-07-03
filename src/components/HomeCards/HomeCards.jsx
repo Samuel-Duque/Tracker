@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./HomeCards.module.css";
 import TrackCard from "../TrackCard/TrackCard";
 import Title from "../Title/Title";
 import TrackCardTracked from "../TrackCardReview/TrackCardReview";
+import { handleTopTracks } from "../../services/HandleTopTracks";
 
 const HomeCards = () => {
+  useEffect(() => {
+    const getTopTracks = async () => {
+      handleTopTracks();
+    };
+    getTopTracks();
+  }, []);
+
   return (
     <div className={style.homeCards}>
       <div className={style.cards}>
