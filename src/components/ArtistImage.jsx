@@ -1,12 +1,11 @@
 // src/components/ArtistImage.jsx
 import React, { useState, useEffect } from "react";
-import { fetchArtistImage } from "../services/spotifyService";
+import { fetchArtistImage } from "../services/SpotifyService";
 
 const ArtistImage = ({ artistName }) => {
   const [imageUrl, setImageUrl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     const getArtistImage = async () => {
       try {
@@ -25,14 +24,13 @@ const ArtistImage = ({ artistName }) => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h2>{artistName}</h2>
+    <>
       {imageUrl ? (
         <img src={imageUrl} alt={artistName} />
       ) : (
         <p>Imagem não disponível.</p>
       )}
-    </div>
+    </>
   );
 };
 

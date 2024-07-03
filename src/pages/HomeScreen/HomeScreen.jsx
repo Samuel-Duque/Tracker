@@ -11,7 +11,7 @@ const HomeScreen = () => {
     <div className={style.homePage}>
       <div>
         <Header />
-        {/* <HomeCards /> */}
+        <HomeCards />
         <TopArtists />
       </div>
       <Footer />

@@ -17,8 +17,7 @@ const getToken = async () => {
 
 export const fetchArtistImage = async (artistName) => {
   try {
-    const token =
-      "BQC9x14nwOrUPGIiFH59Xewn7FK78YO9yGUQfWEh9BnXsjNZXA7OmJyFbAMyXOcHHIVE0l2h5SqdbWukFhE1GwR5qz0ax3O4GbBfSGvIjjiuRGFe6t5WliBZtd9ELY9bLuxK2d9ldYn1yAAcrQ9Tw1qklluBHSqzPG-JIBszu6HQe1a4Z8p4RBQk41EacuAuvajz1KnmlcVuIg9B2Nt7UUWGq_YZ9B0mEE2Lf12FJEkrGzHZyh2EEiiYF5ELFwcqsi3RPPMTs2YpuB02XQRM4x-FpbMGqSHq1nmBJ54u-SjA-D5PCIsIHahXcAEz77rEDmCVrhc";
+    const token = import.meta.env.VITE_SPOTIFY_TOKEN;
     const response = await axios.get(`${BASE_URL}search`, {
       params: {
         type: "track",
@@ -36,7 +35,7 @@ export const fetchArtistImage = async (artistName) => {
     const artist = response.data.tracks.items[0];
     console.log(artist);
     if (artist && artist.album.images.length > 0) {
-      return artist.album.images[1].url;
+      return artist.album.images[0].url;
     } else {
       return null;
     }

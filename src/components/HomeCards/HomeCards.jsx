@@ -25,6 +25,7 @@ const HomeCards = () => {
               <TrackCard
                 key={index} // Adicionado para evitar warnings de 'key' no React
                 trackName={track.name}
+                trackArtist={track.artist.name}
                 trackCover={
                   track.image.find((img) => img.size === "extralarge")["#text"]
                 }
