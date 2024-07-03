@@ -3,26 +3,19 @@ import style from "./TrackCard.module.css";
 import starIcon from "../../assets/icons/star-icon.svg";
 import songIcon from "../../assets/icons/song-icon.svg";
 
-const TrackCard = ({ trackId }) => {
-  const track = {
-    title: "Espresso",
-    coverImg:
-      "https://i.scdn.co/image/ab67616d0000b273659cd4673230913b3918e0d5",
-    type: "song",
-    rating: 5,
-  };
+const TrackCard = ({ trackName, trackCover }) => {
   return (
     <div className={style.cardContainer}>
       <div className={style.trackCover}>
         <div className={style.trackType}>
           <img src={songIcon} alt="" />
         </div>
-        <img src={track.coverImg} alt="Track Cover" />
+        <img src={trackCover} alt="Track Cover" />
       </div>
       <div className={style.trackInfo}>
-        <span>{track.title}</span>
+        <span>{trackName}</span>
         <div className={style.rating}>
-          {Array.from({ length: track.rating }).map((_, index) => (
+          {Array.from({ length: 5 }).map((_, index) => (
             <img key={index} src={starIcon} alt={`Star ${index + 1}`} />
           ))}
         </div>

@@ -7,8 +7,10 @@ export const handleTopTracks = async () => {
     const response = await axios.get(
       `http://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&api_key=${apiKey}&format=json`
     );
-    const topSongs = response.data;
+    const topSongs = response.data.tracks.track.slice(0, 5);
+    return { result: true, response: topSongs };
   } catch (error) {
     console.error("Error fetching top tracks:", error);
+    return { result: false, response: null };
   }
 };
