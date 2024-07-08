@@ -29,6 +29,7 @@ const HomeCards = () => {
               <TrackCard
                 key={index}
                 trackName={item.track.name}
+                trackArtist={item.track.artists[0].name}
                 trackImage={item.track.album.images[0].url}
               />
             ))}
