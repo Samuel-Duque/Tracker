@@ -2,16 +2,15 @@ import React from "react";
 import style from "./TrackCard.module.css";
 import starIcon from "../../assets/icons/star-icon.svg";
 import songIcon from "../../assets/icons/song-icon.svg";
-import ArtistImage from "../ArtistImage/ArtistImage";
 
-const TrackCard = ({ trackName, trackArtist }) => {
+const TrackCard = ({ trackName, trackImage }) => {
   return (
     <div className={style.cardContainer}>
       <div className={style.trackCover}>
         <div className={style.trackType}>
           <img src={songIcon} alt="" />
         </div>
-        <ArtistImage artistName={`${trackName} ${trackArtist}`} />
+        <img src={trackImage} alt="" />
       </div>
       <div className={style.trackInfo}>
         <span>{trackName}</span>

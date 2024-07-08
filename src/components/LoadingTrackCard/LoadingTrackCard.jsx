@@ -5,6 +5,10 @@ const LoadingTrackCard = () => {
   return (
     <>
       <div className={style.cardContainer}></div>
+      <div className={style.cardContainer}></div>
+      <div className={style.cardContainer}></div>
+      <div className={style.cardContainer}></div>
+      <div className={style.cardContainer}></div>
     </>
   );
 };
