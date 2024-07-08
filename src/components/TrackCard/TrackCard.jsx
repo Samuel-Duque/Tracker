@@ -2,7 +2,7 @@ import React from "react";
 import style from "./TrackCard.module.css";
 import starIcon from "../../assets/icons/star-icon.svg";
 import songIcon from "../../assets/icons/song-icon.svg";
-import ArtistImage from "../ArtistImage";
+import ArtistImage from "../ArtistImage/ArtistImage";
 
 const TrackCard = ({ trackName, trackArtist, trackCover }) => {
   return (

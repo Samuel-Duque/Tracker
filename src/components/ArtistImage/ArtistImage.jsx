@@ -1,6 +1,6 @@
 // src/components/ArtistImage.jsx
 import React, { useState, useEffect } from "react";
-import { fetchArtistImage } from "../services/SpotifyService";
+import { fetchArtistImage } from "../../services/FetchArtistImage";
 
 const ArtistImage = ({ artistName }) => {
   const [imageUrl, setImageUrl] = useState(null);
