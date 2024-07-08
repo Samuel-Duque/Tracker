@@ -4,7 +4,7 @@ import starIcon from "../../assets/icons/star-icon.svg";
 import songIcon from "../../assets/icons/song-icon.svg";
 import ArtistImage from "../ArtistImage/ArtistImage";
 
-const TrackCard = ({ trackName, trackArtist, trackCover }) => {
+const TrackCard = ({ trackName, trackArtist }) => {
   return (
     <div className={style.cardContainer}>
       <div className={style.trackCover}>

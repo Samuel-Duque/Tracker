@@ -10,6 +10,7 @@ const HomeCards = () => {
   useEffect(() => {
     const getTopTracks = async () => {
       const result = await handleTopTracks();
+
       result ? setTopSongs(result.response) : console.log(result);
     };
     getTopTracks();
@@ -21,14 +22,11 @@ const HomeCards = () => {
         <Title title={"Trending"} />
         <div className={style.trackCards}>
           {topSongs &&
-            topSongs.map((track, index) => (
+            topSongs.map((item, index) => (
               <TrackCard
-                key={index} // Adicionado para evitar warnings de 'key' no React
-                trackName={track.name}
-                trackArtist={track.artist.name}
-                trackCover={
-                  track.image.find((img) => img.size === "extralarge")["#text"]
-                }
+                key={index}
+                trackName={item.track.name}
+                trackArtist={item.track.artists[0].name}
               />
             ))}
         </div>

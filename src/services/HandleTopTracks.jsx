@@ -1,13 +1,20 @@
 import React from "react";
 import axios from "axios";
+import { getSpotifyToken } from "./GetSpotifyToken";
 
 export const handleTopTracks = async () => {
-  const apiKey = import.meta.env.VITE_LAST_FM_API_KEY;
+  const token = await getSpotifyToken();
   try {
     const response = await axios.get(
-      `http://ws.audioscrobbler.com/2.0/?method=chart.getTopTracks&api_key=${apiKey}&format=json`
+      `https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?limit=10`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
-    const topSongs = response.data.tracks.track.slice(0, 5);
+    const topSongs = response.data.items.slice(0, 5);
     return { result: true, response: topSongs };
   } catch (error) {
     console.error("Error fetching top tracks:", error);
