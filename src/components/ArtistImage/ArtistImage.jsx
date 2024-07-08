@@ -1,6 +1,6 @@
-// src/components/ArtistImage.jsx
 import React, { useState, useEffect } from "react";
 import { fetchArtistImage } from "../../services/FetchArtistImage";
+import LoadingTrackCard from "../LoadingTrackCard/LoadingTrackCard";
 
 const ArtistImage = ({ artistName }) => {
   const [imageUrl, setImageUrl] = useState(null);
@@ -20,7 +20,7 @@ const ArtistImage = ({ artistName }) => {
     getArtistImage();
   }, [artistName]);
 
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <LoadingTrackCard />;
   if (error) return <p>{error}</p>;
 
   return (

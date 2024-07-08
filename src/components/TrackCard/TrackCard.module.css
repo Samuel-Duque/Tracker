@@ -6,6 +6,7 @@
   border-radius: var(--border-radius);
   width: fit-content;
   position: relative;
+  overflow: hidden;
 }
 
 .trackCover {
@@ -47,7 +48,6 @@
 
 .trackInfo {
   display: flex;
-
   background-color: var(--secondary-color);
   padding: 7px 5px;
   font-size: var(--font-size-minor);
