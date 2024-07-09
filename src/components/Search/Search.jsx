@@ -14,6 +14,7 @@ const Search = () => {
     };
     handleSearch();
   }, [trackQuery]);
+
   return (
     <>
       <div className={style.seachTracks}>

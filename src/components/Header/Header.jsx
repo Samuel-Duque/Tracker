@@ -18,6 +18,12 @@ function Header() {
     searchQuery ? navigate(`/search/${searchQuery}`) : console.log("vazio");
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      fetchSearch();
+    }
+  };
+
   useEffect(() => {
     const searchBar = document.querySelector(`.${style.searchBar}`);
     const btnLog = document.querySelector(`.${style.btnLog}`);
@@ -66,6 +72,7 @@ function Header() {
                 className={style.searchInput}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
               />
               <button
                 onClick={() => {
