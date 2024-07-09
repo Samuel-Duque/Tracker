@@ -68,12 +68,23 @@ a {
 
 .searchInput {
   display: flex;
-  width: fit-content;
+  width: 10rem;
   height: fit-content;
   padding: 5px 10px;
   border: 0;
   border-radius: var(--border-radius);
   outline: none;
+}
+
+.searchInnerBar {
+  padding-right: 5px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: var(--border-radius);
+}
+.searchInnerBar svg {
+  fill: black;
 }
 
 .submitIcon {

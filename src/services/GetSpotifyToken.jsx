@@ -14,14 +14,18 @@ export const getSpotifyToken = async () => {
 
     try {
       const res = await axios.get(
-        "https://api.spotify.com/v1/tracks/7qiZfU4dY1lWllzX7mPBI3",
+        `https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?limit=10`,
         {
           headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${spotifyData.SPOTIFY_TOKEN}`,
           },
         }
       );
-      if (!res) {
+      const spotifyResponse = res.data;
+      console.log("Response: ", spotifyResponse);
+      if (!res.data) {
+        console.log("Here");
         throw new Error("Token inválido ou expirado.");
       } else {
         console.info("Token still active: ", spotifyData.SPOTIFY_TOKEN);

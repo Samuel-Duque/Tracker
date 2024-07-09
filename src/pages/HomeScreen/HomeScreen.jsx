@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import HomeCards from "../../components/HomeCards/HomeCards";
 const HomeScreen = () => {
   return (
-    <div className={style.homePage}>
+    <div className={style.homeScreen}>
       <div>
         <Header />
         <HomeCards />
