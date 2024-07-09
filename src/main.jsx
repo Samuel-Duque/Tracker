@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     errorElement: <p>Page not found. Error 404</p>,
   },
   {
-    path: "/search/:query",
+    path: "/search/:trackQuery",
     element: <SearchScreen />,
   },
 ]);
