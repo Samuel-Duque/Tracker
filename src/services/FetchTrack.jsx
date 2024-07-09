@@ -5,15 +5,17 @@ export const fetchTrack = async ({ musicURL }) => {
   const token = getSpotifyToken();
   try {
     console.log("URL", musicURL.musicURL);
-    const response = await axios.get(musicURL.musicURL, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await axios.get(
+      "https://api.spotify.com/v1/tracks/4fv9mYzwI3Ww8Hsg33OZXD",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     const songData = response.data;
-    console.log("Track:", songData);
     return songData;
   } catch (error) {
     console.log(error);

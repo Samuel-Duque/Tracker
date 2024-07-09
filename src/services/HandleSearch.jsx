@@ -14,7 +14,6 @@ export const HandleSearch = async () => {
       }
     );
     const searchSongs = response.data.tracks.items;
-    console.log(searchSongs);
     return searchSongs;
   } catch (error) {
     console.error("Error fetching top tracks:", error);

@@ -1,0 +1,20 @@
+.SearchItemContainer {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.CoverImage {
+  border-color: var(--border-color);
+}
+.CoverImage img {
+  display: flex;
+  width: 120px;
+  border-radius: var(--border-radius);
+  border: var(--border-color) 1px solid;
+}
+
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+}

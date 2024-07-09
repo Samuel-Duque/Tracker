@@ -17,7 +17,7 @@ const Search = () => {
       <div className={style.seachTracks}>
         {searchSongs &&
           searchSongs.map((track, index) => {
-            return <SearchItem key={index} musicURL={track.href} />;
+            return <SearchItem key={index} music={track} />;
           })}
       </div>
     </>
