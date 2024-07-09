@@ -53,6 +53,21 @@ h5,
 h6,
 p {
   color: var(--primary-color);
+  font-family: var(--font-family-base);
+}
+
+input {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-minor);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-family-base);
 }
 
 a {

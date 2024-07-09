@@ -1,13 +1,11 @@
-import React from "react";
 import axios from "axios";
 import { getSpotifyToken } from "./GetSpotifyToken";
 
-export const handleTopTracks = async () => {
+export const HandleSearch = async () => {
   const token = await getSpotifyToken();
   try {
-    console.log("token top:", token);
     const response = await axios.get(
-      `https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks?limit=10`,
+      `https://api.spotify.com/v1/search?query=espresso&type=track&locale=pt-BR%2Cpt%3Bq%3D0.9%2Cen-US%3Bq%3D0.8%2Cen%3Bq%3D0.7&offset=0&limit=20`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -15,8 +13,9 @@ export const handleTopTracks = async () => {
         },
       }
     );
-    const topSongs = response.data.items.slice(0, 5);
-    return { result: true, response: topSongs };
+    const searchSongs = response.data;
+    console.log(searchSongs);
+    return { result: true, response: searchSongs };
   } catch (error) {
     console.error("Error fetching top tracks:", error);
     return { result: false, response: null };

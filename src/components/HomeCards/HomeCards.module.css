@@ -7,9 +7,9 @@
 .trackCards {
   display: flex;
   width: 100%;
-  gap: 10px;
   border: var(--border-color);
   padding-bottom: 20px;
+  justify-content: space-between;
 }
 
 .homeCards {
