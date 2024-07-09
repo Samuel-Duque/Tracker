@@ -10,39 +10,41 @@ import tiktokIcon from "../../assets/icons/tiktok-icon.svg";
 const Footer = () => {
   return (
     <>
-      <div className={style.foot}>
-        <div className={style.navbar}>
-          <Link to={"/"}>
-            <div className={style.logo}>Tracker</div>
-          </Link>
-          <div className={style.navItens}>
-            <a href="/">Songs</a>
-            <a href="/">Lists</a>
-            <a href="/">Artists</a>
-            <a href="/">Trackers</a>
-            <a href="/">Contact</a>
-            <a href="/">About</a>
-            <a href="/">Help</a>
-            <a href="/">Pro</a>
+      <div className={style.footer}>
+        <div className={style.footinfo}>
+          <div className={style.navbar}>
+            <Link to={"/"}>
+              <div className={style.logo}>Tracker</div>
+            </Link>
+            <div className={style.navItens}>
+              <Link to="/">Songs</Link>
+              <Link to="/">Lists</Link>
+              <Link to="/">Artists</Link>
+              <Link to="/">Trackers</Link>
+              <Link to="/">Contact</Link>
+              <Link to="/">About</Link>
+              <Link to="/">Help</Link>
+              <Link to="/">Pro</Link>
+            </div>
           </div>
-        </div>
 
-        <div className={style.socialMedia}>
-          <a href="/">
-            <img src={facebookIcon} alt="" />
-          </a>
-          <a href="/">
-            <img src={twitterIcon} alt="" />
-          </a>
-          <a href="/">
-            <img src={instagramIcon} alt="" />
-          </a>
-          <a href="/">
-            <img src={youtubeIcon} alt="" />
-          </a>
-          <a href="/">
-            <img src={tiktokIcon} alt="" />
-          </a>
+          <div className={style.socialMedia}>
+            <a href="/">
+              <img src={facebookIcon} alt="" />
+            </a>
+            <a href="/">
+              <img src={twitterIcon} alt="" />
+            </a>
+            <a href="/">
+              <img src={instagramIcon} alt="" />
+            </a>
+            <a href="/">
+              <img src={youtubeIcon} alt="" />
+            </a>
+            <a href="/">
+              <img src={tiktokIcon} alt="" />
+            </a>
+          </div>
         </div>
       </div>
     </>

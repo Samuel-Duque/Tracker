@@ -1,8 +1,16 @@
-.foot {
+.footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  margin-top: 100px;
   border-top: 1px solid var(--border-color);
+  padding-bottom: 100px;
+}
+.footinfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--container-full);
 }
 .logo {
   font-size: var(--font-size-logo);
