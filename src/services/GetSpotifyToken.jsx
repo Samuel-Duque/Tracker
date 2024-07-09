@@ -22,8 +22,6 @@ export const getSpotifyToken = async () => {
           },
         }
       );
-      const spotifyResponse = res.data;
-      console.log("Response: ", spotifyResponse);
       if (!res.data) {
         console.log("Here");
         throw new Error("Token inválido ou expirado.");

@@ -13,11 +13,10 @@ export const HandleSearch = async () => {
         },
       }
     );
-    const searchSongs = response.data;
+    const searchSongs = response.data.tracks.items;
     console.log(searchSongs);
-    return { result: true, response: searchSongs };
+    return searchSongs;
   } catch (error) {
     console.error("Error fetching top tracks:", error);
-    return { result: false, response: null };
   }
 };
