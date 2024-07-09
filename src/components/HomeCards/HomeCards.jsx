@@ -31,6 +31,7 @@ const HomeCards = () => {
                 trackName={item.track.name}
                 trackArtist={item.track.artists[0].name}
                 trackImage={item.track.album.images[0].url}
+                index={index + 1}
               />
             ))}
         </div>

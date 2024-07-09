@@ -8,7 +8,7 @@ import trackIcon from "../../assets/icons/track-icon.svg";
 import activelikeIcon from "../../assets/icons/active-like-icon.svg";
 import activetrackIcon from "../../assets/icons/active-track-icon.svg";
 import threedotsIcon from "../../assets/icons/threedots-icon.svg";
-const TrackCard = ({ trackName, trackArtist, trackImage }) => {
+const TrackCard = ({ trackName, trackArtist, trackImage, index }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
@@ -49,11 +49,7 @@ const TrackCard = ({ trackName, trackArtist, trackImage }) => {
       </div>
       <div className={style.trackInfo}>
         <span>{trackName}</span>
-        <div className={style.rating}>
-          {Array.from({ length: 5 }).map((_, index) => (
-            <img key={index} src={starIcon} alt={`Star ${index + 1}`} />
-          ))}
-        </div>
+        <div className={style.rating}>#{index}</div>
       </div>
     </div>
   );

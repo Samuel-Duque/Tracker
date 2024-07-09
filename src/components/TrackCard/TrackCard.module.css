@@ -123,13 +123,14 @@
 .trackInfo span {
   display: flex;
   align-items: center;
-  width: 120px;
   text-wrap: nowrap;
   overflow: hidden;
+  width: 176px;
 }
 
 .rating {
   display: flex;
+  gap: 1.2px;
 }
 
 .rating img {

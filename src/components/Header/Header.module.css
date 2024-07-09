@@ -5,6 +5,7 @@
   color: var(--text-color);
   margin-bottom: 30px;
 }
+
 a {
   display: flex;
   align-items: center;
@@ -25,8 +26,73 @@ a {
 }
 .profile {
   display: flex;
-  gap: 10px;
+  position: relative;
   align-items: center;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.picName {
+  display: flex;
+  align-items: center;
+  padding: 5px 0 0 5px;
+  gap: 5px;
+}
+
+.downArrow {
+  display: flex;
+  padding: 5px 5px 0 0;
+}
+
+.profileTop {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  gap: 20px;
+}
+
+.profile:hover {
+  display: flex;
+  background-color: var(--secondary-color);
+  border-bottom: var(--border-color) 1px solid;
+}
+
+.dropdown {
+  display: flex;
+  width: 100.5%;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 0;
+  position: absolute;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  z-index: 5;
+}
+
+.dropItems {
+  display: flex;
+  flex-direction: column;
+  border-bottom: var(--border-color) 1px solid;
+  gap: 3px;
+}
+
+.botItems {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  display: flex;
+  padding: 5px 10px;
+  justify-content: start;
+  border-radius: var(--border-radius);
+}
+
+.dropdownItem:hover {
+  background-color: #3e3e3e;
+  border-radius: 0;
 }
 
 .profileImg {
