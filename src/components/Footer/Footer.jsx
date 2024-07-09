@@ -12,7 +12,9 @@ const Footer = () => {
     <>
       <div className={style.foot}>
         <div className={style.navbar}>
-          <div className={style.logo}>Tracker</div>
+          <Link to={"/"}>
+            <div className={style.logo}>Tracker</div>
+          </Link>
           <div className={style.navItens}>
             <a href="/">Songs</a>
             <a href="/">Lists</a>

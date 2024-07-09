@@ -38,7 +38,9 @@ function Header() {
   return (
     <>
       <div className={style.navbar}>
-        <div className={style.logo}>Tracker</div>
+        <Link to={"/"}>
+          <div className={style.logo}>Tracker</div>
+        </Link>
         <div className={style.navItens}>
           <div className={style.profile}>
             <img
