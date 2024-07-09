@@ -41,7 +41,6 @@
 .trackCover::before {
   position: absolute;
   content: "";
-  /* transition: ease-in-out 0.3s all; */
   top: 0;
   left: 0;
   right: 0;
@@ -72,6 +71,12 @@
   width: 20px;
   height: 20px;
   margin: auto;
+}
+.overlay img:hover {
+  cursor: pointer;
+}
+.overlay img:active {
+  transform: scale(0.9);
 }
 .moreOptions {
   display: flex;

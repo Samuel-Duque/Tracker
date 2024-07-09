@@ -5,10 +5,13 @@ import songIcon from "../../assets/icons/song-icon.svg";
 import { useState } from "react";
 import likeIcon from "../../assets/icons/like-icon.svg";
 import trackIcon from "../../assets/icons/track-icon.svg";
+import activelikeIcon from "../../assets/icons/active-like-icon.svg";
+import activetrackIcon from "../../assets/icons/active-track-icon.svg";
 import threedotsIcon from "../../assets/icons/threedots-icon.svg";
 const TrackCard = ({ trackName, trackArtist, trackImage }) => {
   const [isVisible, setIsVisible] = useState(true);
-
+  const [isClickedTrack, setClickedTrack] = useState(false);
+  const [isClickedLike, setClickedLike] = useState(false);
   return (
     <div className={style.cardContainer}>
       <div
@@ -19,8 +22,16 @@ const TrackCard = ({ trackName, trackArtist, trackImage }) => {
         {!isVisible && (
           <div className={style.overlay}>
             <div className={style.moreOptions}>
-              <img src={trackIcon} alt="" />
-              <img src={likeIcon} alt="" />
+              <img
+                src={isClickedTrack ? activetrackIcon : trackIcon}
+                alt=""
+                onClick={() => setClickedTrack(!isClickedTrack)}
+              />
+              <img
+                src={isClickedLike ? activelikeIcon : likeIcon}
+                alt=""
+                onClick={() => setClickedLike(!isClickedLike)}
+              />
               <img src={threedotsIcon} alt="" />
             </div>
             <div className={style.overlayTagname}>
