@@ -3,33 +3,45 @@
 * {
   padding: 0;
   margin: 0;
+  top: 0;
   box-sizing: border-box;
 }
 
 :root {
   --primary-color: #2871ff;
-  --secondary-color: #c4c4c4;
-  --dark-secondary: #2e2e2e;
-  --gray-dark: #3d3d3d;
+  --secondary-color: #2e2e2e;
+  --border-color: #3d3d3d;
+  --cover-radius: 5px;
+  --divider-color: #3d3d3d;
   --background-color: #111316;
-  --text-color: #000000;
-  --accent-color: #2871ff;
-  --black-color: #000000;
-  --white-color: #ffffff;
-
+  --text-color: #ffffff;
+  --text-secondary-color: #bbbbbb;
   --font-family-base: "Inter";
+  --font-size-minor: 0.8125rem;
   --font-size-base: 1rem;
-  --border-radius: 4px;
+  --font-size-major: 1.5rem;
+  --font-size-logo: 2.5rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --border-radius: 5px;
+  --container-full: 1100px;
+  --container-medium: 1024px;
+  --container-small: 768px;
+  --container-xsmall: 375px;
+  font-family: var(--font-family-base), Arial, Helvetica, sans-serif;
 }
 
 body {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -42,16 +54,48 @@ h5,
 h6,
 p {
   color: var(--primary-color);
-  font-family: "Inter";
+  font-family: var(--font-family-base);
+}
+
+input {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-minor);
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-family-base);
 }
 
 a {
-  color: var(--white-color);
+  color: var(--text-color);
   text-decoration: none;
 }
 
-.container {
-  max-width: 1372px;
-  margin: 0 auto;
-  padding: 0 1em;
+body::-webkit-scrollbar-track {
+  background-color: var(--secondary-color);
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 2px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+}
+
+[data-theme="light"] {
+  --primary-color: #2871ff;
+  --secondary-color: #c4c4c400;
+  --cover-radius: 5px;
+  --background-color: #ffffff;
+  --border-color: #3d3d3d00;
+  --divider-color: #c4c4c4;
+  --text-color: #000000;
 }

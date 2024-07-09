@@ -1,18 +1,24 @@
 .navbar {
   display: flex;
-  width: 1372px;
-  color: white;
   justify-content: space-between;
+  padding: 30px 0 40px 0;
+  color: var(--text-color);
+  margin-bottom: 30px;
+}
+a {
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 .logo {
-  font-size: 2.5rem;
-  font-weight: bolder;
+  font-size: var(--font-size-logo);
+  font-weight: 800;
   color: var(--primary-color);
 }
 .navItens {
   display: flex;
   gap: 20px;
+  font-size: var(--font-size-minor);
   padding: 10px 0px;
   align-items: center;
   justify-content: space-between;
@@ -30,13 +36,114 @@
 }
 
 .btnLog {
-  color: white;
   display: flex;
   background-color: var(--primary-color);
   padding: 6px 10px;
   border: none;
-  border-radius: 5px;
+  gap: 5px;
+  border-radius: var(--border-radius);
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-color);
+}
+
+.searchIconSvg,
+.cancelIconSvg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.searchBar {
+  display: none;
+  gap: 10px;
+  border: 0;
+}
+.searchBarVisible {
+  display: flex;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+.searchBar:not(.searchBarVisible) {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.searchInput {
+  display: flex;
+  width: 10rem;
+  height: fit-content;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+.searchInnerBar {
+  padding-right: 5px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: var(--border-radius);
+}
+.searchInnerBar svg {
+  fill: black;
+}
+
+.submitIcon {
+  position: absolute;
+}
+
+[data-theme="light"] {
+  .btnLog {
+    color: white;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .navbar {
+    width: 95%;
+    width: var(--container-medium);
+  }
+}
+@media screen and (max-width: 1024px) {
+  .navbar {
+    width: 90%;
+    width: var(--container-small);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 95%;
+    width: var(--container-xsmall);
+    justify-content: center;
+  }
+  .navItens {
+    display: none;
+  }
+  .searchBar {
+    display: none;
+  }
+  .searchBarVisible {
+    display: none;
+  }
+  .searchBar:not(.searchBarVisible) {
+    display: flex;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes FadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

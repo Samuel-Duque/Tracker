@@ -1,0 +1,7 @@
+.cardContainer {
+  width: 208px;
+  height: 242px;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}

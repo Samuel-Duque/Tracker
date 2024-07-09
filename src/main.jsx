@@ -1,10 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomeScreen from "./pages/HomeScreen/HomeScreen.jsx";
+import SearchScreen from "./pages/SearchScreen/SearchScreen";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomeScreen />,
+    errorElement: <p>Page not found. Error 404</p>,
+  },
+  {
+    path: "/search/:trackQuery",
+    element: <SearchScreen />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

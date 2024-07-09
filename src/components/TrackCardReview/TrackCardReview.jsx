@@ -1,0 +1,39 @@
+import React from "react";
+import style from "./TrackCardReview.module.css";
+import starIcon from "../../assets/icons/star-icon.svg";
+import songIcon from "../../assets/icons/song-icon.svg";
+import profilePic from "../../assets/icons/profile-pic-dark.svg";
+const TrackCardTracked = ({ reviewid }) => {
+  const review = {
+    user: "Zythee",
+    userImg: profilePic,
+    track: "Please Please Please",
+    coverImg:
+      "https://cdns-images.dzcdn.net/images/cover/0fd6e3b346b959a8781ccfa89b63607a/1900x1900-000000-80-0-0.jpg",
+    type: "song",
+    rating: 3,
+  };
+  return (
+    <div className={style.cardContainer}>
+      <div className={style.trackCover}>
+        <div className={style.trackType}>
+          <img src={songIcon} alt="" />
+        </div>
+        <img src={review.coverImg} alt="Track Cover" />
+      </div>
+      <div className={style.trackInfo}>
+        <div className={style.userInfo}>
+          <img src={review.userImg} alt="" />
+          <span>{review.user}</span>
+        </div>
+        <div className={style.rating}>
+          {Array.from({ length: review.rating }).map((_, index) => (
+            <img key={index} src={starIcon} alt={`Star ${index + 1}`} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TrackCardTracked;

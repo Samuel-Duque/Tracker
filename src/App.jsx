@@ -1,10 +1,14 @@
-import React from "react";
-import Header from "./components/Header/Header.jsx";
+import React, { useEffect } from "react";
+import HomeScreen from "./pages/HomeScreen/HomeScreen";
 function App() {
+  useEffect(() => {
+    document.body.setAttribute("data-theme", "dark");
+  }, []);
+
   return (
-    <>
-      <Header />
-    </>
+    <div>
+      <HomeScreen />
+    </div>
   );
 }
 

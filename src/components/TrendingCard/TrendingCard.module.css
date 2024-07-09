@@ -1,0 +1,23 @@
+.trendingCard {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  align-items: center;
+  border: var(--border-color) 1px solid;
+  padding: 5px;
+  border-radius: var(--border-radius);
+  gap: 10px;
+  font-size: var(--font-size-minor);
+}
+
+.pCircle {
+  display: flex;
+  border: var(--primary-color) 2px solid;
+  border-radius: 50px;
+  padding: 7px;
+  font-size: var(--font-size-minor);
+}
+
+.pCircle img {
+  width: 25px;
+}

@@ -1,0 +1,101 @@
+.SearchItemContainer {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.CoverImage {
+  border-color: var(--border-color);
+}
+.CoverImage img {
+  display: flex;
+  height: 150px;
+  border-radius: var(--border-radius);
+  border: var(--border-color) 1px solid;
+}
+
+.trackInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.topTrackInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-minor);
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.rating img {
+  width: 14px;
+}
+
+.ratingStar {
+  display: flex;
+  align-items: center;
+}
+
+.sideinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.trackName {
+  font-weight: var(--font-weight-bold);
+}
+
+.trackReleaseDate {
+  font-weight: var(--font-weight-regular);
+  color: var(--text-secondary-color);
+}
+
+.trackArtistName {
+  font-weight: var(--font-weight-medium);
+}
+
+.buttonLog {
+  display: flex;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 6px;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  font-weight: var(--font-weight-medium);
+  gap: 5px;
+}
+
+.nameRelease {
+  display: flex;
+  gap: 5px;
+}
+
+.friendsListened {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-items: end;
+}
+
+.friendsListened span {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  border-bottom: var(--border-color) 1px solid;
+  padding-bottom: 5px;
+  font-size: var(--font-size-minor);
+}
+
+.friendsListened img {
+  width: 30px;
+}

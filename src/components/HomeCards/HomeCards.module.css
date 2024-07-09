@@ -1,0 +1,19 @@
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.trackCards {
+  display: flex;
+  width: 100%;
+  border: var(--border-color);
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+
+.homeCards {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
