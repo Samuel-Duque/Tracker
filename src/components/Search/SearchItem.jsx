@@ -3,15 +3,17 @@ import style from "./SearchItem.module.css";
 import plusIcon from "../../assets/icons/more-icon.svg";
 import defaultImg from "../../assets/img/defautImage.png";
 import TrendingCard from "../TrendingCard/TrendingCard";
-import starIcon from "../../assets/icons/star-icon.svg";
-
+import RatingReview from "../../assets/icons/RatingReview";
 const SearchItem = ({ music }) => {
   const [track, setTrack] = useState(null);
   const [releaseDate, setReleaseDate] = useState(null);
+  const [rating, setRating] = useState(3.5);
 
   useEffect(() => {
     setTrack(music);
-    setReleaseDate(track?.album.release_date.split("-")[0]);
+    if (music?.album.release_date) {
+      setReleaseDate(music.album.release_date.split("-")[0]);
+    }
   }, [music]);
   return (
     <>
@@ -32,12 +34,8 @@ const SearchItem = ({ music }) => {
                 </span>
               </div>
               <div className={style.rating}>
-                <div className={style.ratingStar}>
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <img key={index} src={starIcon} alt={`Star ${index + 1}`} />
-                  ))}
-                </div>
-                <span>4.4</span>
+                <RatingReview percentage={rating * 20} />
+                <span>{rating}</span>
               </div>
             </div>
           </div>
