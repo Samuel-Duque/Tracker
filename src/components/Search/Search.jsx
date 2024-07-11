@@ -10,7 +10,18 @@ const Search = () => {
   useEffect(() => {
     const handleSearch = async () => {
       const songs = await HandleSearch(trackQuery);
-      setSearchSongs(songs);
+      const uniqueTracks = []
+      songs.forEach(track => {
+        const isDuplicate = uniqueTracks.some(uniqueTrack => 
+          track.name.toLowerCase().includes(uniqueTrack.name.toLowerCase()) && uniqueTrack.album.artists[0].name === track.album.artists[0].name
+        );
+        
+        if (!isDuplicate) {
+          uniqueTracks.push(track);
+        }
+      });
+
+      setSearchSongs(uniqueTracks);
     };
     handleSearch();
   }, [trackQuery]);
