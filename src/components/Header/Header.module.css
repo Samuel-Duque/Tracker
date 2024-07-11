@@ -176,6 +176,28 @@ a {
     font-size:2rem;
   }
 }
+@media screen and (max-width:480px){
+  .cardContainer{
+    min-width:120px;
+    min-height:151px;
+  }
+  .topsearchBar{
+    display:none;
+  }
+  .navItens{
+    gap:5px;
+  }
+  .logo{
+    font-size:1.5rem;
+  }
+  .profileTop{
+    gap:5px;
+  }
+  .overlayTagname{
+    font-size: 10px;
+  }
+}
+
 
 @keyframes fadeIn {
   from {

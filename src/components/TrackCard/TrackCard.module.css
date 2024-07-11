@@ -160,4 +160,17 @@
     font-size: 12px;
   }
 }
+@media screen and (max-width:480px){
+  .cardContainer{
+    min-width:120px;
+    min-height:151px;
+  }
+  .trackInfo span{
+    width:100%;
+    margin-right:5px;
+  }
+  .overlayTagname{
+    font-size: 10px;
+  }
+}
 

@@ -13,7 +13,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  width: var(--container-full);
+  width: 100%;
 }
 .logo {
   font-size: var(--font-size-logo);
@@ -46,5 +46,26 @@
 @media screen and (max-width:1248px) {
   .logo{
     font-size:2rem;
+  }
+}
+@media screen and (max-width:480px){
+  .navbar{
+    display:flex;
+    flex-direction: column;
+    gap:25px;
+
+  }
+  .navItens{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:5px;
+    flex-wrap: wrap;
+  }
+  .footinfo{
+    display:inline-block;
+  }
+  .socialMedia{
+    padding-top:30px;
+    justify-content:center;
   }
 }

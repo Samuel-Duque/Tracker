@@ -11,6 +11,17 @@ function Header() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isHovering, setIsHovering] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const navigate = useNavigate();
   const toggleSearch = () => {
     setIsSearchActive(!isSearchActive);
@@ -49,7 +60,7 @@ function Header() {
           <div className={style.logo}>Tracker</div>
         </Link>
         <div className={style.navItens}>
-          <div
+          {!isSearchActive  && (<div
             className={style.profile}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
@@ -94,7 +105,8 @@ function Header() {
                 </div>
               </div>
             )}
-          </div>
+          </div>)}
+          
           <div className={style.topsearchBar}>          
             <Link to={"/songs"}>Songs</Link>
             <Link to={"/lists"}>Lists</Link>
