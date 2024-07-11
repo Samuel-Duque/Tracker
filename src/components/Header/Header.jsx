@@ -95,11 +95,13 @@ function Header() {
               </div>
             )}
           </div>
+          <div className={style.topsearchBar}>          
+            <Link to={"/songs"}>Songs</Link>
+            <Link to={"/lists"}>Lists</Link>
+            <Link to={"/artists"}>Artists</Link>
+            <Link to={"/trackers"}>Trackers</Link>
+          </div>
 
-          <Link to={"/songs"}>Songs</Link>
-          <Link to={"/lists"}>Lists</Link>
-          <Link to={"/artists"}>Artists</Link>
-          <Link to={"/trackers"}>Trackers</Link>
           <fieldset className={style.searchBar}>
             <button onClick={toggleSearch}>
               <img src={cancelIcon} alt="" className={style.cancelIconSvg} />

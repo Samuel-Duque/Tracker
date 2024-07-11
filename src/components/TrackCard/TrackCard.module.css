@@ -147,3 +147,17 @@
     padding: 5.36px 0;
   }
 }
+
+@media screen and (max-width:1023px) {
+  .moreOptions{
+    display: none
+  }
+  .cardContainer{
+    min-width:140px;
+    min-height:171px;
+  }
+  .overlayTagname{
+    font-size: 12px;
+  }
+}
+
