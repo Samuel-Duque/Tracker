@@ -71,19 +71,19 @@ a {
 .profileTop {
   display: flex;
   align-items: center;
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
   gap: 5px;
 }
 
 .profile:hover {
   display: flex;
   background-color: var(--secondary-color);
-  border-bottom: var(--border-color) 1px solid;
+  /* border-bottom: var(--border-color) 1px solid; */
 }
 
 .dropdown {
   display: flex;
-  width: fit-content;
+  width: 100%;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
@@ -187,6 +187,9 @@ a {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+.topsearchBar a:hover {
+  color: var(--primary-color);
 }
 [data-theme="light"] {
   .btnLog {
