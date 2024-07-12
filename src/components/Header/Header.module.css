@@ -1,10 +1,11 @@
 .navbar {
   display: flex;
-  width:100%;
+  width: 100%;
   justify-content: space-between;
   padding: 30px 0 40px 0;
   color: var(--text-color);
   margin-bottom: 30px;
+  animation: right 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 a {
@@ -19,11 +20,34 @@ a {
 }
 .navItens {
   display: flex;
+  width: auto;
   gap: 20px;
   font-size: var(--font-size-minor);
   padding: 10px 0px;
   align-items: center;
   justify-content: space-between;
+}
+
+.navBarItensAnimation {
+  /* background-color: black; */
+  display: flex;
+  gap: 10px;
+  font-size: var(--font-size-minor);
+  padding: 10px 0px;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* transform: translateX(-20px); */
+}
+.navBarItensAnimationActive {
+  display: flex;
+  gap: 20px;
+  font-size: var(--font-size-minor);
+  padding: 10px 0px;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: translateX(-5%);
 }
 .profile {
   display: flex;
@@ -48,7 +72,7 @@ a {
   display: flex;
   align-items: center;
   padding-bottom: 5px;
-  gap: 20px;
+  gap: 5px;
 }
 
 .profile:hover {
@@ -158,12 +182,11 @@ a {
 .submitIcon {
   position: absolute;
 }
-.topsearchBar{
+.topsearchBar {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
 }
 [data-theme="light"] {
   .btnLog {
@@ -171,33 +194,32 @@ a {
   }
 }
 
-@media screen and (max-width:1248px) {
-  .logo{
-    font-size:2rem;
+@media screen and (max-width: 1248px) {
+  .logo {
+    font-size: 2rem;
   }
 }
-@media screen and (max-width:480px){
-  .cardContainer{
-    min-width:120px;
-    min-height:151px;
+@media screen and (max-width: 480px) {
+  .cardContainer {
+    min-width: 120px;
+    min-height: 151px;
   }
-  .topsearchBar{
-    display:none;
+  .topsearchBar {
+    display: none;
   }
-  .navItens{
-    gap:5px;
+  .navItens {
+    gap: 10px;
   }
-  .logo{
-    font-size:1.5rem;
+  .logo {
+    font-size: 1.5rem;
   }
-  .profileTop{
-    gap:5px;
+  .profileTop {
+    gap: 5px;
   }
-  .overlayTagname{
+  .overlayTagname {
     font-size: 10px;
   }
 }
-
 
 @keyframes fadeIn {
   from {
