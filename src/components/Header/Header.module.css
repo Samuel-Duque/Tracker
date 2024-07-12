@@ -46,6 +46,7 @@ a {
   padding: 10px 0px;
   align-items: center;
   justify-content: space-between;
+  z-index: 10;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   transform: translateX(-5%);
 }
@@ -92,7 +93,7 @@ a {
   flex-direction: column;
   background-color: var(--secondary-color);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
-  z-index: 5;
+  z-index: 10;
 }
 
 .dropItems {
@@ -100,6 +101,7 @@ a {
   flex-direction: column;
   border-bottom: var(--border-color) 1px solid;
   gap: 3px;
+  z-index: 1000;
 }
 
 .botItems {
@@ -118,6 +120,7 @@ a {
 .dropdownItem:hover {
   background-color: #3e3e3e;
   border-radius: 0;
+  z-index: 1000;
 }
 
 .profileImg {
