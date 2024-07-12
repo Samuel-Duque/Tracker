@@ -4,6 +4,8 @@ import plusIcon from "../../assets/icons/more-icon.svg";
 import defaultImg from "../../assets/img/defautImage.png";
 import TrendingCard from "../TrendingCard/TrendingCard";
 import RatingReview from "../../assets/icons/RatingReview";
+import { handleReview } from "../../services/HandleReview";
+
 const SearchItem = ({ music }) => {
   const [track, setTrack] = useState(null);
   const [releaseDate, setReleaseDate] = useState(null);
@@ -15,10 +17,20 @@ const SearchItem = ({ music }) => {
       setReleaseDate(music.album.release_date.split("-")[0]);
     }
   }, [music]);
+
+  const handleReviews = async () => {
+    await handleReview(track?.id);
+  };
+
   return (
     <>
       <div className={style.SearchItemContainer}>
-        <div className={style.CoverImage}>
+        <div
+          onClick={() => {
+            handleReviews();
+          }}
+          className={style.CoverImage}
+        >
           <img src={track?.album.images[0].url} alt="" />
         </div>
         <div className={style.trackInfo}>
