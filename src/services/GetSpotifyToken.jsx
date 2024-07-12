@@ -3,7 +3,7 @@ import axios from "axios";
 export const getSpotifyToken = async () => {
   try {
     const response = await axios.get(
-      "https://tracker-api-production-9679.up.railway.app/spotifydata"
+      "https://trackerapi-8n4dl.ondigitalocean.app/spotifydata"
     );
     const spotifyData = response.data[0];
 
@@ -49,7 +49,7 @@ export const getSpotifyToken = async () => {
         const newToken = data.access_token;
         console.log(newToken);
         await axios.put(
-          "https://tracker-api-production-9679.up.railway.app/spotifydata/1",
+          "https://trackerapi-8n4dl.ondigitalocean.app/spotifydata/1",
           JSON.stringify({
             LAST_FM_API_KEY: spotifyData.LAST_FM_API_KEY,
             SPOTIFY_CLIENT_ID: spotifyData.SPOTIFY_CLIENT_ID,

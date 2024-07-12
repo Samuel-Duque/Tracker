@@ -83,7 +83,7 @@ a {
 
 .dropdown {
   display: flex;
-  width: 100.5%;
+  width: fit-content;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
