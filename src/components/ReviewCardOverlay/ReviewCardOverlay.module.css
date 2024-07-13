@@ -1,0 +1,5 @@
+.ReviewCardOverlay {
+  display: flex;
+  padding: 1.875rem 2.375rem;
+  gap: 0.625rem;
+}
