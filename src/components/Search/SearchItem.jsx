@@ -37,7 +37,8 @@ const SearchItem = ({ music }) => {
           onClick={() => {
             handleReviews();
           }}
-          className={style.CoverImage}
+          className={style.CoverInfo}
+          onMouseLeave={() => setOverlayIsVisible(false)}
         >
           <div className={style.CardOverlay}>
             <div
@@ -70,6 +71,9 @@ const SearchItem = ({ music }) => {
                 <div className={style.extraOverlay}>
                   <div className={style.overlayOptions}>
                     <button className={style.overlayOption}>
+                      <RatingReview percentage={80} />
+                    </button>
+                    <button className={style.overlayOption}>
                       <span>Review or log</span>
                     </button>
                     <button className={style.overlayOption}>
@@ -81,14 +85,13 @@ const SearchItem = ({ music }) => {
                   </div>
                 </div>
               )}
-              <img src={track?.album.images[0].url} alt="" />
+              <img
+                className={style.CoverImage}
+                src={track?.album.images[0].url}
+                alt=""
+              />
             </div>
           </div>
-        </div>
-        <div
-          className={style.trackInfo}
-          onMouseLeave={() => setOverlayIsVisible(false)}
-        >
           <div className={style.sideinfo}>
             <div className={style.topTrackInfo}>
               <div className={style.nameRelease}>
@@ -106,6 +109,8 @@ const SearchItem = ({ music }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className={style.trackInfo}>
           <div className={style.sideinfo}>
             <TrendingCard />
             <div className={style.friendsListened}>

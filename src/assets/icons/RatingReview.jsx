@@ -43,7 +43,7 @@ const RatingReview = ({ percentage }) => {
           />
         </mask>
         <g mask="url(#mask0_715_4076)">
-          <rect x="0" y="0" width="80" height="14" fill="#2E2E2E" />
+          <rect x="0" y="0" width="80" height="14" fill="#3d3d3d" />
           <rect
             x={barPosition - 80}
             y="0"
