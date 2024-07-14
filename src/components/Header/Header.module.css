@@ -164,7 +164,7 @@ a {
 .searchInput {
   display: flex;
   width: 10rem;
-  height: fit-content;
+  height: 30px;
   padding: 5px 10px;
   border: 0;
   border-radius: var(--border-radius);
@@ -211,6 +211,9 @@ a {
     min-height: 151px;
   }
   .topsearchBar {
+    display: none;
+  }
+  .navBarItensAnimation {
     display: none;
   }
   .navItens {
