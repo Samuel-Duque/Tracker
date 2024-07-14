@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import style from "./SearchItem.module.css";
 import plusIcon from "../../assets/icons/more-icon.svg";
 import defaultImg from "../../assets/img/defautImage.png";
@@ -10,6 +10,9 @@ import trackIcon from "../../assets/icons/track-icon.svg";
 import activelikeIcon from "../../assets/icons/active-like-icon.svg";
 import activetrackIcon from "../../assets/icons/active-track-icon.svg";
 import threedotsIcon from "../../assets/icons/threedots-icon.svg";
+import ReviewsOverlay from "../Reviews/ReviewsOverlay";
+import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
+import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 
 const SearchItem = ({ music }) => {
   const [track, setTrack] = useState(null);
@@ -19,6 +22,8 @@ const SearchItem = ({ music }) => {
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
+  const { show, setShow } = useContext(ClickOutsideContext);
+  const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   useEffect(() => {
     setTrack(music);
     if (music?.album.release_date) {
@@ -26,17 +31,11 @@ const SearchItem = ({ music }) => {
     }
   }, [music]);
 
-  const handleReviews = async () => {
-    await handleReview(track?.id, track?.name);
-  };
-
   return (
     <>
       <div className={style.SearchItemContainer}>
+        <div>{show && <ReviewsOverlay track={track} />}</div>
         <div
-          onClick={() => {
-            handleReviews();
-          }}
           className={style.CoverInfo}
           onMouseLeave={() => setOverlayIsVisible(false)}
         >
@@ -73,7 +72,13 @@ const SearchItem = ({ music }) => {
                     <button className={style.overlayOption}>
                       <RatingReview percentage={80} />
                     </button>
-                    <button className={style.overlayOption}>
+                    <button
+                      onClick={() => {
+                        setShow(true);
+                        setSelectedTrack(music);
+                      }}
+                      className={style.overlayOption}
+                    >
                       <span>Review or log</span>
                     </button>
                     <button className={style.overlayOption}>

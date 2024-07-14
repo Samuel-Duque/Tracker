@@ -5,7 +5,6 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  // Alterado de "light" para "dark"
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {

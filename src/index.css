@@ -69,6 +69,7 @@ button {
   border: 0;
   cursor: pointer;
   font-family: var(--font-family-base);
+  font-weight: var(--font-weight-medium);
 }
 
 a {

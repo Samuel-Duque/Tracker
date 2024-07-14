@@ -1,0 +1,131 @@
+.reviewContainer {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+  background-color: #08183919;
+}
+
+.reviewCard {
+  display: flex;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  background-color: var(--secondary-color);
+  padding: 5px;
+  border-radius: var(--border-radius);
+  border: var(--border-color) 1px solid;
+  padding: 1.875rem 2.375rem;
+}
+
+.coverImage {
+  display: flex;
+  width: 160px;
+  border-radius: var(--border-radius);
+}
+
+.coverInfo {
+  display: flex;
+  gap: 40px;
+}
+
+.reviewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.topInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topTrackInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nameRelease {
+  display: flex;
+  gap: 10px;
+}
+
+.trackName {
+  font-weight: var(--font-weight-bold);
+}
+
+.trackReleaseDate {
+  font-weight: var(--font-weight-regular);
+  color: var(--text-secondary-color);
+}
+
+.trackArtistName {
+  font-weight: var(--font-weight-medium);
+}
+
+.listenDate {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: var(--font-size-minor);
+}
+
+.listenDate span {
+  word-spacing: 2px;
+
+  font-size: var(--font-size-minor);
+}
+.checkbox {
+  appearance: none; /* Remove o estilo padrão do navegador */
+  padding: 5px;
+  border-radius: 3px;
+  width: 17px; /* Define uma largura */
+  height: 17px; /* Define uma altura */
+  background-color: #fff; /* Define uma cor de fundo */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  position: relative; /* Para posicionamento de pseudoelementos */
+}
+
+.checkbox:checked::after {
+  content: ""; /* Conteúdo do pseudoelemento para criar um ícone de verificação */
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--border-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg); /* Rotação para formar um ícone de verificação */
+}
+
+.choseDate {
+  display: flex;
+  background-color: var(--border-color);
+  padding: 5px;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+}
+
+.textarea {
+  width: 30.68rem;
+  min-height: 8.5rem;
+  border-radius: var(--border-radius);
+}
+
+.reviewBtn {
+  display: flex;
+  justify-content: end;
+}
+
+.reviewBtn button {
+  display: flex;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.625rem 0.8125rem;
+  border-radius: var(--border-radius);
+}
