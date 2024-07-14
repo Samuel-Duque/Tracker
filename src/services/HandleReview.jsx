@@ -1,17 +1,17 @@
 import axios from "axios";
 
-export const handleReview = async (songID) => {
+export const handleReview = async (songID, trackName) => {
   try {
     const response = await axios.get(
       `https://trackerapi-8n4dl.ondigitalocean.app/tracks/${songID}`
     );
 
     const track = response.data;
-
     if (track.length < 1) {
       await axios
         .post("https://trackerapi-8n4dl.ondigitalocean.app/tracks", {
-          track_url: songID,
+          track_id: songID,
+          track_name: trackName,
           rating: "0.0",
           total_reviews: "0",
         })

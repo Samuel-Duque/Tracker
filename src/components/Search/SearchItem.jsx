@@ -5,12 +5,20 @@ import defaultImg from "../../assets/img/defautImage.png";
 import TrendingCard from "../TrendingCard/TrendingCard";
 import RatingReview from "../../assets/icons/RatingReview";
 import { handleReview } from "../../services/HandleReview";
+import likeIcon from "../../assets/icons/like-icon.svg";
+import trackIcon from "../../assets/icons/track-icon.svg";
+import activelikeIcon from "../../assets/icons/active-like-icon.svg";
+import activetrackIcon from "../../assets/icons/active-track-icon.svg";
+import threedotsIcon from "../../assets/icons/threedots-icon.svg";
 
 const SearchItem = ({ music }) => {
   const [track, setTrack] = useState(null);
   const [releaseDate, setReleaseDate] = useState(null);
   const [rating, setRating] = useState(3.5);
-
+  const [isVisible, setIsVisible] = useState(false);
+  const [overlayIsVisible, setOverlayIsVisible] = useState(false);
+  const [isClickedTrack, setClickedTrack] = useState(false);
+  const [isClickedLike, setClickedLike] = useState(false);
   useEffect(() => {
     setTrack(music);
     if (music?.album.release_date) {
@@ -19,7 +27,7 @@ const SearchItem = ({ music }) => {
   }, [music]);
 
   const handleReviews = async () => {
-    await handleReview(track?.id);
+    await handleReview(track?.id, track?.name);
   };
 
   return (
@@ -29,11 +37,61 @@ const SearchItem = ({ music }) => {
           onClick={() => {
             handleReviews();
           }}
-          className={style.CoverImage}
+          className={style.CoverInfo}
+          onMouseLeave={() => setOverlayIsVisible(false)}
         >
-          <img src={track?.album.images[0].url} alt="" />
-        </div>
-        <div className={style.trackInfo}>
+          <div className={style.CardOverlay}>
+            <div
+              className={style.trackCover}
+              onMouseEnter={() => setIsVisible(true)}
+              onMouseLeave={() => setIsVisible(false)}
+            >
+              {isVisible && (
+                <div className={style.overlay}>
+                  <div className={style.moreOptions}>
+                    <img
+                      src={isClickedTrack ? activetrackIcon : trackIcon}
+                      alt=""
+                      onClick={() => setClickedTrack(!isClickedTrack)}
+                    />
+                    <img
+                      src={isClickedLike ? activelikeIcon : likeIcon}
+                      alt=""
+                      onClick={() => setClickedLike(!isClickedLike)}
+                    />
+                    <img
+                      src={threedotsIcon}
+                      alt=""
+                      onClick={() => setOverlayIsVisible(true)}
+                    />
+                  </div>
+                </div>
+              )}
+              {overlayIsVisible && (
+                <div className={style.extraOverlay}>
+                  <div className={style.overlayOptions}>
+                    <button className={style.overlayOption}>
+                      <RatingReview percentage={80} />
+                    </button>
+                    <button className={style.overlayOption}>
+                      <span>Review or log</span>
+                    </button>
+                    <button className={style.overlayOption}>
+                      <span>Add to lists</span>
+                    </button>
+                    <button className={style.overlayOption}>
+                      <span>Share</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+              <img
+                className={style.CoverImage}
+                src={track?.album.images[0].url}
+                alt=""
+              />
+            </div>
+          </div>
           <div className={style.sideinfo}>
             <div className={style.topTrackInfo}>
               <div className={style.nameRelease}>
@@ -51,6 +109,8 @@ const SearchItem = ({ music }) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className={style.trackInfo}>
           <div className={style.sideinfo}>
             <TrendingCard />
             <div className={style.friendsListened}>

@@ -1,29 +1,38 @@
 .SearchItemContainer {
   display: flex;
   width: 100%;
-  gap: 10px;
-  padding: 10px;
   border-radius: var(--border-radius);
+  justify-content: space-between;
 }
 .SearchItemContainer:hover {
   background-color: #202225;
   cursor: pointer;
 }
 
+.CoverInfo {
+  display: flex;
+  gap: 30px;
+  padding: 10px 0 10px 10px;
+}
+
+.CoverInfo span {
+  text-wrap: nowrap;
+}
+
 .CoverImage {
   border-color: var(--border-color);
 }
-.CoverImage img {
+.CoverImage {
   display: flex;
   height: 150px;
   border-radius: var(--border-radius);
-  border: var(--border-color) 1px solid;
 }
 
 .trackInfo {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   width: 100%;
+  padding: 10px 10px 10px 0;
 }
 
 .topTrackInfo {
@@ -95,4 +104,85 @@
 
 .friendsListened img {
   width: 30px;
+}
+
+.trackCover {
+  position: relative;
+  border-radius: var(--cover-radius) var(--cover-radius) 0 0;
+  transition: ease-in-out 0.6s all;
+}
+
+.overlay {
+  display: flex;
+  z-index: 3;
+}
+.overlay img {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+}
+
+.overlay img:hover {
+  cursor: pointer;
+}
+
+.overlay img:active {
+  transform: scale(0.9);
+}
+
+.moreOptions {
+  display: flex;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  padding: 6px 17px;
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-color);
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+  z-index: 4;
+  transition: ease-in-out 0.3s all;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.extraOverlay {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  left: 105%;
+  top: 15%;
+  bottom: 0;
+  z-index: 10;
+}
+
+.overlayOptions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--secondary-color);
+  border: var(--border-color) 1px solid;
+  border-radius: var(--border-radius);
+}
+
+.overlayOptions span {
+  width: fit-content;
+  text-wrap: nowrap;
+  color: var(--text-color);
+}
+
+.overlayOption {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.overlayOption:hover {
+  background-color: #202225;
+  cursor: pointer;
 }

@@ -35,9 +35,7 @@ const TrackCard = ({ trackName, trackArtist, trackImage, index }) => {
               <img src={threedotsIcon} alt="" />
             </div>
             <div className={style.overlayTagname}>
-              <span>
-                {trackName}
-              </span>
+              <span>{trackName}</span>
               <span style={{ fontSize: "12px" }}>{trackArtist}</span>
             </div>
           </div>
