@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import style from "./ReviewsOverlay.module.css";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
+import CalendarUI from "../Calendar/Calendar";
 
 const ReviewsOverlay = () => {
   const { setShow } = useContext(ClickOutsideContext);
@@ -66,12 +67,13 @@ const ReviewsOverlay = () => {
                 </button>
               </div>
             </div>
+            <CalendarUI />
             <div>
               <textarea
                 className={style.textarea}
                 name="reviewField"
                 id="reviewField"
-                placeholder=""
+                placeholder="Add a review..."
               ></textarea>
             </div>
             <div className={style.reviewBtn}>

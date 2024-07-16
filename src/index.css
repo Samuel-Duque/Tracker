@@ -79,7 +79,7 @@ a {
 
 textarea {
   font-family: (var(--font-family-base));
-  padding: 5px;
+  border-color: transparent;
 }
 
 body::-webkit-scrollbar-track {
