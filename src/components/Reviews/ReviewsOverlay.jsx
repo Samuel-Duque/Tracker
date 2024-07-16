@@ -64,10 +64,13 @@ const ReviewsOverlay = () => {
                 <span>Listened on</span>
                 <button className={style.choseDate}>
                   <span>{todayDate}</span>
+                  <div className={style.calendar}>
+                    <CalendarUI />
+                  </div>
                 </button>
               </div>
             </div>
-            <CalendarUI />
+
             <div>
               <textarea
                 className={style.textarea}
