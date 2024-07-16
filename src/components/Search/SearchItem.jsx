@@ -10,7 +10,6 @@ import trackIcon from "../../assets/icons/track-icon.svg";
 import activelikeIcon from "../../assets/icons/active-like-icon.svg";
 import activetrackIcon from "../../assets/icons/active-track-icon.svg";
 import threedotsIcon from "../../assets/icons/threedots-icon.svg";
-import ReviewsOverlay from "../Reviews/ReviewsOverlay";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 
@@ -22,7 +21,7 @@ const SearchItem = ({ music }) => {
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
-  const { show, setShow } = useContext(ClickOutsideContext);
+  const { setShow } = useContext(ClickOutsideContext);
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   useEffect(() => {
     setTrack(music);
@@ -34,7 +33,6 @@ const SearchItem = ({ music }) => {
   return (
     <>
       <div className={style.SearchItemContainer}>
-        <div>{show && <ReviewsOverlay track={track} />}</div>
         <div
           className={style.CoverInfo}
           onMouseLeave={() => setOverlayIsVisible(false)}

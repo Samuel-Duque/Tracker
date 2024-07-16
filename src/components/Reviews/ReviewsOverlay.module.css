@@ -76,8 +76,6 @@
 }
 
 .listenDate span {
-  word-spacing: 2px;
-
   font-size: var(--font-size-minor);
 }
 .checkbox {
