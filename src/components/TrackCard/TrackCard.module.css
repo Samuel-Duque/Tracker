@@ -81,8 +81,8 @@
 .moreOptions {
   display: flex;
   position: absolute;
-  width: fit-content;
-  height: fit-content;
+  width: max-content;
+  height: max-content;
   padding: 6px 17px;
   border-radius: var(--border-radius);
   background-color: var(--secondary-color);
