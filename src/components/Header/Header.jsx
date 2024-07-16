@@ -10,6 +10,18 @@ import profilePicDark from "../../assets/icons/profile-pic-dark.svg";
 function Header() {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isHovering, setIsHovering] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const navigate = useNavigate();
   const toggleSearch = () => {
     setIsSearchActive(!isSearchActive);
@@ -28,13 +40,20 @@ function Header() {
     const searchBar = document.querySelector(`.${style.searchBar}`);
     const btnLog = document.querySelector(`.${style.btnLog}`);
     const searchIcon = document.querySelector(`.${style.searchIconSvg}`);
+    const navBarItensAnimation = document.querySelector(
+      `.${style.navBarItensAnimation}`
+    );
     if (isSearchActive) {
       searchBar.classList.add(`${style.searchBarVisible}`);
+      navBarItensAnimation.classList.add(`${style.navBarItensAnimationActive}`);
       searchBar.style.display = "flex";
       btnLog.style.display = "none";
       searchIcon.style.display = "none";
     } else {
       searchBar.classList.remove(`${style.searchBarVisible}`);
+      navBarItensAnimation.classList.remove(
+        `${style.navBarItensAnimationActive}`
+      );
       searchBar.style.display = "none";
       btnLog.style.display = "flex";
       searchIcon.style.display = "flex";
@@ -48,19 +67,63 @@ function Header() {
           <div className={style.logo}>Tracker</div>
         </Link>
         <div className={style.navItens}>
-          <div className={style.profile}>
-            <img
-              src={profilePicDark}
-              alt="profile"
-              className={style.profileImg}
-            />
-            <span className={style.username}>Zythee</span>
-            <img src={downArrow} alt="" />
+          <div className={style.navBarItensAnimation}>
+            <div
+              className={style.profile}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              {screenWidth > 768 && (
+                <div className={style.profileTop}>
+                  <div className={style.picName}>
+                    <img
+                      src={profilePicDark}
+                      alt="profile"
+                      className={style.profileImg}
+                    />
+                    <span className={style.username}>Zythee</span>
+                  </div>
+                  <img className={style.downArrow} src={downArrow} alt="" />
+                </div>
+              )}
+              {isHovering && (
+                <div className={style.dropdown}>
+                  <div className={style.dropItems}>
+                    <Link to={"/"} className={style.dropdownItem}>
+                      <span>Home</span>
+                    </Link>
+                    <Link to={"/"} className={style.dropdownItem}>
+                      <span>Profile</span>
+                    </Link>
+                    <Link to={"/songs"} className={style.dropdownItem}>
+                      <span>Songs</span>
+                    </Link>
+                    <Link to={"/lists"} className={style.dropdownItem}>
+                      <span>Lists</span>
+                    </Link>
+                    <Link to={"/badges"} className={style.dropdownItem}>
+                      <span>Badges</span>
+                    </Link>
+                  </div>
+                  <div className={style.botItems}>
+                    <Link to={"/settings"} className={style.dropdownItem}>
+                      <span>Settings</span>
+                    </Link>
+                    <Link to={"/"} className={style.dropdownItem}>
+                      <span>Sign out</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className={style.topsearchBar}>
+              <Link to={"/songs"}>Songs</Link>
+              <Link to={"/lists"}>Lists</Link>
+              <Link to={"/artists"}>Artists</Link>
+              <Link to={"/trackers"}>Trackers</Link>
+            </div>
           </div>
-          <Link to={"/songs"}>Songs</Link>
-          <Link to={"/lists"}>Lists</Link>
-          <Link to={"/artists"}>Artists</Link>
-          <Link to={"/trackers"}>Trackers</Link>
           <fieldset className={style.searchBar}>
             <button onClick={toggleSearch}>
               <img src={cancelIcon} alt="" className={style.cancelIconSvg} />

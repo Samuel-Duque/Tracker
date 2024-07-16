@@ -3,7 +3,6 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
   height: 100vh;
 }
 
@@ -11,6 +10,13 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: var(--container-full);
   justify-content: space-between;
+}
+
+@media screen and (max-width:1248px) {
+  .homeScreen{
+    width:80vw;
+    font-size:12px;
+
+  }
 }

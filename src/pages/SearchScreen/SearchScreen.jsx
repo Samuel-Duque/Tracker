@@ -9,8 +9,8 @@ const SearchScreen = () => {
   return (
     <>
       <div className={style.SearchScreen}>
+        <Header />
         <div className={style.HeaderSearch}>
-          <Header />
           <Search />
         </div>
         <Footer />

@@ -4,6 +4,9 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomeScreen from "./pages/HomeScreen/HomeScreen.jsx";
 import SearchScreen from "./pages/SearchScreen/SearchScreen";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import { ClickOutsideProvider } from "./contexts/ClickOutsideContext";
+import { SelectedTrackProvider } from "./contexts/SelectedTrackContext";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <SelectedTrackProvider>
+        <ClickOutsideProvider>
+          <RouterProvider router={router} />
+        </ClickOutsideProvider>
+      </SelectedTrackProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

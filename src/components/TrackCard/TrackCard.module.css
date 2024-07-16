@@ -123,13 +123,14 @@
 .trackInfo span {
   display: flex;
   align-items: center;
-  width: 120px;
   text-wrap: nowrap;
   overflow: hidden;
+  width: 176px;
 }
 
 .rating {
   display: flex;
+  gap: 1.2px;
 }
 
 .rating img {
@@ -144,5 +145,31 @@
   }
   .trackInfo {
     padding: 5.36px 0;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .moreOptions {
+    display: none;
+  }
+  .cardContainer {
+    min-width: 140px;
+    min-height: 171px;
+  }
+  .overlayTagname {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .cardContainer {
+    min-width: 120px;
+    min-height: 151px;
+  }
+  .trackInfo span {
+    width: 100%;
+    margin-right: 5px;
+  }
+  .overlayTagname {
+    font-size: 10px;
   }
 }

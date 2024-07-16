@@ -1,10 +1,13 @@
 .navbar {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   padding: 30px 0 40px 0;
   color: var(--text-color);
   margin-bottom: 30px;
+  animation: right 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 a {
   display: flex;
   align-items: center;
@@ -17,16 +20,107 @@ a {
 }
 .navItens {
   display: flex;
+  width: auto;
   gap: 20px;
   font-size: var(--font-size-minor);
   padding: 10px 0px;
   align-items: center;
   justify-content: space-between;
 }
-.profile {
+
+.navBarItensAnimation {
+  /* background-color: black; */
   display: flex;
   gap: 10px;
+  font-size: var(--font-size-minor);
+  padding: 10px 0px;
   align-items: center;
+  justify-content: space-between;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  /* transform: translateX(-20px); */
+}
+.navBarItensAnimationActive {
+  display: flex;
+  gap: 20px;
+  font-size: var(--font-size-minor);
+  padding: 10px 0px;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: translateX(-5%);
+}
+.profile {
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.picName {
+  display: flex;
+  align-items: center;
+  padding: 5px 0 0 5px;
+  gap: 5px;
+}
+
+.downArrow {
+  display: flex;
+  padding: 5px 5px 0 0;
+}
+
+.profileTop {
+  display: flex;
+  align-items: center;
+  /* padding-bottom: 5px; */
+  gap: 5px;
+}
+
+.profile:hover {
+  display: flex;
+  background-color: var(--secondary-color);
+  /* border-bottom: var(--border-color) 1px solid; */
+}
+
+.dropdown {
+  display: flex;
+  width: 100%;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 0;
+  position: absolute;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  z-index: 10;
+}
+
+.dropItems {
+  display: flex;
+  flex-direction: column;
+  border-bottom: var(--border-color) 1px solid;
+  gap: 3px;
+  z-index: 1000;
+}
+
+.botItems {
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  display: flex;
+  padding: 5px 10px;
+  justify-content: start;
+  border-radius: var(--border-radius);
+}
+
+.dropdownItem:hover {
+  background-color: #3e3e3e;
+  border-radius: 0;
+  z-index: 1000;
 }
 
 .profileImg {
@@ -70,7 +164,7 @@ a {
 .searchInput {
   display: flex;
   width: 10rem;
-  height: fit-content;
+  height: 30px;
   padding: 5px 10px;
   border: 0;
   border-radius: var(--border-radius);
@@ -91,43 +185,48 @@ a {
 .submitIcon {
   position: absolute;
 }
-
+.topsearchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.topsearchBar a:hover {
+  color: var(--primary-color);
+}
 [data-theme="light"] {
   .btnLog {
     color: white;
   }
 }
 
-@media screen and (max-width: 1440px) {
-  .navbar {
-    width: 95%;
-    width: var(--container-medium);
+@media screen and (max-width: 1248px) {
+  .logo {
+    font-size: 2rem;
   }
 }
-@media screen and (max-width: 1024px) {
-  .navbar {
-    width: 90%;
-    width: var(--container-small);
+@media screen and (max-width: 480px) {
+  .cardContainer {
+    min-width: 120px;
+    min-height: 151px;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .navbar {
-    width: 95%;
-    width: var(--container-xsmall);
-    justify-content: center;
+  .topsearchBar {
+    display: none;
+  }
+  .navBarItensAnimation {
+    display: none;
   }
   .navItens {
-    display: none;
+    gap: 10px;
   }
-  .searchBar {
-    display: none;
+  .logo {
+    font-size: 1.5rem;
   }
-  .searchBarVisible {
-    display: none;
+  .profileTop {
+    gap: 5px;
   }
-  .searchBar:not(.searchBarVisible) {
-    display: flex;
+  .overlayTagname {
+    font-size: 10px;
   }
 }
 

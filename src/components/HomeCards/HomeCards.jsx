@@ -31,6 +31,7 @@ const HomeCards = () => {
                 trackName={item.track.name}
                 trackArtist={item.track.artists[0].name}
                 trackImage={item.track.album.images[0].url}
+                index={index + 1}
               />
             ))}
         </div>
@@ -38,11 +39,16 @@ const HomeCards = () => {
       <div className={style.cards}>
         <Title title={"New from friends"} more={true} />
         <div className={style.trackCards}>
-          <TrackCardTracked />
-          <TrackCardTracked />
-          <TrackCardTracked />
-          <TrackCardTracked />
-          <TrackCardTracked />
+          {topSongs ? null : <LoadingTrackCard />}
+          {topSongs &&
+            topSongs.map((item, index) => (
+              <TrackCardTracked
+                key={index}
+                trackName={item.track.name}
+                trackArtist={item.track.artists[0].name}
+                trackImage={item.track.album.images[0].url}
+              />
+            ))}
         </div>
       </div>
     </div>
