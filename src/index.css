@@ -77,6 +77,11 @@ a {
   text-decoration: none;
 }
 
+textarea {
+  font-family: (var(--font-family-base));
+  padding: 5px;
+}
+
 body::-webkit-scrollbar-track {
   background-color: var(--secondary-color);
 }

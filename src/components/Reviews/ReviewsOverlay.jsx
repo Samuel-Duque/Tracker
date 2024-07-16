@@ -71,6 +71,7 @@ const ReviewsOverlay = () => {
                 className={style.textarea}
                 name="reviewField"
                 id="reviewField"
+                placeholder=""
               ></textarea>
             </div>
             <div className={style.reviewBtn}>
