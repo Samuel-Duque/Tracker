@@ -7,9 +7,9 @@ import TrackProfile from "../TrackProfile/TrackProfile";
 const TrackProfileScreen = () => {
   return (
     <>
-      <div>
+      <div className={style.TrackProfileScreen}>
         <Header />
-        <div>
+        <div className={style.TrackProfile}>
           <TrackProfile />
         </div>
         <Footer />

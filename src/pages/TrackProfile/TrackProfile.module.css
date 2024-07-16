@@ -1,0 +1,106 @@
+.TrackPage {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: space-between;
+}
+.HeroSection {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 50px;
+}
+.HeroTrackContent {
+  display: flex;
+  padding-bottom: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.HeroTrackContentTrackImg img {
+  display: flex;
+  border-radius: 5px;
+}
+.HeroTrackContentTrackInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+.HeroTrackContentTrackInfoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.TrackName {
+  font-size: 24px;
+  font-weight: 700;
+}
+.HeroTrackContentTrackInfoSub {
+  display: flex;
+  font-size: 13px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+.HeroTrackContentTrackInfoTags {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  text-wrap: nowrap;
+}
+.Tags {
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  border-radius: 5px;
+  background: var(--Dark-Secondary, #2e2e2e);
+}
+
+.Review_Trending {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  align-self: stretch;
+}
+.NumberAndStars {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8.6px;
+}
+.ReviewNumber {
+  font-size: 16px;
+  font-style: normal;
+  line-height: normal;
+}
+.TrendingBox {
+  display: flex;
+  width: 304px;
+  padding: 10px 21px;
+  font-size: 13px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+}
+.TrendingNumber {
+  display: flex;
+  padding: 7px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  border: 2px solid var(--Primary-Color, #2871ff);
+}

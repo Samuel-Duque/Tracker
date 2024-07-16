@@ -1,146 +1,78 @@
 import React from "react";
-import "./TrackProfile.module.css";
+import style from "./TrackProfile.module.css";
+import trackImg from "../../assets/img/artistimg.svg";
+import upArrow from "../../assets/icons/up-arrow-thin.svg";
+import TrendingSheet from "../../components/TrendingSheet/TrendingSheet";
+import RatingReview from "../../assets/icons/RatingReview";
+const TrackProfile = () => {
+  const Track = {
+    img: trackImg,
+    name: "Espresso",
+    artist: "Sabrina Carpenter",
+    type: "Single",
+    tags: [{ Pop: 4 }, { Top: 2 }],
+  };
 
-export const TrackProfile = () => {
   return (
-    <div className="frame">
-      <div className="div">
-        <div className="card-tracks">
-          <div className="ri-music-fill-wrapper">
-            <img
-              className="ri-music-fill"
-              alt="Ri music fill"
-              src="ri-music-fill.svg"
-            />
-          </div>
-        </div>
-        <div className="div-2">
-          <div className="div-3">
-            <div className="frame-wrapper">
-              <div className="div-4">
-                <div className="text-wrapper">Espresso</div>
-              </div>
+    <>
+      <div className={style.TrackPage}>
+        {/* Sessão HeroSection - INICIO */}
+        <div className={style.HeroSection}>
+          {/* Sessão HeroTrackContent (Foto, titulo e tags)- INICIO */}
+          <div className={style.HeroTrackContent}>
+            <div className={style.HeroTrackContentTrackImg}>
+              <img src={Track.img} alt="Track Image" />
             </div>
-            <div className="div-5">
-              <div className="div-wrapper">
-                <div className="div-wrapper">
-                  <div className="text-wrapper-2">Sabrina Carpenter</div>
+            <div className={style.HeroTrackContentTrackInfo}>
+              {/* Nome da track, artista e tipo - INICIO */}
+              <div className={style.HeroTrackContentTrackInfoWrap}>
+                <span className={style.TrackName}>{Track.name}</span>
+                <div className={style.HeroTrackContentTrackInfoSub}>
+                  <span className={style.TrackArtist}>{Track.artist}</span>
+                  <span className={style.TrackType}>{Track.type}</span>
                 </div>
               </div>
-              <div className="div-wrapper">
-                <div className="div-4">
-                  <div className="text-wrapper-2">Single</div>
-                </div>
+              {/* Nome da track, artista e tipo - FIM */}
+              {/* Sessão de tags, map verifica se a música está em algum trending */}
+              <div className={style.HeroTrackContentTrackInfoTags}>
+                {Track.tags.map((tag, index) => {
+                  const tagName = Object.keys(tag)[0];
+                  const tagValue = tag[tagName];
+                  return (
+                    <>
+                      {tagValue <= 5 && (
+                        <div>
+                          <span key={index} className={style.Tags}>
+                            <img src={upArrow} />
+                            {tagName} {tagValue}
+                          </span>
+                        </div>
+                      )}
+                    </>
+                  );
+                })}
               </div>
             </div>
           </div>
-          <div className="div-6">
-            <div className="div-7">
-              <img
-                className="ph-arrow-up-bold"
-                alt="Ph arrow up bold"
-                src="ph-arrow-up-bold.svg"
-              />
-              <div className="text-wrapper-3">Top 4</div>
+          {/* Sessão HeroTrackContent (Foto, titulo e tags) - FIM */}
+          {/* Sessão Trending Sheets - INICIO */}
+          <TrendingSheet position={4} title={"Global"} trackName={Track.name} />
+          <TrendingSheet position={4} title={"Pop"} trackName={Track.name} />
+          {/* Sessão Trending Sheets - FIM */}
+          <div className={style.Review_Trending}>
+            <div className={style.NumberAndStars}>
+              <span className={style.ReviewNumber}>193K Reviews</span>
+              <RatingReview percentage={90} />
             </div>
-            <div className="div-7">
-              <img
-                className="ph-arrow-up-bold"
-                alt="Ph arrow up bold"
-                src="image.svg"
-              />
-              <div className="text-wrapper-4">Pop 3</div>
+            <div className={style.TrendingBox}>
+              <span className={style.TrendingTitle}>Trending</span>
+              <span className={style.TrendingNumber}>#2</span>
             </div>
           </div>
         </div>
+        {/* Sessão HeroSection -FIM*/}
       </div>
-      <div className="trending-card">
-        <div className="div-8">
-          <p className="p">
-            <span className="span">#</span>
-            <span className="text-wrapper-5">4 Global Trending</span>
-          </p>
-          <img
-            className="img"
-            alt="Ph arrow up bold"
-            src="ph-arrow-up-bold-2.svg"
-          />
-        </div>
-        <div className="div-9">
-          <div className="div-10">
-            <div className="text-wrapper-6">1</div>
-            <div className="text-wrapper-2">BIRDS OF A FEATHER</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-7">2</div>
-            <div className="text-wrapper-8">Please Please Please</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-6">3</div>
-            <div className="text-wrapper-2">MILLION DOLLAR BABY</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-7">4</div>
-            <div className="text-wrapper-9">Expresso</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-7">5</div>
-            <div className="text-wrapper-2">Not Like Us</div>
-          </div>
-        </div>
-      </div>
-      <div className="trending-card">
-        <div className="div-8">
-          <p className="p">
-            <span className="span">#</span>
-            <span className="text-wrapper-5">3 Pop</span>
-          </p>
-          <img
-            className="img"
-            alt="Ph arrow up bold"
-            src="ph-arrow-up-bold-3.svg"
-          />
-        </div>
-        <div className="div-9">
-          <div className="div-10">
-            <div className="text-wrapper-6">1</div>
-            <div className="text-wrapper-8">Please Please Please</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-7">2</div>
-            <div className="text-wrapper-2">BIRDS OF A FEATHER</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-6">3</div>
-            <div className="text-wrapper-9">Expresso</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-7">4</div>
-            <div className="text-wrapper-2">MILLION DOLLAR BABY</div>
-          </div>
-          <div className="div-10">
-            <div className="text-wrapper-7">5</div>
-            <div className="text-wrapper-2">Not Like Us</div>
-          </div>
-        </div>
-      </div>
-      <div className="div-11">
-        <div className="div-12">
-          <div className="div-wrapper-2">
-            <div className="text-wrapper-10">193K Reviews</div>
-          </div>
-          <img className="img-2" alt="TrackProfile" src="frame-145.svg" />
-        </div>
-        <div className="level">
-          <div className="level-2">
-            <div className="text-wrapper-11">Trending</div>
-            <div className="div-wrapper-3">
-              <div className="text-wrapper-11">#4</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
