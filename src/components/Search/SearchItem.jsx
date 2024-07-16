@@ -74,6 +74,7 @@ const SearchItem = ({ music }) => {
                       onClick={() => {
                         setShow(true);
                         setSelectedTrack(music);
+                        setOverlayIsVisible(false);
                       }}
                       className={style.overlayOption}
                     >

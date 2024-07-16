@@ -3,6 +3,7 @@
   width: 100%;
   border-radius: var(--border-radius);
   justify-content: space-between;
+  gap: 30px;
 }
 .SearchItemContainer:hover {
   background-color: #202225;

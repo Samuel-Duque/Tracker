@@ -8,9 +8,9 @@ import { useParams } from "react-router-dom";
 const SearchScreen = () => {
   return (
     <>
-      <div className={style.SearchScreen}>
-        <Header />
-        <div className={style.HeaderSearch}>
+      <div className={style.searchScreen}>
+        <div>
+          <Header />
           <Search />
         </div>
         <Footer />

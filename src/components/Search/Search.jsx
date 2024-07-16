@@ -37,7 +37,7 @@ const Search = () => {
   return (
     <>
       <div>{show && <ReviewsOverlay track={selectedTrack} />}</div>
-      <div className={style.seachTracks}>
+      <div className={style.searchTracks}>
         {searchSongs &&
           searchSongs.map((track, index) => {
             return <SearchItem key={index} music={track} />;
