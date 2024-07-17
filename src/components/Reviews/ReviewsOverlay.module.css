@@ -80,18 +80,18 @@
   font-size: var(--font-size-minor);
 }
 .checkbox {
-  appearance: none; /* Remove o estilo padrão do navegador */
+  appearance: none;
   padding: 5px;
   border-radius: 3px;
-  width: 17px; /* Define uma largura */
-  height: 17px; /* Define uma altura */
-  background-color: #fff; /* Define uma cor de fundo */
-  cursor: pointer; /* Muda o cursor para indicar que é clicável */
-  position: relative; /* Para posicionamento de pseudoelementos */
+  width: 17px;
+  height: 17px;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
 }
 
 .checkbox:checked::after {
-  content: ""; /* Conteúdo do pseudoelemento para criar um ícone de verificação */
+  content: "";
   position: absolute;
   left: 5px;
   top: 2px;
@@ -99,7 +99,7 @@
   height: 8px;
   border: solid var(--border-color);
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg); /* Rotação para formar um ícone de verificação */
+  transform: rotate(45deg);
 }
 
 .choseDate {
@@ -109,6 +109,7 @@
   padding: 5px;
   border-radius: var(--border-radius);
   color: var(--text-color);
+  cursor: pointer;
 }
 
 .textarea {

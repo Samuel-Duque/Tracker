@@ -3,6 +3,7 @@ import style from "./ReviewsOverlay.module.css";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import CalendarUI from "../Calendar/Calendar";
+import { handleLog } from "../../services/HandleLog";
 
 const ReviewsOverlay = () => {
   const { setShow } = useContext(ClickOutsideContext);
@@ -48,8 +49,13 @@ const ReviewsOverlay = () => {
   }, [selectedDate]);
 
   const handleReviewSubmit = async () => {
-    console.log(review);
-    console.log(rating);
+    const response = await handleLog(
+      todayDate,
+      selectedTrack,
+      selectedDate,
+      rating,
+      review
+    );
   };
 
   return (
@@ -87,7 +93,7 @@ const ReviewsOverlay = () => {
                   id=""
                 />
                 <span>Listened on</span>
-                <button
+                <div
                   className={style.choseDate}
                   onClick={() => {
                     setShowCalendar(true);
@@ -104,7 +110,7 @@ const ReviewsOverlay = () => {
                       <CalendarUI onChange={handleDateSelect} />
                     </div>
                   )}
-                </button>
+                </div>
               </div>
             </div>
             <div>
