@@ -7,6 +7,7 @@ import SearchScreen from "./pages/SearchScreen/SearchScreen";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { ClickOutsideProvider } from "./contexts/ClickOutsideContext";
 import { SelectedTrackProvider } from "./contexts/SelectedTrackContext";
+import TrackProfileScreen from "./pages/TrackProfileScreen/TrackProfileScreen";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/search/:trackQuery",
     element: <SearchScreen />,
+  },
+  {
+    path: "/track",
+    element: <TrackProfileScreen />,
   },
 ]);
 
