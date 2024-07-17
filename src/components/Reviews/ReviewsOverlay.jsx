@@ -9,11 +9,10 @@ const ReviewsOverlay = () => {
   const { selectedTrack } = useContext(SelectedTrackContext);
   const [releaseDate, setReleaseDate] = useState(null);
   const [todayDate, setTodayDate] = useState(null);
-
-  const handleCardClick = (event) => {
-    event.stopPropagation();
-  };
-
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [rating, setRating] = useState(0);
+  const [review, setReview] = useState("");
   useEffect(() => {
     const today = new Date();
     const options = { day: "2-digit", month: "short", year: "numeric" };
@@ -21,11 +20,37 @@ const ReviewsOverlay = () => {
       .toLocaleDateString("en-US", options)
       .replace(",", "");
     setTodayDate(formattedTodayDate);
-
+    setSelectedDate(formattedTodayDate);
     if (selectedTrack?.album.release_date) {
       setReleaseDate(selectedTrack.album.release_date.split("-")[0]);
     }
   }, [selectedTrack]);
+
+  const handleCardClick = (event) => {
+    event.stopPropagation();
+
+    if (showCalendar) {
+      setShowCalendar(false);
+    }
+  };
+
+  const handleDateSelect = (date) => {
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    const formattedDate = date
+      .toLocaleDateString("en-US", options)
+      .replace(",", "");
+    setSelectedDate(formattedDate);
+    setShowCalendar(false);
+  };
+
+  useEffect(() => {
+    console.log(selectedDate);
+  }, [selectedDate]);
+
+  const handleReviewSubmit = async () => {
+    console.log(review);
+    console.log(rating);
+  };
 
   return (
     <div
@@ -62,22 +87,37 @@ const ReviewsOverlay = () => {
                   id=""
                 />
                 <span>Listened on</span>
-                <button className={style.choseDate}>
-                  <span>{todayDate}</span>
+                <button
+                  className={style.choseDate}
+                  onClick={() => {
+                    setShowCalendar(true);
+                  }}
+                >
+                  <span>{selectedDate}</span>
+                  {showCalendar && (
+                    <div
+                      className={style.calender}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      <CalendarUI onChange={handleDateSelect} />
+                    </div>
+                  )}
                 </button>
               </div>
             </div>
-            <CalendarUI />
             <div>
               <textarea
                 className={style.textarea}
                 name="reviewField"
                 id="reviewField"
                 placeholder="Add a review..."
+                onChange={(e) => setReview(e.target.value)}
               ></textarea>
             </div>
             <div className={style.reviewBtn}>
-              <button>Send Review</button>
+              <button onClick={handleReviewSubmit}>Send Review</button>
             </div>
           </div>
         </div>

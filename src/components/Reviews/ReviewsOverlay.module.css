@@ -104,6 +104,7 @@
 
 .choseDate {
   display: flex;
+  position: relative;
   background-color: var(--border-color);
   padding: 5px;
   border-radius: var(--border-radius);
@@ -129,4 +130,10 @@
   color: var(--text-color);
   padding: 0.625rem 0.8125rem;
   border-radius: var(--border-radius);
+}
+
+.calender {
+  position: absolute;
+  top: 120%;
+  right: 0;
 }
