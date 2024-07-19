@@ -4,6 +4,7 @@ import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import CalendarUI from "../Calendar/Calendar";
 import { handleLog } from "../../services/HandleLog";
+import HalfRating from "../RatingStar/RatingStar";
 
 const ReviewsOverlay = () => {
   const { setShow } = useContext(ClickOutsideContext);
@@ -123,6 +124,10 @@ const ReviewsOverlay = () => {
               ></textarea>
             </div>
             <div className={style.reviewBtn}>
+              <div className={style.rating}>
+                <span>Rating</span>
+                <HalfRating />
+              </div>
               <button onClick={handleReviewSubmit}>Send Review</button>
             </div>
           </div>

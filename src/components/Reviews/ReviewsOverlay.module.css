@@ -122,11 +122,12 @@
 
 .reviewBtn {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 .reviewBtn button {
   display: flex;
+  height: min-content;
   background-color: var(--primary-color);
   color: var(--text-color);
   padding: 0.625rem 0.8125rem;
@@ -137,4 +138,11 @@
   position: absolute;
   top: 120%;
   right: 0;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: var(--font-size-minor);
 }
