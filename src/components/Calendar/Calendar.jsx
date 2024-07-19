@@ -15,5 +15,8 @@ export default function CalendarUI({ onChange }) {
     <div>
       <Calendar className="calendar" onChange={handleDateChange} value={data} />
     </div>
+
   );
-}
+};
+
+export default CalendarUI;

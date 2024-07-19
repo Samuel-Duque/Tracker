@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   padding: 0;
@@ -42,10 +45,13 @@ body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
-  background-color: var(--background-color);
+  background-color: var(--background-color) !important;
   color: var(--text-color);
 }
-
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background-color) !important;
+}
 h1,
 h2,
 h3,
@@ -60,6 +66,8 @@ p {
 input {
   font-family: var(--font-family-base);
   font-size: var(--font-size-minor);
+  background-color: transparent;
+  color: #000000;
 }
 
 button {

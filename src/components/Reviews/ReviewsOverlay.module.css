@@ -103,6 +103,7 @@
 }
 
 .choseDate {
+  position: relative;
   display: flex;
   position: relative;
   background-color: var(--border-color);
@@ -145,4 +146,5 @@
   flex-direction: column;
   gap: 10px;
   font-size: var(--font-size-minor);
+
 }
