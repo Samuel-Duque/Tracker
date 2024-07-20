@@ -1,0 +1,8 @@
+.WhereToListenItem {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  align-items: center;
+}

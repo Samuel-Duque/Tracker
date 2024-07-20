@@ -105,3 +105,39 @@
   border-radius: 50px;
   border: 2px solid var(--Primary-Color, #2871ff);
 }
+.TrackDetails {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+.TrackDetails_left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  /* background-color: #2871ff; */
+}
+
+.TrackDetails_right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+}
+
+.WhereToListen_Title {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 4px 0;
+  width: fit-content;
+  border-bottom: 1px solid var(--border-color);
+}
+.WhereToListen {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: left;
+  align-items: center;
+}

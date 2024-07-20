@@ -1,0 +1,21 @@
+.WhereToListen_Title {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 4px 0;
+  width: fit-content;
+  border-bottom: 1px solid var(--border-color);
+}
+.WhereToListen {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-between;
+  width: fit-content;
+}
+.WhereToListen_List {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-between;
+}

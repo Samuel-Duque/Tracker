@@ -4,6 +4,7 @@ import trackImg from "../../assets/img/artistimg.svg";
 import upArrow from "../../assets/icons/up-arrow-thin.svg";
 import TrendingSheet from "../../components/TrendingSheet/TrendingSheet";
 import RatingReview from "../../assets/icons/RatingReview";
+import WhereToListen from "../../components/WhereToListen/WhereToListen";
 const TrackProfile = () => {
   const Track = {
     img: trackImg,
@@ -11,6 +12,23 @@ const TrackProfile = () => {
     artist: "Sabrina Carpenter",
     type: "Single",
     tags: [{ Pop: 4 }, { Top: 2 }],
+    avaiblePlataforms: [
+      {
+        plataform: "Spotify",
+      },
+      {
+        plataform: "Youtube Music",
+      },
+      {
+        plataform: "Apple Music",
+      },
+      {
+        plataform: "Amazon Music",
+      },
+      {
+        plataform: "Deezer",
+      },
+    ],
   };
 
   return (
@@ -71,6 +89,13 @@ const TrackProfile = () => {
           </div>
         </div>
         {/* Sessão HeroSection -FIM*/}
+        {/* Sessão TrackDetails - INICIO */}
+        <div className={style.TrackDetails}>
+          <div className={style.TrackDetails_left}>
+            <WhereToListen Track={Track} />
+          </div>
+          <div className={style.TrackDetails_right}></div>
+        </div>
       </div>
     </>
   );

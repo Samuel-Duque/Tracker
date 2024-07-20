@@ -50,22 +50,17 @@ const TrendingSheet = ({ position, title, trackName }) => {
         {/* FIM Sessão # TITULO */}
         {/* Sessão inicio  # TRACKS */}
         <div className={style.SheetTracks}>
-          {Trending.tracks.map((track, index) => {
-            return (
-              <>
-                {track.name === trackName && (
-                  <span className={style.SheetTrackMatch}>
-                    <b>{index + 1}</b>&nbsp;&nbsp;{track.name}
-                  </span>
-                )}
-                {!(track.name === trackName) && (
-                  <span className={style.SheetTrackUnitary}>
-                    <b>{index + 1}</b>&nbsp;&nbsp;{track.name}
-                  </span>
-                )}
-              </>
-            );
-          })}
+          {Trending.tracks.map((track, index) =>
+            track.name === trackName ? (
+              <span key={track.name} className={style.SheetTrackMatch}>
+                <b>{index + 1}</b>&nbsp;&nbsp;{track.name}
+              </span>
+            ) : (
+              <span key={track.name} className={style.SheetTrackUnitary}>
+                <b>{index + 1}</b>&nbsp;&nbsp;{track.name}
+              </span>
+            )
+          )}
         </div>
       </div>
     </>
