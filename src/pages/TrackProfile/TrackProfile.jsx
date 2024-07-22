@@ -42,16 +42,6 @@ const TrackProfile = () => {
               <img src={Track.img} alt="Track Image" />
             </div>
             <div className={style.HeroTrackContentTrackInfo}>
-              {/* Nome da track, artista e tipo - INICIO */}
-              <div className={style.HeroTrackContentTrackInfoWrap}>
-                <span className={style.TrackName}>{Track.name}</span>
-                <div className={style.HeroTrackContentTrackInfoSub}>
-                  <span className={style.TrackArtist}>{Track.artist}</span>
-                  <span className={style.TrackType}>{Track.type}</span>
-                </div>
-              </div>
-              {/* Nome da track, artista e tipo - FIM */}
-              {/* Sessão de tags, map verifica se a música está em algum trending */}
               <HeroTrackInfo Track={Track} />
             </div>
           </div>

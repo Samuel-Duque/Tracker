@@ -1,3 +1,19 @@
+.HeroTrackContentTrackInfoWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.TrackName {
+  font-size: 24px;
+  font-weight: 700;
+}
+.HeroTrackContentTrackInfoSub {
+  display: flex;
+  font-size: 13px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
 .HeroTrackContentTrackInfoTags {
   display: flex;
   flex-direction: row;

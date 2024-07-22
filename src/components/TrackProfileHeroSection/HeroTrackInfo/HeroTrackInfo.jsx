@@ -19,7 +19,7 @@ const HeroTrackInfo = ({ Track }) => {
           return (
             <>
               {tagValue <= 5 && (
-                <div>
+                <div key={index}>
                   <span key={index} className={style.Tags}>
                     <img src={upArrow} />
                     {tagName} {tagValue}
