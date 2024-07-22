@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./WhereToListen.module.css";
-import WhereToListenItem from "../../components/WhereToListenItem/WhereToListenItem";
-
+import WhereToListenItem from "./WhereToListenItem/WhereToListenItem";
 const WhereToListen = ({ Track }) => {
   return (
     <div className={style.WhereToListen}>

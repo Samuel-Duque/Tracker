@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./WhereToListenItem.module.css";
-import spotifyIcon from "../../assets/icons/spotify-icon.svg";
-import youtubeMusicIcon from "../../assets/icons/youtube-music-icon.svg";
-import appleMusicIcon from "../../assets/icons/apple-music-icon.svg";
-import amazonMusicIcon from "../../assets/icons/amazon-music-icon.svg";
-import deezerMusicIcon from "../../assets/icons/deezer-music-icon.svg";
+import spotifyIcon from "../../../assets/icons/spotify-icon.svg";
+import youtubeMusicIcon from "../../../assets/icons/youtube-music-icon.svg";
+import appleMusicIcon from "../../../assets/icons/apple-music-icon.svg";
+import amazonMusicIcon from "../../../assets/icons/amazon-music-icon.svg";
+import deezerMusicIcon from "../../../assets/icons/deezer-music-icon.svg";
 import { Link } from "react-router-dom";
 
 const WhereToListenItem = ({ plataform }) => {
@@ -44,6 +44,7 @@ const WhereToListenItem = ({ plataform }) => {
           <span>{plataform}</span>
         </a>
       </div>
+      ../
     </>
   );
 };
