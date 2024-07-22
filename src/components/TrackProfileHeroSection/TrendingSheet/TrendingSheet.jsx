@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./TrendingSheet.module.css";
-import upArrow from "../../assets/icons/up-arrow-thin.svg";
 
 const TrendingSheet = ({ position, title, trackName }) => {
   const Trending = {

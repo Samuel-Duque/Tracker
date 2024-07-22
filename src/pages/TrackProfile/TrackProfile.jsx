@@ -1,10 +1,11 @@
 import React from "react";
 import style from "./TrackProfile.module.css";
 import trackImg from "../../assets/img/artistimg.svg";
-import TrendingSheet from "../../components/TrendingSheet/TrendingSheet";
 import RatingReview from "../../assets/icons/RatingReview";
 import WhereToListen from "../../components/WhereToListen/WhereToListen";
+import TrendingSheet from "../../components/TrackProfileHeroSection/TrendingSheet/TrendingSheet";
 import HeroTrackInfo from "../../components/TrackProfileHeroSection/HeroTrackInfo/HeroTrackInfo";
+import TabbedContent from "../../components/TrackProfileTabbedContent/TrackProfileTabbedContent";
 const TrackProfile = () => {
   const Track = {
     img: trackImg,
@@ -67,7 +68,9 @@ const TrackProfile = () => {
           <div className={style.TrackDetails_left}>
             <WhereToListen Track={Track} />
           </div>
-          <div className={style.TrackDetails_right}></div>
+          <div className={style.TrackDetails_right}>
+            <TabbedContent Track={Track} />
+          </div>
         </div>
       </div>
     </>

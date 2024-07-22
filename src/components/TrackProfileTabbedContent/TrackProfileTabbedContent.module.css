@@ -1,0 +1,22 @@
+.tabbedContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+.tabbedContentHeader {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  /* margin-bottom: 1rem; */
+}
+.tabbedContentHeader button {
+  color: var(--text-color);
+  font-size: 1rem;
+}
+.tabbedContentHeader button:hover {
+  color: var(--primary-color);
+}
