@@ -44,7 +44,6 @@ const WhereToListenItem = ({ plataform }) => {
           <span>{plataform}</span>
         </a>
       </div>
-      ../
     </>
   );
 };

@@ -1,0 +1,16 @@
+.HeroTrackContentTrackInfoTags {
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  text-wrap: nowrap;
+}
+.Tags {
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  border-radius: 5px;
+  background: var(--Dark-Secondary, #2e2e2e);
+}

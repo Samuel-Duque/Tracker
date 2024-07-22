@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./TrackProfile.module.css";
 import trackImg from "../../assets/img/artistimg.svg";
-import upArrow from "../../assets/icons/up-arrow-thin.svg";
 import TrendingSheet from "../../components/TrendingSheet/TrendingSheet";
 import RatingReview from "../../assets/icons/RatingReview";
 import WhereToListen from "../../components/WhereToListen/WhereToListen";
+import HeroTrackInfo from "../../components/TrackProfileHeroSection/HeroTrackInfo/HeroTrackInfo";
 const TrackProfile = () => {
   const Track = {
     img: trackImg,
@@ -52,24 +52,7 @@ const TrackProfile = () => {
               </div>
               {/* Nome da track, artista e tipo - FIM */}
               {/* Sessão de tags, map verifica se a música está em algum trending */}
-              <div className={style.HeroTrackContentTrackInfoTags}>
-                {Track.tags.map((tag, index) => {
-                  const tagName = Object.keys(tag)[0];
-                  const tagValue = tag[tagName];
-                  return (
-                    <>
-                      {tagValue <= 5 && (
-                        <div>
-                          <span key={index} className={style.Tags}>
-                            <img src={upArrow} />
-                            {tagName} {tagValue}
-                          </span>
-                        </div>
-                      )}
-                    </>
-                  );
-                })}
-              </div>
+              <HeroTrackInfo Track={Track} />
             </div>
           </div>
           {/* Sessão HeroTrackContent (Foto, titulo e tags) - FIM */}
