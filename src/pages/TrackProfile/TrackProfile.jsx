@@ -6,12 +6,14 @@ import WhereToListen from "../../components/WhereToListen/WhereToListen";
 import TrendingSheet from "../../components/TrackProfileHeroSection/TrendingSheet/TrendingSheet";
 import HeroTrackInfo from "../../components/TrackProfileHeroSection/HeroTrackInfo/HeroTrackInfo";
 import TabbedContent from "../../components/TrackProfileTabbedContent/TrackProfileTabbedContent";
+import { trackLyrics } from "../../assets/data/Lyrics";
 const TrackProfile = () => {
   const Track = {
     img: trackImg,
     name: "Espresso",
     artist: "Sabrina Carpenter",
     type: "Single",
+    lyrics: trackLyrics,
     tags: [{ Pop: 4 }, { Top: 2 }],
     avaiblePlataforms: [
       {
@@ -69,7 +71,15 @@ const TrackProfile = () => {
             <WhereToListen Track={Track} />
           </div>
           <div className={style.TrackDetails_right}>
-            <TabbedContent Track={Track} />
+            <div className={style.TrackDetailsTabAndLog}>
+              <div className={style.TrackDetailsTab}>
+                <TabbedContent Track={Track} />
+              </div>
+              <div className={style.TrackDetailsLogAndReview}>
+                <div className={style.TrackDetailsLog}>Log</div>
+                <div className={style.TrackDetailsReview}>Review</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

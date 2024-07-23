@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import style from "./TrackProfileTabbedContent.module.css";
-const TrackProfileTabbedContent = () => {
+const TrackProfileTabbedContent = ({ Track }) => {
   const [activeTab, setActiveTab] = useState("Lyrics");
 
   const renderContent = () => {
     switch (activeTab) {
       case "Lyrics":
-        return <div>Lyrics</div>;
+        return <div>{Track.lyrics}</div>;
       case "Reviews":
         return <div>Reviews</div>;
       case "Badges":
