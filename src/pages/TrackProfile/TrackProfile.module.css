@@ -103,7 +103,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  /* border: 2px solid var(--Primary-Color, #2871ff); */
+  border: 2px solid var(--primary-color, #2871ff);
 }
 .TrackDetails {
   display: grid;
