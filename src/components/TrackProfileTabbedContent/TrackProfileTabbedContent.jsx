@@ -6,9 +6,20 @@ const TrackProfileTabbedContent = ({ Track }) => {
   const renderContent = () => {
     switch (activeTab) {
       case "Lyrics":
-        return <div>{Track.lyrics}</div>;
-      case "Reviews":
-        return <div>Reviews</div>;
+        return (
+          <div className={style.TabbedContentFixLyrics}>
+            <div className={style.TabbedContentLyrics}>
+              {Track.lyrics.split("\n").map((line, index) => (
+                <>
+                  {line}
+                  <br />
+                </>
+              ))}
+            </div>
+          </div>
+        );
+      case "Statistics":
+        return <div>Statistics</div>;
       case "Badges":
         return <div>Badges</div>;
       case "About":
@@ -28,10 +39,10 @@ const TrackProfileTabbedContent = ({ Track }) => {
             Lyrics
           </button>
           <button
-            className={activeTab === "Reviews" ? style.active : ""}
-            onClick={() => setActiveTab("Reviews")}
+            className={activeTab === "Statistics" ? style.active : ""}
+            onClick={() => setActiveTab("Statistics")}
           >
-            Reviews
+            Statistics
           </button>
           <button
             className={activeTab === "Badges" ? style.active : ""}
