@@ -34,6 +34,15 @@ export const handleLog = async (
         selected_date: selectedDate,
       }
     );
+    //TODO FAZER O GET E VERIFICAR SE UM LOG JÁ EXISTE NO BANCO
+    await axios.get("https://trackerapi-8n4dl.ondigitalocean.app/logs/", {
+      track_id: selectedTrack?.id,
+      username: "zythee",
+      date: timestamp,
+      rating: rating,
+      comment: review,
+      selected_date: selectedDate,
+    });
     console.log(response);
   } catch (e) {
     console.error(e);

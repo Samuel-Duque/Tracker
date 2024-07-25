@@ -9,6 +9,7 @@ import threedotsIcon from "../../assets/icons/threedots-icon.svg";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import Rating from "../RatingStar/RatingStar";
+import { handleUserRating } from "../../services/handleDefaultRating";
 
 const TrackCard = ({ track, index }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,6 +23,14 @@ const TrackCard = ({ track, index }) => {
   useEffect(() => {
     setIsVisible(false);
   }, [show]);
+
+  useEffect(() => {
+    const handleDefaultRating = async () => {
+      const defaultRating = await handleUserRating("zythee", track?.id);
+    };
+
+    handleDefaultRating();
+  }, []);
 
   return (
     <div className={style.cardContainer}>
