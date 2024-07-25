@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import style from "./TrackProfileTabbedContent.module.css";
+import LyricsTab from "./LyricsTab/LyricsTab";
 const TrackProfileTabbedContent = ({ Track }) => {
   const [activeTab, setActiveTab] = useState("Lyrics");
 
   const renderContent = () => {
     switch (activeTab) {
       case "Lyrics":
-        return (
-          <div className={style.TabbedContentFixLyrics}>
-            <div className={style.TabbedContentLyrics}>
-              {Track.lyrics.split("\n").map((line, index) => (
-                <>
-                  {line}
-                  <br />
-                </>
-              ))}
-            </div>
-          </div>
-        );
+        return <LyricsTab Track={Track} />;
       case "Statistics":
         return <div>Statistics</div>;
       case "Badges":
@@ -25,7 +15,7 @@ const TrackProfileTabbedContent = ({ Track }) => {
       case "About":
         return <div>About</div>;
       default:
-        return <div>Lyrics</div>;
+        return <LyricsTab Track={Track} />;
     }
   };
   return (

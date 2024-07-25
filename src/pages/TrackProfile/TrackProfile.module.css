@@ -125,7 +125,12 @@
   width: 100%;
   height: 100%;
 }
-
+.TrendingSheetSection {
+  display: grid;
+  /* flex-direction: row; */
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
 .WhereToListen_Title {
   font-weight: bold;
   font-size: 1rem;
@@ -151,4 +156,21 @@
   flex-direction: row;
   gap: 20px;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 1024px) {
+  .TrendingSheetSection {
+    grid-template-columns: 1fr;
+  }
+  .TrendingSheet2 {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .TrendingSheetSection {
+    display: none;
+  }
+  .TrendingSheet1 {
+    display: none;
+  }
 }

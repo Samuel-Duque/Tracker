@@ -1,0 +1,23 @@
+.TabbedContentFixLyrics {
+  max-height: 336px;
+  width: 100%;
+  direction: rtl;
+  overflow: auto;
+}
+.TabbedContentLyrics {
+  direction: ltr;
+  margin-left: 20px;
+}
+.TabbedContentFixLyrics::-webkit-scrollbar {
+  width: 3px;
+  height: 1px;
+}
+.TabbedContentFixLyrics::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+}
+.TabbedContentFixLyrics::-webkit-scrollbar-track {
+  background-color: var(--secondary-color);
+  width: fit-content;
+  height: fit-content;
+}

@@ -9,7 +9,7 @@ import threedotsIcon from "../../assets/icons/threedots-icon.svg";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import Rating from "../RatingStar/RatingStar";
-import { handleUserRating } from "../../services/handleDefaultRating";
+import { handleUserRating } from "../../services/HandleDefaultRating";
 
 const TrackCard = ({ track, index }) => {
   const [isVisible, setIsVisible] = useState(false);

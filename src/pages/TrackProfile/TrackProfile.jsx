@@ -50,8 +50,22 @@ const TrackProfile = () => {
           </div>
           {/* Sessão HeroTrackContent (Foto, titulo e tags) - FIM */}
           {/* Sessão Trending Sheets - INICIO */}
-          <TrendingSheet position={4} title={"Global"} trackName={Track.name} />
-          <TrendingSheet position={4} title={"Pop"} trackName={Track.name} />
+          <div className={style.TrendingSheetSection}>
+            <div className={style.TrendingSheet1}>
+              <TrendingSheet
+                position={4}
+                title={"Global"}
+                trackName={Track.name}
+              />
+            </div>
+            <div className={style.TrendingSheet2}>
+              <TrendingSheet
+                position={4}
+                title={"Pop"}
+                trackName={Track.name}
+              />
+            </div>
+          </div>
           {/* Sessão Trending Sheets - FIM */}
           <div className={style.Review_Trending}>
             <div className={style.NumberAndStars}>
