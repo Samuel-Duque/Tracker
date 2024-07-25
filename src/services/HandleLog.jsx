@@ -9,11 +9,25 @@ export const handleLog = async (
   review
 ) => {
   try {
+    const { data: musicAlreadyAdded } = await axios.get(
+      `https://trackerapi-8n4dl.ondigitalocean.app/tracks/${selectedTrack?.id}`
+    );
+
+    console.log("musicAdded: ", musicAlreadyAdded.length);
+
+    if (musicAlreadyAdded == 0) {
+      await axios.post("https://trackerapi-8n4dl.ondigitalocean.app/tracks/", {
+        track_id: selectedTrack?.id,
+        track_name: selectedTrack?.name,
+        rating: "0",
+        total_reviews: "0",
+      });
+    }
     const response = await axios.post(
       "https://trackerapi-8n4dl.ondigitalocean.app/logs/",
       {
         track_id: selectedTrack?.id,
-        username: "ztyhee",
+        username: "zythee",
         date: timestamp,
         rating: rating,
         comment: review,

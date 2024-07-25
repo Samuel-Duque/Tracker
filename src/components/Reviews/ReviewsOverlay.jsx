@@ -15,6 +15,7 @@ const ReviewsOverlay = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     const today = new Date();
@@ -58,7 +59,20 @@ const ReviewsOverlay = () => {
       rating,
       review
     );
+    setShow(false);
   };
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+
+  useEffect(() => {
+    if (!isChecked) {
+      setSelectedDate("0");
+    } else {
+      setSelectedDate(todayDate);
+    }
+  }, [isChecked]);
 
   return (
     <div
@@ -93,26 +107,33 @@ const ReviewsOverlay = () => {
                   type="checkbox"
                   name=""
                   id=""
+                  onChange={handleCheckboxChange}
+                  checked={isChecked}
                 />
-                <span>Listened on</span>
-                <div
-                  className={style.choseDate}
-                  onClick={() => {
-                    setShowCalendar(true);
-                  }}
-                >
-                  <span>{selectedDate}</span>
-                  {showCalendar && (
+                {isChecked && (
+                  <>
+                    <span>Listened on</span>
                     <div
-                      className={style.calender}
-                      onClick={(e) => {
-                        e.stopPropagation();
+                      className={style.choseDate}
+                      onClick={() => {
+                        setShowCalendar(true);
                       }}
                     >
-                      <CalendarUI onChange={handleDateSelect} />
+                      <span>{selectedDate}</span>
+                      {showCalendar && (
+                        <div
+                          className={style.calender}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
+                          <CalendarUI onChange={handleDateSelect} />
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
+                  </>
+                )}
+                {!isChecked && <span>Add track to your playlist?</span>}
               </div>
             </div>
             <div>
