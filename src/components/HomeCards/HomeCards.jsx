@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./HomeCards.module.css";
 import TrackCard from "../TrackCard/TrackCard";
 import Title from "../Title/Title";
 import TrackCardTracked from "../TrackCardReview/TrackCardReview";
 import { handleTopTracks } from "../../services/HandleTopTracks";
 import LoadingTrackCard from "../LoadingTrackCard/LoadingTrackCard";
+import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
+import ReviewsOverlay from "../Reviews/ReviewsOverlay";
+import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 
 const HomeCards = () => {
   const [topSongs, setTopSongs] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { show } = useContext(ClickOutsideContext);
+  const { selectedTrack } = useContext(SelectedTrackContext);
+
   useEffect(() => {
     const getTopTracks = async () => {
       const result = await handleTopTracks();
-
       result ? setTopSongs(result.response) : console.log(result);
     };
     getTopTracks();
@@ -26,13 +31,7 @@ const HomeCards = () => {
           {topSongs ? null : <LoadingTrackCard />}
           {topSongs &&
             topSongs.map((item, index) => (
-              <TrackCard
-                key={index}
-                trackName={item.track.name}
-                trackArtist={item.track.artists[0].name}
-                trackImage={item.track.album.images[0].url}
-                index={index + 1}
-              />
+              <TrackCard key={index} track={item.track} index={index + 1} />
             ))}
         </div>
       </div>
@@ -51,6 +50,7 @@ const HomeCards = () => {
             ))}
         </div>
       </div>
+      <div>{show && <ReviewsOverlay track={selectedTrack} />}</div>
     </div>
   );
 };

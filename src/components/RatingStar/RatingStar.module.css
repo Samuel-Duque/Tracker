@@ -5,12 +5,10 @@
 }
 
 .rating svg {
-  color: white;
+  color: var(--text-secondary-color);
 }
 
 .buttonX {
   display: flex;
   position: absolute;
-  left: -17%;
-  top: 20%;
 }

@@ -5,7 +5,15 @@ import EmptyRatingIcon from "../../assets/icons/StarComponents/EmptyRatingIcon";
 import FillRatingIcon from "../../assets/icons/StarComponents/FillRatingIcon";
 import HalfRatingIcon from "../../assets/icons/StarComponents/HalfRatingIcon";
 import style from "./RatingStar.module.css";
-const RatingComponent = ({ value, setValue }) => {
+const RatingComponent = ({
+  value,
+  setValue,
+  color,
+  size,
+  xsize,
+  left,
+  top,
+}) => {
   const [ratingValue, setRatingValue] = useState(null);
 
   useEffect(() => {
@@ -31,14 +39,15 @@ const RatingComponent = ({ value, setValue }) => {
       {value > 0 && (
         <button
           className={style.buttonX}
+          style={{ left: left, top: top }}
           onClick={() => {
             setValue(0);
           }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width={xsize}
+            height={xsize}
             viewBox="0 0 256 256"
           >
             <path
@@ -51,8 +60,8 @@ const RatingComponent = ({ value, setValue }) => {
       <StyledRating
         name="customized-color"
         defaultValue={0}
-        icon={<FillRatingIcon size={24} />}
-        emptyIcon={<EmptyRatingIcon size={24} />}
+        icon={<FillRatingIcon size={size} />}
+        emptyIcon={<EmptyRatingIcon size={size} color={color} />}
         onChange={handleRatingChange}
         value={value}
       />

@@ -15,7 +15,7 @@ const ReviewsOverlay = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
 
   useEffect(() => {
     const today = new Date();
@@ -46,6 +46,10 @@ const ReviewsOverlay = () => {
     setSelectedDate(formattedDate);
     setShowCalendar(false);
   };
+
+  useEffect(() => {
+    setSelectedDate(todayDate);
+  }, [todayDate]);
 
   useEffect(() => {
     console.log(selectedDate);
@@ -119,7 +123,9 @@ const ReviewsOverlay = () => {
                         setShowCalendar(true);
                       }}
                     >
-                      <span>{selectedDate}</span>
+                      {isChecked == "0" && <span>{todayDate}</span>}
+                      {isChecked != "0" && <span>{selectedDate}</span>}
+
                       {showCalendar && (
                         <div
                           className={style.calender}
@@ -148,7 +154,15 @@ const ReviewsOverlay = () => {
             <div className={style.reviewBtn}>
               <div className={style.rating}>
                 <span>Rating</span>
-                <Rating value={rating} setValue={setRating} />
+                <Rating
+                  value={rating}
+                  setValue={setRating}
+                  color={"#1A1B1E"}
+                  size={24}
+                  xsize={16}
+                  left={"-20px"}
+                  top={"5px"}
+                />
               </div>
               <button className={style.sendReview} onClick={handleReviewSubmit}>
                 Send Review
