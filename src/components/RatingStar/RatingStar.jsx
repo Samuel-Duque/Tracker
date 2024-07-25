@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import EmptyRatingIcon from "../../assets/icons/StarComponents/EmptyRatingIcon";
 import FillRatingIcon from "../../assets/icons/StarComponents/FillRatingIcon";
 import HalfRatingIcon from "../../assets/icons/StarComponents/HalfRatingIcon";
-import Typography from "@mui/material/Typography";
-
-const CustomizedRating = () => {
-  const [value, setValue] = useState(null);
+import style from "./RatingStar.module.css";
+const RatingComponent = ({ value, setValue }) => {
+  const [ratingValue, setRatingValue] = useState(null);
 
   useEffect(() => {
-    console.log(`Valor atual da estrela: ${value}`); // Passo 5
-  }, [value]);
+    console.log(`Valor atual da estrela: ${ratingValue}`);
+  }, [ratingValue]);
 
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconFilled": {
@@ -23,39 +21,43 @@ const CustomizedRating = () => {
     },
   });
 
-  const getIcon = (iconValue) => {
-    if (iconValue % 1 === 0) {
-      return <FillRatingIcon />;
-    } else if (iconValue % 1 !== 0) {
-      return <HalfRatingIcon />;
-    } else {
-      return <EmptyRatingIcon />;
-    }
+  const handleRatingChange = (event, newValue) => {
+    setRatingValue(newValue);
+    setValue(newValue);
   };
+
   return (
-    <Box
-      sx={{
-        "& > legend": { mt: 2 },
-      }}
-    >
+    <div className={style.rating}>
+      {value > 0 && (
+        <button
+          className={style.buttonX}
+          onClick={() => {
+            setValue(0);
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 256 256"
+          >
+            <path
+              fill="currentColor"
+              d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128L50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z"
+            />
+          </svg>
+        </button>
+      )}
       <StyledRating
         name="customized-color"
+        defaultValue={0}
+        icon={<FillRatingIcon size={24} />}
+        emptyIcon={<EmptyRatingIcon size={24} />}
+        onChange={handleRatingChange}
         value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue); // Passo 4
-        }}
-        onChangeActive={(event, newHover) => {
-          setValue(newHover); // Atualiza o estado conforme o mouse passa sobre as estrelas
-        }}
-        precision={0.5}
-        icon={<FillRatingIcon />} // Ícone para valores inteiros ou meio preenchidos
-        emptyIcon={<EmptyRatingIcon />} // Ícone para estrelas não preenchidas
-        getLabelText={(value) => `${value} Estrela${value !== 1 ? "s" : ""}`}
-        // Customiza o ícone baseado no valor
-        IconContainerComponent={({ value: iconValue }) => getIcon(iconValue)}
       />
-    </Box>
+    </div>
   );
 };
 
-export default CustomizedRating;
+export default RatingComponent;

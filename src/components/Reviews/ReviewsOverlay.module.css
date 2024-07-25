@@ -125,7 +125,7 @@
   justify-content: space-between;
 }
 
-.reviewBtn button {
+.sendReview {
   display: flex;
   height: min-content;
   background-color: var(--primary-color);

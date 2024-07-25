@@ -4,7 +4,7 @@ import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import CalendarUI from "../Calendar/Calendar";
 import { handleLog } from "../../services/HandleLog";
-import HalfRating from "../RatingStar/RatingStar";
+import Rating from "../RatingStar/RatingStar";
 
 const ReviewsOverlay = () => {
   const { setShow } = useContext(ClickOutsideContext);
@@ -15,6 +15,7 @@ const ReviewsOverlay = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
+
   useEffect(() => {
     const today = new Date();
     const options = { day: "2-digit", month: "short", year: "numeric" };
@@ -126,9 +127,11 @@ const ReviewsOverlay = () => {
             <div className={style.reviewBtn}>
               <div className={style.rating}>
                 <span>Rating</span>
-                <HalfRating />
+                <Rating value={rating} setValue={setRating} />
               </div>
-              <button onClick={handleReviewSubmit}>Send Review</button>
+              <button className={style.sendReview} onClick={handleReviewSubmit}>
+                Send Review
+              </button>
             </div>
           </div>
         </div>

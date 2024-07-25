@@ -1,0 +1,16 @@
+.rating {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.rating svg {
+  color: white;
+}
+
+.buttonX {
+  display: flex;
+  position: absolute;
+  left: -17%;
+  top: 20%;
+}
