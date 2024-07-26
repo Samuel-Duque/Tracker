@@ -33,25 +33,10 @@ export const handleLog = async (
         rating: rating,
         comment: review,
         selected_date: selectedDate,
+        liked: 0,
+        listened: 0,
       }
     );
-
-    const { data: trackAdded } = await axios.get(
-      `https://trackerapi-8n4dl.ondigitalocean.app/logs/user/${user}/${selectedTrack}`
-    );
-    if (trackAdded.length < 1) {
-      await axios.post(
-        "https://trackerapi-8n4dl.ondigitalocean.app/logs/user",
-        {
-          username: user,
-          trackname: selectedTrack?.name,
-          trackid: selectedTrack?.id,
-          rating: 0.0,
-          listened: 1,
-          liked: 0,
-        }
-      );
-    }
     console.log(response);
   } catch (e) {
     console.error(e);
