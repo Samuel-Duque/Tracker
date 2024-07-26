@@ -16,10 +16,6 @@ const RatingComponent = ({
 }) => {
   const [ratingValue, setRatingValue] = useState(null);
 
-  useEffect(() => {
-    console.log(`Valor atual da estrela: ${ratingValue}`);
-  }, [ratingValue]);
-
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconFilled": {
       color: "#ff6d75",

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import axios from "axios";
 
 export const handleLog = async (
+  user,
   timestamp,
   selectedTrack,
   selectedDate,
@@ -34,15 +35,23 @@ export const handleLog = async (
         selected_date: selectedDate,
       }
     );
-    //TODO FAZER O GET E VERIFICAR SE UM LOG JÁ EXISTE NO BANCO
-    await axios.get("https://trackerapi-8n4dl.ondigitalocean.app/logs/", {
-      track_id: selectedTrack?.id,
-      username: "zythee",
-      date: timestamp,
-      rating: rating,
-      comment: review,
-      selected_date: selectedDate,
-    });
+
+    const { data: trackAdded } = await axios.get(
+      `https://trackerapi-8n4dl.ondigitalocean.app/logs/user/${user}/${selectedTrack}`
+    );
+    if (trackAdded.length < 1) {
+      await axios.post(
+        "https://trackerapi-8n4dl.ondigitalocean.app/logs/user",
+        {
+          username: user,
+          trackname: selectedTrack?.name,
+          trackid: selectedTrack?.id,
+          rating: 0.0,
+          listened: 1,
+          liked: 0,
+        }
+      );
+    }
     console.log(response);
   } catch (e) {
     console.error(e);

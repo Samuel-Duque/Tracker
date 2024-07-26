@@ -51,12 +51,9 @@ const ReviewsOverlay = () => {
     setSelectedDate(todayDate);
   }, [todayDate]);
 
-  useEffect(() => {
-    console.log(selectedDate);
-  }, [selectedDate]);
-
   const handleReviewSubmit = async () => {
     const response = await handleLog(
+      "zythee",
       todayDate,
       selectedTrack,
       selectedDate,
