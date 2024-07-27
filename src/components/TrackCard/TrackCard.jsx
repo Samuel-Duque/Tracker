@@ -9,19 +9,33 @@ import threedotsIcon from "../../assets/icons/threedots-icon.svg";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import Rating from "../RatingStar/RatingStar";
+import { handleDefaultRating } from "../../services/HandleDefaultRating";
+import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 
-const TrackCard = ({ track, defaultRating, index }) => {
+const TrackCard = ({ track, index }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const { show, setShow } = useContext(ClickOutsideContext);
-  const [rating, setRating] = useState(defaultRating);
+  const [rating, setRating] = useState(0);
+  const { setDefaultRatingData } = useContext(DefaultRatingContext);
 
   useEffect(() => {
     setIsVisible(false);
   }, [show]);
+
+  useEffect(() => {
+    const fetchDefaultRating = async () => {
+      const defaultRating = await handleDefaultRating("zythee", track?.id);
+      console.log("Default Rating:", defaultRating);
+      setRating(defaultRating);
+    };
+    if (track) {
+      fetchDefaultRating();
+    }
+  }, [track]);
 
   return (
     <div className={style.cardContainer}>
@@ -84,7 +98,7 @@ const TrackCard = ({ track, defaultRating, index }) => {
               <button
                 onClick={() => {
                   setShow(true);
-
+                  setDefaultRatingData(rating);
                   setOverlayIsVisible(false);
                   setIsVisible(false);
                 }}
@@ -106,7 +120,7 @@ const TrackCard = ({ track, defaultRating, index }) => {
         </div>
         <img
           className={style.coverImage}
-          src={track.album.images[0].url}
+          src={track.album.images[1].url}
           alt=""
         />
       </div>

@@ -1,29 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
-import { SelectedTrackContext } from "./SelectedTrackContext";
-import { handleDefaultRating } from "../services/HandleDefaultRating";
 
 export const DefaultRatingContext = React.createContext();
 
 export const DefaultRatingProvider = ({ children }) => {
-  const [defaultRating, setDefaultRating] = useState(0);
-  const { selectedTrack } = useContext(SelectedTrackContext);
+  const [defaultRatingData, setDefaultRatingData] = useState(0);
 
   useEffect(() => {
-    const fetchDefaultRating = async () => {
-      const defaultRating = await handleDefaultRating(
-        "zythee",
-        selectedTrack?.id
-      );
-      console.log("Default Rating:", defaultRating);
-      setDefaultRating(defaultRating);
-    };
-    if (selectedTrack) {
-      fetchDefaultRating();
-    }
-  }, [selectedTrack]);
-
+    console.log(defaultRatingData);
+  }, [defaultRatingData]);
   return (
-    <DefaultRatingContext.Provider value={{ defaultRating, setDefaultRating }}>
+    <DefaultRatingContext.Provider
+      value={{ defaultRatingData, setDefaultRatingData }}
+    >
       {children}
     </DefaultRatingContext.Provider>
   );

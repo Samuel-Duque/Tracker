@@ -3,13 +3,12 @@ import style from "./TrackCardReview.module.css";
 import starIcon from "../../assets/icons/star-icon.svg";
 import songIcon from "../../assets/icons/song-icon.svg";
 import profilePic from "../../assets/icons/profile-pic-dark.svg";
-const TrackCardTracked = ({ reviewid }) => {
+const TrackCardTracked = ({ track }) => {
   const review = {
     user: "Zythee",
     userImg: profilePic,
-    track: "Please Please Please",
-    coverImg:
-      "https://cdns-images.dzcdn.net/images/cover/0fd6e3b346b959a8781ccfa89b63607a/1900x1900-000000-80-0-0.jpg",
+    track: track?.name,
+    coverImg: track.album.images[1].url,
     type: "song",
     rating: 3,
   };

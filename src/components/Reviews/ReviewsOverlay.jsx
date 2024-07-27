@@ -5,15 +5,17 @@ import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import CalendarUI from "../Calendar/Calendar";
 import { handleLog } from "../../services/HandleLog";
 import Rating from "../RatingStar/RatingStar";
+import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 
-const ReviewsOverlay = ({ defaultRating }) => {
+const ReviewsOverlay = () => {
   const { setShow } = useContext(ClickOutsideContext);
   const { selectedTrack } = useContext(SelectedTrackContext);
+  const { defaultRatingData } = useContext(DefaultRatingContext);
   const [releaseDate, setReleaseDate] = useState(null);
   const [todayDate, setTodayDate] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(defaultRatingData);
   const [review, setReview] = useState("");
   const [isChecked, setIsChecked] = useState(true);
 
@@ -159,7 +161,7 @@ const ReviewsOverlay = ({ defaultRating }) => {
                   xsize={16}
                   left={"-20px"}
                   top={"5px"}
-                  defaultRating={defaultRating}
+                  defaultRating={rating}
                 />
               </div>
               <button className={style.sendReview} onClick={handleReviewSubmit}>

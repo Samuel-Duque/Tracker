@@ -3,9 +3,7 @@ import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
 import EmptyRatingIcon from "../../assets/icons/StarComponents/EmptyRatingIcon";
 import FillRatingIcon from "../../assets/icons/StarComponents/FillRatingIcon";
-import HalfRatingIcon from "../../assets/icons/StarComponents/HalfRatingIcon";
 import style from "./RatingStar.module.css";
-import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 const RatingComponent = ({
   value,
   setValue,
@@ -15,10 +13,6 @@ const RatingComponent = ({
   left,
   top,
 }) => {
-  const { defaultRating } = useContext(DefaultRatingContext);
-
-  const [ratingValue, setRatingValue] = useState(defaultRating);
-
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconFilled": {
       color: "#ff6d75",
@@ -29,14 +23,8 @@ const RatingComponent = ({
   });
 
   const handleRatingChange = (event, newValue) => {
-    setRatingValue(newValue);
     setValue(newValue);
   };
-
-  useEffect(() => {
-    setRatingValue(defaultRating);
-    setValue(defaultRating);
-  }, [defaultRating]);
 
   return (
     <div className={style.rating}>
@@ -66,7 +54,7 @@ const RatingComponent = ({
         icon={<FillRatingIcon size={size} />}
         emptyIcon={<EmptyRatingIcon size={size} color={color} />}
         onChange={handleRatingChange}
-        value={ratingValue}
+        value={value}
       />
     </div>
   );

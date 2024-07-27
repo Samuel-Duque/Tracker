@@ -7,14 +7,10 @@ import { handleTopTracks } from "../../services/HandleTopTracks";
 import LoadingTrackCard from "../LoadingTrackCard/LoadingTrackCard";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import ReviewsOverlay from "../Reviews/ReviewsOverlay";
-import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
-import { handleDefaultRating } from "../../services/HandleDefaultRating";
 
 const HomeCards = () => {
   const [topSongs, setTopSongs] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const { show } = useContext(ClickOutsideContext);
-  const { selectedTrack } = useContext(SelectedTrackContext);
   const [defaultRating, setDefaultRating] = useState(0);
 
   useEffect(() => {
@@ -43,12 +39,7 @@ const HomeCards = () => {
           {topSongs ? null : <LoadingTrackCard />}
           {topSongs &&
             topSongs.map((item, index) => (
-              <TrackCardTracked
-                key={index}
-                trackName={item.track.name}
-                trackArtist={item.track.artists[0].name}
-                trackImage={item.track.album.images[0].url}
-              />
+              <TrackCardTracked key={index} track={item.track} />
             ))}
         </div>
       </div>
