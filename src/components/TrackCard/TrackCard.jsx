@@ -9,14 +9,13 @@ import threedotsIcon from "../../assets/icons/threedots-icon.svg";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import Rating from "../RatingStar/RatingStar";
-import { handleUserRating } from "../../services/HandleDefaultRating";
 
-const TrackCard = ({ track, index }) => {
+const TrackCard = ({ track, defaultRating, index }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
-  const { setSelectedTrack } = useContext(SelectedTrackContext);
+  const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const { show, setShow } = useContext(ClickOutsideContext);
   const [rating, setRating] = useState(0);
 
@@ -24,19 +23,14 @@ const TrackCard = ({ track, index }) => {
     setIsVisible(false);
   }, [show]);
 
-  useEffect(() => {
-    const handleDefaultRating = async () => {
-      const defaultRating = await handleUserRating("zythee", track?.id);
-    };
-
-    handleDefaultRating();
-  }, []);
-
   return (
     <div className={style.cardContainer}>
       <div
         className={style.trackCover}
-        onMouseEnter={() => setIsVisible(true)}
+        onMouseEnter={() => {
+          setIsVisible(true);
+          setSelectedTrack(track);
+        }}
         onMouseLeave={() => {
           setIsVisible(false), setOverlayIsVisible(false);
         }}
@@ -57,7 +51,9 @@ const TrackCard = ({ track, index }) => {
               <img
                 src={threedotsIcon}
                 alt=""
-                onClick={() => setOverlayIsVisible(true)}
+                onClick={() => {
+                  setOverlayIsVisible(true);
+                }}
               />
             </div>
             {!overlayIsVisible && (
@@ -73,7 +69,7 @@ const TrackCard = ({ track, index }) => {
         {overlayIsVisible && (
           <div className={style.extraOverlay}>
             <div className={style.overlayOptions}>
-              <button className={style.overlayOptionReview}>
+              <div className={style.overlayOptionReview}>
                 <Rating
                   value={rating}
                   setValue={setRating}
@@ -82,12 +78,13 @@ const TrackCard = ({ track, index }) => {
                   xsize={13}
                   left={"-16px"}
                   top={"2px"}
+                  defaultRating={defaultRating}
                 />
-              </button>
+              </div>
               <button
                 onClick={() => {
                   setShow(true);
-                  setSelectedTrack(track);
+
                   setOverlayIsVisible(false);
                   setIsVisible(false);
                 }}

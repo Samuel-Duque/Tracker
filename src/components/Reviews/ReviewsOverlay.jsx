@@ -6,7 +6,7 @@ import CalendarUI from "../Calendar/Calendar";
 import { handleLog } from "../../services/HandleLog";
 import Rating from "../RatingStar/RatingStar";
 
-const ReviewsOverlay = () => {
+const ReviewsOverlay = ({ defaultRating }) => {
   const { setShow } = useContext(ClickOutsideContext);
   const { selectedTrack } = useContext(SelectedTrackContext);
   const [releaseDate, setReleaseDate] = useState(null);
@@ -159,6 +159,7 @@ const ReviewsOverlay = () => {
                   xsize={16}
                   left={"-20px"}
                   top={"5px"}
+                  defaultRating={defaultRating}
                 />
               </div>
               <button className={style.sendReview} onClick={handleReviewSubmit}>

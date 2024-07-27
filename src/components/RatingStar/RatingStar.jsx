@@ -7,6 +7,7 @@ import HalfRatingIcon from "../../assets/icons/StarComponents/HalfRatingIcon";
 import style from "./RatingStar.module.css";
 const RatingComponent = ({
   value,
+  defaultRating,
   setValue,
   color,
   size,
@@ -14,7 +15,7 @@ const RatingComponent = ({
   left,
   top,
 }) => {
-  const [ratingValue, setRatingValue] = useState(null);
+  const [ratingValue, setRatingValue] = useState(defaultRating);
 
   const StyledRating = styled(Rating)({
     "& .MuiRating-iconFilled": {
@@ -55,11 +56,10 @@ const RatingComponent = ({
       )}
       <StyledRating
         name="customized-color"
-        defaultValue={0}
         icon={<FillRatingIcon size={size} />}
         emptyIcon={<EmptyRatingIcon size={size} color={color} />}
         onChange={handleRatingChange}
-        value={value}
+        value={ratingValue}
       />
     </div>
   );

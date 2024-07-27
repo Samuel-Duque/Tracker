@@ -8,12 +8,14 @@ import LoadingTrackCard from "../LoadingTrackCard/LoadingTrackCard";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import ReviewsOverlay from "../Reviews/ReviewsOverlay";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
+import { handleDefaultRating } from "../../services/HandleDefaultRating";
 
 const HomeCards = () => {
   const [topSongs, setTopSongs] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { show } = useContext(ClickOutsideContext);
   const { selectedTrack } = useContext(SelectedTrackContext);
+  const [defaultRating, setDefaultRating] = useState(0);
 
   useEffect(() => {
     const getTopTracks = async () => {
@@ -23,6 +25,21 @@ const HomeCards = () => {
     getTopTracks();
   }, []);
 
+  useEffect(() => {
+    const fetchDefaultRating = async () => {
+      console.log("chamado");
+      const defaultRating = await handleDefaultRating(
+        "zythee",
+        selectedTrack?.id
+      );
+      console.log("Default Rating:", defaultRating);
+      setDefaultRating(defaultRating);
+    };
+    if (selectedTrack) {
+      fetchDefaultRating();
+    }
+  }, [selectedTrack]);
+
   return (
     <div className={style.homeCards}>
       <div className={style.cards}>
@@ -31,7 +48,12 @@ const HomeCards = () => {
           {topSongs ? null : <LoadingTrackCard />}
           {topSongs &&
             topSongs.map((item, index) => (
-              <TrackCard key={index} track={item.track} index={index + 1} />
+              <TrackCard
+                key={index}
+                track={item.track}
+                defaultRating={defaultRating}
+                index={index + 1}
+              />
             ))}
         </div>
       </div>
@@ -50,7 +72,7 @@ const HomeCards = () => {
             ))}
         </div>
       </div>
-      <div>{show && <ReviewsOverlay track={selectedTrack} />}</div>
+      <div>{show && <ReviewsOverlay defaultRating={defaultRating} />}</div>
     </div>
   );
 };

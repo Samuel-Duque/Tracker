@@ -1,14 +1,15 @@
 import axios from "axios";
 
-export const handleUserRating = async (user, trackid) => {
-  console.log(trackid);
-  const { data: logs } = axios.get(
+export const handleDefaultRating = async (user, trackid) => {
+  const { data: logs } = await axios.get(
     `https://trackerapi-8n4dl.ondigitalocean.app/logs/user/${user}/${trackid}`
   );
 
-  logs.forEach((currentTrack) => {
-    if (currentTrack?.id == trackid) {
-      console.log("Achado");
-    }
-  });
+  if (logs.length === 0) {
+    return 0;
+  }
+
+  const { rating: defaultRating } = logs[logs.length - 1];
+
+  return defaultRating;
 };
