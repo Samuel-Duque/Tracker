@@ -17,7 +17,7 @@ const TrackCard = ({ track, defaultRating, index }) => {
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const { show, setShow } = useContext(ClickOutsideContext);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(defaultRating);
 
   useEffect(() => {
     setIsVisible(false);
@@ -29,7 +29,6 @@ const TrackCard = ({ track, defaultRating, index }) => {
         className={style.trackCover}
         onMouseEnter={() => {
           setIsVisible(true);
-          setSelectedTrack(track);
         }}
         onMouseLeave={() => {
           setIsVisible(false), setOverlayIsVisible(false);
@@ -52,7 +51,9 @@ const TrackCard = ({ track, defaultRating, index }) => {
                 src={threedotsIcon}
                 alt=""
                 onClick={() => {
-                  setOverlayIsVisible(true);
+                  {
+                    setSelectedTrack(track), setOverlayIsVisible(true);
+                  }
                 }}
               />
             </div>
@@ -78,7 +79,6 @@ const TrackCard = ({ track, defaultRating, index }) => {
                   xsize={13}
                   left={"-16px"}
                   top={"2px"}
-                  defaultRating={defaultRating}
                 />
               </div>
               <button

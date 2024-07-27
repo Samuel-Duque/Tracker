@@ -8,6 +8,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { ClickOutsideProvider } from "./contexts/ClickOutsideContext";
 import { SelectedTrackProvider } from "./contexts/SelectedTrackContext";
 import TrackProfileScreen from "./pages/TrackProfileScreen/TrackProfileScreen";
+import { DefaultRatingProvider } from "./contexts/DefaultRatingContext";
 
 const router = createBrowserRouter([
   {
@@ -29,9 +30,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider>
       <SelectedTrackProvider>
-        <ClickOutsideProvider>
-          <RouterProvider router={router} />
-        </ClickOutsideProvider>
+        <DefaultRatingProvider>
+          <ClickOutsideProvider>
+            <RouterProvider router={router} />
+          </ClickOutsideProvider>
+        </DefaultRatingProvider>
       </SelectedTrackProvider>
     </ThemeProvider>
   </React.StrictMode>

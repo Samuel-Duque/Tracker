@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
 import EmptyRatingIcon from "../../assets/icons/StarComponents/EmptyRatingIcon";
 import FillRatingIcon from "../../assets/icons/StarComponents/FillRatingIcon";
 import HalfRatingIcon from "../../assets/icons/StarComponents/HalfRatingIcon";
 import style from "./RatingStar.module.css";
+import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 const RatingComponent = ({
   value,
-  defaultRating,
   setValue,
   color,
   size,
@@ -15,6 +15,8 @@ const RatingComponent = ({
   left,
   top,
 }) => {
+  const { defaultRating } = useContext(DefaultRatingContext);
+
   const [ratingValue, setRatingValue] = useState(defaultRating);
 
   const StyledRating = styled(Rating)({
@@ -31,6 +33,11 @@ const RatingComponent = ({
     setValue(newValue);
   };
 
+  useEffect(() => {
+    setRatingValue(defaultRating);
+    setValue(defaultRating);
+  }, [defaultRating]);
+
   return (
     <div className={style.rating}>
       {value > 0 && (
@@ -38,7 +45,7 @@ const RatingComponent = ({
           className={style.buttonX}
           style={{ left: left, top: top }}
           onClick={() => {
-            setValue(0);
+            setRatingValue(0);
           }}
         >
           <svg
