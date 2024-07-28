@@ -11,6 +11,7 @@ import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import Rating from "../RatingStar/RatingStar";
 import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
+import { handleLog } from "../../services/HandleLog";
 
 const TrackCard = ({ track, index }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,13 +30,16 @@ const TrackCard = ({ track, index }) => {
   useEffect(() => {
     const fetchDefaultRating = async () => {
       const defaultRating = await handleDefaultRating("zythee", track?.id);
-      console.log("Default Rating:", defaultRating);
       setRating(defaultRating);
     };
     if (track) {
       fetchDefaultRating();
     }
   }, [track]);
+
+  useEffect(() => {
+    console.log("Rating: ", rating, track?.name);
+  }, [rating]);
 
   return (
     <div className={style.cardContainer}>

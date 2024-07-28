@@ -33,7 +33,7 @@ const RatingComponent = ({
           className={style.buttonX}
           style={{ left: left, top: top }}
           onClick={() => {
-            setRatingValue(0);
+            setValue(0);
           }}
         >
           <svg
