@@ -16,6 +16,7 @@
     "@mui/material": "^5.16.4",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "eslint": "^9.8.0",
     "git-filter-repo": "^0.0.30",
     "install": "^0.13.0",
     "npm": "^10.8.2",
@@ -30,9 +31,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^9.7.0",
     "eslint-plugin-react": "^7.35.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "vite": "^5.3.1"
   }
