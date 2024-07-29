@@ -22,6 +22,17 @@ const TrackCard = ({ track, index }) => {
   const { show, setShow } = useContext(ClickOutsideContext);
   const [rating, setRating] = useState(0);
   const { setDefaultRatingData } = useContext(DefaultRatingContext);
+  const [todayDate, setTodayDate] = useState(null);
+
+  useEffect(() => {
+    const today = new Date();
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    const formattedTodayDate = today
+      .toLocaleDateString("en-US", options)
+      .replace(",", "");
+    setTodayDate(formattedTodayDate);
+    console.log(todayDate);
+  }, []);
 
   useEffect(() => {
     setIsVisible(false);
@@ -38,7 +49,21 @@ const TrackCard = ({ track, index }) => {
   }, [track]);
 
   useEffect(() => {
-    console.log("Rating: ", rating, track?.name);
+    const handleReviewSubmit = async () => {
+      console.log("Rating: ", rating, track?.name);
+      const response = await handleLog(
+        "zythee",
+        todayDate,
+        track,
+        0,
+        rating,
+        ""
+      );
+      setOverlayIsVisible(false);
+    };
+    if (overlayIsVisible) {
+      handleReviewSubmit();
+    }
   }, [rating]);
 
   return (
@@ -97,6 +122,9 @@ const TrackCard = ({ track, index }) => {
                   xsize={13}
                   left={"-16px"}
                   top={"2px"}
+                  onClick={() => {
+                    handleReviewSubmit();
+                  }}
                 />
               </div>
               <button
