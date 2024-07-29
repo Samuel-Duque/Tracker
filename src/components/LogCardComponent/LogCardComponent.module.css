@@ -1,0 +1,64 @@
+.mainComponent {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  transition: ease-in-out 0.3s all;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+/* Sessão dos 3 icones */
+.threeIcons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+  flex-direction: row;
+  gap: 25px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+.threeIcons img:hover {
+  fill: red;
+}
+.threeIcons > img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.threeIcons > img:active {
+  transform: scale(0.9);
+}
+
+/* Sessão de avaliar com estrelas */
+
+.rating {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.reviewOrLog,
+.addToLists {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.share {
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  padding: 10px 0;
+}
+.reviewOrLog:hover,
+.addToLists:hover,
+.share:hover {
+  /* background-color: var(--border-color); */
+  color: var(--primary-color);
+}

@@ -7,11 +7,16 @@ import TrendingSheet from "../../components/TrackProfileHeroSection/TrendingShee
 import HeroTrackInfo from "../../components/TrackProfileHeroSection/HeroTrackInfo/HeroTrackInfo";
 import TabbedContent from "../../components/TrackProfileTabbedContent/TrackProfileTabbedContent";
 import { trackLyrics } from "../../assets/data/Lyrics";
+import LogCardComponent from "../../components/LogCardComponent/LogCardComponent";
 const TrackProfile = () => {
   const Track = {
     img: trackImg,
     name: "Espresso",
-    artist: "Sabrina Carpenter",
+    album: {
+      artists: [{ name: "Sabrina Carpenter" }],
+      images: [{ url: trackImg }],
+    },
+    artists: [{ name: "Sabrina Carpenter" }],
     type: "Single",
     lyrics: trackLyrics,
     tags: [{ Pop: 4 }, { Top: 2 }],
@@ -90,8 +95,10 @@ const TrackProfile = () => {
                 <TabbedContent Track={Track} />
               </div>
               <div className={style.TrackDetailsLogAndReview}>
-                <div className={style.TrackDetailsLog}>Log</div>
-                <div className={style.TrackDetailsReview}>Review</div>
+                <div className={style.TrackDetailsLog}>
+                  <LogCardComponent track={Track} />
+                </div>
+                <div className={style.TrackDetailsRatings}>Ratings</div>
               </div>
             </div>
           </div>
