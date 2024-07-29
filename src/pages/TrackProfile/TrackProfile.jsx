@@ -8,6 +8,7 @@ import HeroTrackInfo from "../../components/TrackProfileHeroSection/HeroTrackInf
 import TabbedContent from "../../components/TrackProfileTabbedContent/TrackProfileTabbedContent";
 import { trackLyrics } from "../../assets/data/Lyrics";
 import LogCardComponent from "../../components/LogCardComponent/LogCardComponent";
+import ReviewBarChart from "../../components/ReviewBarChart/ReviewBarChart";
 const TrackProfile = () => {
   const Track = {
     img: trackImg,
@@ -19,6 +20,18 @@ const TrackProfile = () => {
     artists: [{ name: "Sabrina Carpenter" }],
     type: "Single",
     lyrics: trackLyrics,
+    reviewCounter: [
+      { rating: 5, comment: "Excellent!" },
+      { rating: 5, comment: "Fantastic!" },
+      { rating: 5, comment: "Bravo!" },
+      { rating: 4, comment: "Very good" },
+      { rating: 5, comment: "Loved it" },
+      { rating: 5, comment: "Isn't that sweet?💋" },
+      { rating: 3, comment: "It's okay" },
+      { rating: 4, comment: "Good" },
+      { rating: 2, comment: "Not great" },
+      { rating: 1, comment: "Terrible" },
+    ],
     tags: [{ Pop: 4 }, { Top: 2 }],
     avaiblePlataforms: [
       {
@@ -98,7 +111,9 @@ const TrackProfile = () => {
                 <div className={style.TrackDetailsLog}>
                   <LogCardComponent track={Track} />
                 </div>
-                <div className={style.TrackDetailsRatings}>Ratings</div>
+                <div className={style.TrackDetailsReviewCounter}>
+                  <ReviewBarChart reviews={Track.reviewCounter} />
+                </div>
               </div>
             </div>
           </div>
