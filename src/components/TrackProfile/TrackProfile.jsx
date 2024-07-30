@@ -70,7 +70,7 @@ const TrackProfile = () => {
         <div className={style.HeroSection}>
           <div className={style.HeroTrackContent}>
             {isLoading ? (
-              <SkeletonTemplate /> // Você pode substituir isso por um spinner ou outro indicador de carregamento
+              <SkeletonTemplate />
             ) : (
               selectedTrack && (
                 <>
@@ -107,12 +107,12 @@ const TrackProfile = () => {
         {/* Sessão TrackDetails - INICIO */}
         <div className={style.TrackDetails}>
           <div className={style.TrackDetails_left}>
-            <WhereToListen Track={selectedTrack} />
+            <WhereToListen track={selectedTrack} />
           </div>
           <div className={style.TrackDetails_right}>
             <div className={style.TrackDetailsTabAndLog}>
               <div className={style.TrackDetailsTab}>
-                <TabbedContent Track={selectedTrack} />
+                <TabbedContent track={selectedTrack} />
               </div>
               <div className={style.TrackDetailsLogAndReview}>
                 <div className={style.TrackDetailsLog}>
