@@ -12,10 +12,14 @@ import LogCardComponent from "../LogCardComponent/LogCardComponent";
 import ReviewBarChart from "../ReviewBarChart/ReviewBarChart";
 import { fetchTrack } from "../../services/FetchTrack";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
+import { handleDefaultRating } from "../../services/HandleDefaultRating";
+import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 
 const TrackProfile = () => {
   const { trackQuery } = useParams();
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
+  const { setDefaultRatingData } = useContext(DefaultRatingContext);
+
   useEffect(() => {
     const handleFetchTrack = async () => {
       const track = await fetchTrack(trackQuery);
@@ -23,6 +27,17 @@ const TrackProfile = () => {
     };
     handleFetchTrack();
   }, [trackQuery]);
+
+  useEffect(() => {
+    const fetchDefaultRating = async () => {
+      const defaultRating = await handleDefaultRating(
+        "zythee",
+        selectedTrack?.id
+      );
+      setDefaultRatingData(defaultRating);
+    };
+    fetchDefaultRating();
+  }, [selectedTrack]);
 
   return (
     <>

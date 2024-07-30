@@ -15,7 +15,8 @@ import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { handleLog } from "../../services/HandleLog";
 
 const LogCardComponent = ({ track }) => {
-  const { defaultRatingData } = useContext(DefaultRatingContext);
+  const { defaultRatingData, setDefaultRatingData } =
+    useContext(DefaultRatingContext);
   const [rating, setRating] = useState(defaultRatingData);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
@@ -24,9 +25,8 @@ const LogCardComponent = ({ track }) => {
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const [isVisible, setIsVisible] = useState(false);
   const { show, setShow } = useContext(ClickOutsideContext);
-  const { setDefaultRatingData } = useContext(DefaultRatingContext);
   const [todayDate, setTodayDate] = useState(null);
-
+  const [countRating, setCountRating] = useState(0);
   useEffect(() => {
     const today = new Date();
     const options = { day: "2-digit", month: "short", year: "numeric" };
@@ -41,31 +41,21 @@ const LogCardComponent = ({ track }) => {
   }, [show]);
 
   useEffect(() => {
-    const fetchDefaultRating = async () => {
-      const defaultRating = await handleDefaultRating("zythee", track?.id);
-      setRating(defaultRating);
-    };
-    if (track) {
-      fetchDefaultRating();
-    }
+    setRating(defaultRatingData);
   }, [track]);
 
+  const handleReviewSubmit = async () => {
+    console.log("Rating: ", rating, track?.name);
+    const response = await handleLog("zythee", todayDate, track, 0, rating, "");
+    setDefaultRatingData(rating);
+  };
+
   useEffect(() => {
-    const handleReviewSubmit = async () => {
-      const response = await handleLog(
-        "zythee",
-        todayDate,
-        track,
-        0,
-        rating,
-        ""
-      );
-      setOverlayIsVisible(false);
-    };
-    if (overlayIsVisible) {
-      handleReviewSubmit();
-    }
+    setCountRating(countRating + 1);
+    console.log("Rating: ", rating, countRating);
+    countRating > 1 && handleReviewSubmit();
   }, [rating]);
+
   return (
     <>
       <div className={style.mainComponent}>
@@ -112,7 +102,7 @@ const LogCardComponent = ({ track }) => {
         <div className={style.addToLists}>Add to lists</div>
         <div className={style.share}>Share</div>
       </div>
-      {show && <ReviewsOverlay track={track} />}
+      {show && <ReviewsOverlay />}
     </>
   );
 };
