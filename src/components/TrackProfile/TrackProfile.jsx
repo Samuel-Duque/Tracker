@@ -14,11 +14,12 @@ import { fetchTrack } from "../../services/FetchTrack";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
-
+import SkeletonTemplate from "../LoadingTrackCard/SkeletonTemplate/SkeletonTemplate";
 const TrackProfile = () => {
   const { trackQuery } = useParams();
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const { setDefaultRatingData } = useContext(DefaultRatingContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleFetchTrack = async () => {
@@ -29,6 +30,7 @@ const TrackProfile = () => {
   }, [trackQuery]);
 
   useEffect(() => {
+    console.log(selectedTrack?.id === selectedTrack?.id);
     const fetchDefaultRating = async () => {
       const defaultRating = await handleDefaultRating(
         "zythee",
@@ -38,24 +40,41 @@ const TrackProfile = () => {
     };
     fetchDefaultRating();
   }, [selectedTrack]);
+  useEffect(() => {
+    if (selectedTrack) {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 700);
 
+      return () => clearTimeout(timer);
+    }
+  }, [selectedTrack]);
   return (
     <>
       <div className={style.TrackPage}>
         {/* Sessão HeroSection - INICIO */}
         <div className={style.HeroSection}>
-          {/* Sessão HeroTrackContent (Foto, titulo e tags)- INICIO */}
           <div className={style.HeroTrackContent}>
-            <div className={style.HeroTrackContentTrackImg}>
-              <img
-                src={selectedTrack?.album?.images[1]?.url}
-                alt="Track Image"
-              />
-            </div>
-            <div className={style.HeroTrackContentTrackInfo}>
-              <HeroTrackInfo track={selectedTrack} />
-            </div>
+            {isLoading ? (
+              <SkeletonTemplate /> // Você pode substituir isso por um spinner ou outro indicador de carregamento
+            ) : (
+              selectedTrack && (
+                <>
+                  <div className={style.HeroTrackContentTrackImg}>
+                    <img
+                      src={selectedTrack?.album?.images[1]?.url}
+                      alt="Track Image"
+                    />
+                  </div>
+                  <div className={style.HeroTrackContentTrackInfo}>
+                    <HeroTrackInfo track={selectedTrack} />
+                  </div>
+                </>
+              )
+            )}
           </div>
+
           {/* Sessão HeroTrackContent (Foto, titulo e tags) - FIM */}
           {/* Sessão Trending Sheets - INICIO */}
 

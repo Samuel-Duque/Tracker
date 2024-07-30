@@ -4,7 +4,8 @@
   flex-direction: column;
   gap: 50px;
   justify-content: space-between;
-  width: 1110px;
+  width: 100vw;
+  max-width: 1100px;
 }
 .HeroSection {
   display: flex;
