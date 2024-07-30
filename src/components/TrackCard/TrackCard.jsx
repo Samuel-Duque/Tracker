@@ -12,6 +12,7 @@ import Rating from "../RatingStar/RatingStar";
 import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 import { handleLog } from "../../services/HandleLog";
+import { useNavigate } from "react-router-dom";
 
 const TrackCard = ({ track, index }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,6 +23,18 @@ const TrackCard = ({ track, index }) => {
   const { show, setShow } = useContext(ClickOutsideContext);
   const [rating, setRating] = useState(0);
   const { setDefaultRatingData } = useContext(DefaultRatingContext);
+  const [todayDate, setTodayDate] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const today = new Date();
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    const formattedTodayDate = today
+      .toLocaleDateString("en-US", options)
+      .replace(",", "");
+    setTodayDate(formattedTodayDate);
+    console.log(todayDate);
+  }, []);
 
   useEffect(() => {
     setIsVisible(false);
@@ -38,11 +51,30 @@ const TrackCard = ({ track, index }) => {
   }, [track]);
 
   useEffect(() => {
-    console.log("Rating: ", rating, track?.name);
+    const handleReviewSubmit = async () => {
+      console.log("Rating: ", rating, track?.name);
+      setOverlayIsVisible(false);
+      const response = await handleLog(
+        "zythee",
+        todayDate,
+        track,
+        0,
+        rating,
+        ""
+      );
+    };
+    if (overlayIsVisible) {
+      handleReviewSubmit();
+    }
   }, [rating]);
 
+  const handleTrackPage = () => {
+    console.warn("Clicado - ", track?.id);
+    navigate(null);
+    navigate(`/track/${track?.id}`);
+  };
   return (
-    <div className={style.cardContainer}>
+    <div className={style.cardContainer} onClick={handleTrackPage}>
       <div
         className={style.trackCover}
         onMouseEnter={() => {
@@ -53,7 +85,7 @@ const TrackCard = ({ track, index }) => {
         }}
       >
         {isVisible && (
-          <div className={style.overlay}>
+          <div className={style.overlay} onClick={(e) => e.stopPropagation()}>
             <div className={style.moreOptions}>
               <img
                 src={isClickedTrack ? activetrackIcon : trackIcon}
@@ -86,10 +118,14 @@ const TrackCard = ({ track, index }) => {
           </div>
         )}
         {overlayIsVisible && (
-          <div className={style.extraOverlay}>
+          <div
+            className={style.extraOverlay}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={style.overlayOptions}>
               <div className={style.overlayOptionReview}>
                 <Rating
+                  track={track}
                   value={rating}
                   setValue={setRating}
                   color={"#1A1B1E"}

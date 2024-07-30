@@ -6,6 +6,7 @@
 .TrackName {
   font-size: 24px;
   font-weight: 700;
+  text-wrap: nowrap;
 }
 .HeroTrackContentTrackInfoSub {
   display: flex;
@@ -29,4 +30,13 @@
   font-size: 13px;
   border-radius: 5px;
   background: var(--Dark-Secondary, #2e2e2e);
+}
+
+.TrackType {
+  text-decoration: underline;
+}
+
+.TrackType:hover {
+  color: var(--primary-color);
+  cursor: pointer;
 }

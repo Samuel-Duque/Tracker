@@ -6,7 +6,9 @@
   border-radius: var(--border-radius);
   width: 210px;
   position: relative;
+  overflow: hidden;
   transition: ease-in-out 0.3s all;
+  cursor: pointer;
 }
 
 .trackCover {

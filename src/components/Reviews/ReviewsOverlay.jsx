@@ -30,6 +30,7 @@ const ReviewsOverlay = () => {
     if (selectedTrack?.album.release_date) {
       setReleaseDate(selectedTrack.album.release_date.split("-")[0]);
     }
+    console.log("Selected: ", selectedTrack);
   }, [selectedTrack]);
 
   const handleCardClick = (event) => {
@@ -89,7 +90,7 @@ const ReviewsOverlay = () => {
           <div className={style.coverImageOptions}>
             <img
               className={style.coverImage}
-              src={selectedTrack?.album?.images[0]?.url}
+              src={selectedTrack?.album?.images[1]?.url}
               alt=""
             />
           </div>

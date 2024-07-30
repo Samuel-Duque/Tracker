@@ -43,7 +43,7 @@ const HomeCards = () => {
             ))}
         </div>
       </div>
-      <div>{show && <ReviewsOverlay defaultRating={defaultRating} />}</div>
+      <div>{show && <ReviewsOverlay />}</div>
     </div>
   );
 };

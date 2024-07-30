@@ -1,12 +1,11 @@
 import axios from "axios";
 import { getSpotifyToken } from "./GetSpotifyToken";
 
-export const fetchTrack = async ({ musicURL }) => {
-  const token = getSpotifyToken();
+export const fetchTrack = async (trackid) => {
+  const token = await getSpotifyToken();
   try {
-    console.log("URL", musicURL.musicURL);
-    const response = await axios.get(
-      "https://api.spotify.com/v1/tracks/4fv9mYzwI3Ww8Hsg33OZXD",
+    const { data: track } = await axios.get(
+      `https://api.spotify.com/v1/tracks/${trackid}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -14,9 +13,7 @@ export const fetchTrack = async ({ musicURL }) => {
         },
       }
     );
-
-    const songData = response.data;
-    return songData;
+    return track;
   } catch (error) {
     console.log(error);
   }

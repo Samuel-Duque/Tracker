@@ -12,17 +12,24 @@ import activetrackIcon from "../../assets/icons/active-track-icon.svg";
 import threedotsIcon from "../../assets/icons/threedots-icon.svg";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
+import { useNavigate } from "react-router-dom";
+import Rating from "../RatingStar/RatingStar";
+import { handleDefaultRating } from "../../services/HandleDefaultRating";
+import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 
 const SearchItem = ({ music }) => {
   const [track, setTrack] = useState(null);
   const [releaseDate, setReleaseDate] = useState(null);
-  const [rating, setRating] = useState(3.5);
+  const [rating, setRating] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
   const { setShow } = useContext(ClickOutsideContext);
-  const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
+  const { setSelectedTrack } = useContext(SelectedTrackContext);
+  const { setDefaultRatingData } = useContext(DefaultRatingContext);
+  const navigate = useNavigate();
+
   useEffect(() => {
     setTrack(music);
     if (music?.album.release_date) {
@@ -30,9 +37,28 @@ const SearchItem = ({ music }) => {
     }
   }, [music]);
 
+  useEffect(() => {
+    const fetchDefaultRating = async () => {
+      const defaultRating = await handleDefaultRating("zythee", music?.id);
+      setRating(defaultRating);
+    };
+    if (music) {
+      fetchDefaultRating();
+    }
+  }, [music]);
+
+  const handleTrackPage = () => {
+    navigate(`/track/${music?.id}`);
+  };
+
   return (
     <>
-      <div className={style.SearchItemContainer}>
+      <div
+        className={style.SearchItemContainer}
+        onClick={() => {
+          handleTrackPage();
+        }}
+      >
         <div
           className={style.CoverInfo}
           onMouseLeave={() => setOverlayIsVisible(false)}
@@ -44,7 +70,10 @@ const SearchItem = ({ music }) => {
               onMouseLeave={() => setIsVisible(false)}
             >
               {isVisible && (
-                <div className={style.overlay}>
+                <div
+                  className={style.overlay}
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <div className={style.moreOptions}>
                     <img
                       src={isClickedTrack ? activetrackIcon : trackIcon}
@@ -65,16 +94,29 @@ const SearchItem = ({ music }) => {
                 </div>
               )}
               {overlayIsVisible && (
-                <div className={style.extraOverlay}>
+                <div
+                  className={style.extraOverlay}
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <div className={style.overlayOptions}>
-                    <button className={style.overlayOption}>
-                      <RatingReview percentage={80} />
-                    </button>
+                    <div className={style.overlayOption}>
+                      <Rating
+                        value={rating}
+                        setValue={setRating}
+                        color={"#1A1B1E"}
+                        size={16}
+                        xsize={13}
+                        left={"-16px"}
+                        top={"2px"}
+                      />
+                    </div>
                     <button
                       onClick={() => {
                         setShow(true);
                         setSelectedTrack(music);
                         setOverlayIsVisible(false);
+
+                        setDefaultRatingData(rating);
                       }}
                       className={style.overlayOption}
                     >
@@ -108,8 +150,8 @@ const SearchItem = ({ music }) => {
                 </span>
               </div>
               <div className={style.rating}>
-                <RatingReview percentage={rating * 20} />
-                <span>{rating}</span>
+                <RatingReview percentage={80} />
+                <span>{3.5}</span>
               </div>
             </div>
           </div>

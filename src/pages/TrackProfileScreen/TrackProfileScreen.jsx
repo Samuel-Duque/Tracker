@@ -2,7 +2,7 @@ import React from "react";
 import style from "./TrackProfileScreen.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import TrackProfile from "../TrackProfile/TrackProfile";
+import TrackProfile from "../../components/TrackProfile/TrackProfile";
 
 const TrackProfileScreen = () => {
   return (

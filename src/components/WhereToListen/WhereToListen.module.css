@@ -1,8 +1,9 @@
 .WhereToListen_Title {
   font-weight: bold;
   font-size: 1rem;
-  padding: 4px 0;
   width: fit-content;
+  padding-bottom: 3px;
+
   border-bottom: 1px solid var(--border-color);
 }
 .WhereToListen {

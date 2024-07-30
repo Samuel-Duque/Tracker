@@ -5,6 +5,13 @@
   justify-content: space-between;
   gap: 10px;
 }
+.tabbedContentBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0px;
+  font-size: 13px;
+}
 .tabbedContentHeader {
   display: flex;
   justify-content: left;
@@ -13,17 +20,12 @@
   width: 100%;
   border-bottom: 1px solid var(--border-color);
 }
-.tabbedContentBody {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px 0px;
-  font-size: 13px;
-}
 .tabbedContentHeader button {
   color: var(--text-color);
   transition: all 0.3s ease;
   font-size: 1rem;
+  height: 109%;
+  padding-bottom: 3px;
 }
 button.active {
   position: inherit;
