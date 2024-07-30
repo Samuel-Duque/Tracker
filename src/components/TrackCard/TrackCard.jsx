@@ -70,6 +70,7 @@ const TrackCard = ({ track, index }) => {
 
   const handleTrackPage = () => {
     console.warn("Clicado - ", track?.id);
+    navigate(null);
     navigate(`/track/${track?.id}`);
   };
   return (

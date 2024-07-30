@@ -48,7 +48,6 @@ const SearchItem = ({ music }) => {
   }, [music]);
 
   const handleTrackPage = () => {
-    console.log("HEre");
     navigate(`/track/${music?.id}`);
   };
 

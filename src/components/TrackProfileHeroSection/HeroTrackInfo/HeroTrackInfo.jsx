@@ -3,9 +3,7 @@ import style from "./HeroTrackInfo.module.css";
 import upArrow from "../../../assets/icons/up-arrow-thin.svg";
 
 const HeroTrackInfo = ({ track }) => {
-  useEffect(() => {
-    console.log(track);
-  }, [track]);
+  useEffect(() => {}, [track]);
 
   return (
     <>

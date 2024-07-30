@@ -9,7 +9,6 @@ export const handleLog = async (
   rating,
   review
 ) => {
-  console.log("Rating: ", rating);
   try {
     const { data: musicAlreadyAdded } = await axios.get(
       `https://trackerapi-8n4dl.ondigitalocean.app/tracks/${selectedTrack?.id}`
@@ -43,7 +42,6 @@ export const handleLog = async (
           listened: 0,
         }
       );
-      console.log(response);
     } else {
       console.log("Short review: ", lastLog);
       if (lastLog?.selected_date == 0) {

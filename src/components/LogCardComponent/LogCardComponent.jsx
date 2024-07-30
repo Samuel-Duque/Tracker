@@ -45,14 +45,12 @@ const LogCardComponent = ({ track }) => {
   }, [track]);
 
   const handleReviewSubmit = async () => {
-    console.log("Rating: ", rating, track?.name);
     const response = await handleLog("zythee", todayDate, track, 0, rating, "");
     setDefaultRatingData(rating);
   };
 
   useEffect(() => {
     setCountRating(countRating + 1);
-    console.log("Rating: ", rating, countRating);
     countRating > 1 && handleReviewSubmit();
   }, [rating]);
 

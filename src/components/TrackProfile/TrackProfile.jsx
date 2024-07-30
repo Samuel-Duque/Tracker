@@ -20,6 +20,19 @@ const TrackProfile = () => {
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const { setDefaultRatingData } = useContext(DefaultRatingContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentTrack, setCurrentTrack] = useState(null);
+
+  // useEffect(() => {
+  //   if (selectedTrack) {
+  //     console.log("selectedTrack", selectedTrack?.name);
+  //     setCurrentTrack(null);
+  //     const timer = setTimeout(() => {
+  //       setCurrentTrack(selectedTrack);
+  //     }, 700);
+
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [selectedTrack]);
 
   useEffect(() => {
     const handleFetchTrack = async () => {
@@ -30,7 +43,6 @@ const TrackProfile = () => {
   }, [trackQuery]);
 
   useEffect(() => {
-    console.log(selectedTrack?.id === selectedTrack?.id);
     const fetchDefaultRating = async () => {
       const defaultRating = await handleDefaultRating(
         "zythee",
@@ -40,12 +52,13 @@ const TrackProfile = () => {
     };
     fetchDefaultRating();
   }, [selectedTrack]);
+
   useEffect(() => {
     if (selectedTrack) {
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 700);
+      }, 800);
 
       return () => clearTimeout(timer);
     }
