@@ -31,3 +31,12 @@
   border-radius: 5px;
   background: var(--Dark-Secondary, #2e2e2e);
 }
+
+.TrackType {
+  text-decoration: underline;
+}
+
+.TrackType:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+}

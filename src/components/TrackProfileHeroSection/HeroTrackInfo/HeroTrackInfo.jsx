@@ -13,11 +13,15 @@ const HeroTrackInfo = ({ track }) => {
         <span className={style.TrackName}>{track?.name}</span>
         <div className={style.HeroTrackContentTrackInfoSub}>
           <span className={style.TrackArtist}>{track?.artists[0]?.name}</span>
-          <span className={style.TrackType}>
-            {track &&
-              track?.album?.album_type?.charAt(0)?.toUpperCase() +
-                track?.album?.album_type?.slice(1)}
-          </span>
+          <div>
+            <span>
+              {track &&
+                track?.album?.album_type?.charAt(0)?.toUpperCase() +
+                  track?.album?.album_type?.slice(1)}
+            </span>
+            <span> - </span>
+            <span className={style.TrackType}>{track?.album?.name}</span>
+          </div>
         </div>
       </div>
       <div className={style.HeroTrackContentTrackInfoTags}>

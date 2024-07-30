@@ -13,14 +13,7 @@ const RatingComponent = ({
   left,
   top,
 }) => {
-  const StyledRating = styled(Rating)({
-    "& .MuiRating-iconFilled": {
-      color: "#ff6d75",
-    },
-    "& .MuiRating-iconHover": {
-      color: "#ff3d47",
-    },
-  });
+  const StyledRating = styled(Rating)({});
 
   const handleRatingChange = (event, newValue) => {
     setValue(newValue);
