@@ -4,6 +4,7 @@
   flex-direction: column;
   gap: 50px;
   justify-content: space-between;
+  width: 1110px;
 }
 .HeroSection {
   display: flex;
@@ -17,7 +18,7 @@
   justify-content: center;
   align-items: flex-start;
   gap: 22px;
-  max-width: 330px;
+  margin-right: auto;
 }
 
 .HeroTrackContentTrackImg img {

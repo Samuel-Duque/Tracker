@@ -14,8 +14,9 @@ const HeroTrackInfo = ({ track }) => {
         <div className={style.HeroTrackContentTrackInfoSub}>
           <span className={style.TrackArtist}>{track?.artists[0]?.name}</span>
           <span className={style.TrackType}>
-            {track?.album?.album_type.charAt(0).toUpperCase() +
-              track?.album?.album_type.slice(1)}
+            {track &&
+              track?.album?.album_type?.charAt(0)?.toUpperCase() +
+                track?.album?.album_type?.slice(1)}
           </span>
         </div>
       </div>

@@ -6,6 +6,7 @@
 .TrackName {
   font-size: 24px;
   font-weight: 700;
+  text-wrap: nowrap;
 }
 .HeroTrackContentTrackInfoSub {
   display: flex;

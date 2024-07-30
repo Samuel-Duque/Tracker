@@ -43,20 +43,7 @@ const TrackProfile = () => {
           </div>
           {/* Sessão HeroTrackContent (Foto, titulo e tags) - FIM */}
           {/* Sessão Trending Sheets - INICIO */}
-          <div className={style.TrendingSheet1}>
-            <TrendingSheet
-              position={4}
-              title={"Global"}
-              trackName={selectedTrack?.name}
-            />
-          </div>
-          <div className={style.TrendingSheet2}>
-            <TrendingSheet
-              position={4}
-              title={"Pop"}
-              trackName={selectedTrack?.name}
-            />
-          </div>
+
           {/* Sessão Trending Sheets - FIM */}
           <div className={style.Review_Trending}>
             <div className={style.NumberAndStars}>
