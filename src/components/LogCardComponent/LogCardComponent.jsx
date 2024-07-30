@@ -11,7 +11,10 @@ import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 import ReviewsOverlay from "../Reviews/ReviewsOverlay";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
-const LogCardComponent = ({ track, index }) => {
+import { handleDefaultRating } from "../../services/HandleDefaultRating";
+import { handleLog } from "../../services/HandleLog";
+
+const LogCardComponent = ({ track }) => {
   const { defaultRatingData } = useContext(DefaultRatingContext);
   const [rating, setRating] = useState(defaultRatingData);
   const [isClickedTrack, setClickedTrack] = useState(false);
@@ -31,7 +34,6 @@ const LogCardComponent = ({ track, index }) => {
       .toLocaleDateString("en-US", options)
       .replace(",", "");
     setTodayDate(formattedTodayDate);
-    console.log(todayDate);
   }, []);
 
   useEffect(() => {
@@ -50,7 +52,6 @@ const LogCardComponent = ({ track, index }) => {
 
   useEffect(() => {
     const handleReviewSubmit = async () => {
-      console.log("Rating: ", rating, track?.name);
       const response = await handleLog(
         "zythee",
         todayDate,
@@ -97,19 +98,21 @@ const LogCardComponent = ({ track, index }) => {
             defaultRating={rating}
           />
         </div>
-        <div className={style.reviewOrLog}>
-          <span
-            onClick={() => {
-              setSelectedTrack(track), setOverlayIsVisible(true), setShow(true);
-            }}
-          >
-            Review or Log
-          </span>
+        <div
+          className={style.reviewOrLog}
+          onClick={() => {
+            console.log("Clicado"),
+              setSelectedTrack(track),
+              setOverlayIsVisible(false),
+              setShow(true);
+          }}
+        >
+          <span>Review or Log</span>
         </div>
         <div className={style.addToLists}>Add to lists</div>
         <div className={style.share}>Share</div>
       </div>
-      {overlayIsVisible && <ReviewsOverlay track={track} ClickOutsideContext />}
+      {show && <ReviewsOverlay track={track} />}
     </>
   );
 };

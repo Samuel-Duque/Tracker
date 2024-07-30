@@ -22,6 +22,7 @@
 
 .HeroTrackContentTrackImg img {
   display: flex;
+  height: 182px;
   border-radius: 5px;
 }
 .HeroTrackContentTrackInfo {
@@ -67,7 +68,6 @@
 .Review_Trending {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-end;
   gap: 15px;
   align-self: stretch;
@@ -80,7 +80,7 @@
   gap: 8.6px;
 }
 .ReviewNumber {
-  font-size: 16px;
+  font-size: var(--font-size-minor);
   font-style: normal;
   line-height: normal;
 }
@@ -88,7 +88,7 @@
   display: flex;
   width: 230px;
   padding: 10px 21px;
-  font-size: 13px;
+  font-size: var(--font-size-minor);
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -126,8 +126,7 @@
   height: 100%;
 }
 .TrendingSheetSection {
-  display: grid;
-  /* flex-direction: row; */
+  display: flex;
   gap: 20px;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -161,6 +160,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.TrackDetailsLogAndReview {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
 }
 
 @media screen and (max-width: 1024px) {

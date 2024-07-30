@@ -8,11 +8,11 @@ const WhereToListen = ({ Track }) => {
         <span>Where to listen</span>
       </div>
       <div className={style.WhereToListen_List}>
-        {Track.avaiblePlataforms.map((plataform, index) => {
+        {/* {Track.avaiblePlataforms.map((plataform, index) => {
           return (
             <WhereToListenItem key={index} plataform={plataform.plataform} />
           );
-        })}
+        })} */}
       </div>
     </div>
   );

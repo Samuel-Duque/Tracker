@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     element: <SearchScreen />,
   },
   {
-    path: "/track",
+    path: "/track/:trackQuery",
     element: <TrackProfileScreen />,
   },
 ]);

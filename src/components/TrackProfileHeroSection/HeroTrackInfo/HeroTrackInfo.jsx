@@ -1,34 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./HeroTrackInfo.module.css";
 import upArrow from "../../../assets/icons/up-arrow-thin.svg";
 
-const HeroTrackInfo = ({ Track }) => {
+const HeroTrackInfo = ({ track }) => {
+  useEffect(() => {
+    console.log(track);
+  }, [track]);
+
   return (
     <>
       <div className={style.HeroTrackContentTrackInfoWrap}>
-        <span className={style.TrackName}>{Track.name}</span>
+        <span className={style.TrackName}>{track?.name}</span>
         <div className={style.HeroTrackContentTrackInfoSub}>
-          <span className={style.TrackArtist}>{Track.artist}</span>
-          <span className={style.TrackType}>{Track.type}</span>
+          <span className={style.TrackArtist}>{track?.artists[0]?.name}</span>
+          <span className={style.TrackType}>
+            {track?.album?.album_type.charAt(0).toUpperCase() +
+              track?.album?.album_type.slice(1)}
+          </span>
         </div>
       </div>
       <div className={style.HeroTrackContentTrackInfoTags}>
-        {Track.tags.map((tag, index) => {
+        {/* {track.tags.map((tag, index) => {
           const tagName = Object.keys(tag)[0];
           const tagValue = tag[tagName];
           return (
-            <>
-              {tagValue <= 5 && (
-                <div key={index}>
-                  <span key={index} className={style.Tags}>
-                    <img src={upArrow} />
-                    {tagName} {tagValue}
-                  </span>
-                </div>
-              )}
-            </>
+            tagValue <= 5 && (
+              <div key={index}>
+                <span className={style.Tags}>
+                  <img src={upArrow} alt="Up Arrow" />
+                  {tagName} {tagValue}
+                </span>
+              </div>
+            )
           );
-        })}
+        })} */}
       </div>
     </>
   );
