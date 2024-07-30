@@ -127,7 +127,7 @@
   align-items: center;
   text-wrap: nowrap;
   overflow: hidden;
-  width: 176px;
+  max-width: 176px;
 }
 
 .rating {
@@ -184,6 +184,24 @@
 .overlayOption:hover {
   background-color: #202225;
   cursor: pointer;
+}
+
+.trackHeroInfo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.trackHeroTitle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.trackHeroTitle svg {
+  color: var(--text-secondary-color);
+  width: 15px;
+  height: 15px;
 }
 
 [data-theme="light"] {

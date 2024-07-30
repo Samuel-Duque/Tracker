@@ -26,7 +26,7 @@ const HeroTrackInfo = ({ track }) => {
             )}
           </div>
           <span className={style.heroReleaseYear}>
-            {track.album.release_date.split("-")[0]}
+            {track?.album?.release_date?.split("-")[0]}
           </span>
         </div>
         <div className={style.HeroTrackContentTrackInfoSub}>
