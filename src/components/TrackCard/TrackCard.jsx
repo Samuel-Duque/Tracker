@@ -33,7 +33,6 @@ const TrackCard = ({ track, index }) => {
       .toLocaleDateString("en-US", options)
       .replace(",", "");
     setTodayDate(formattedTodayDate);
-    console.log(todayDate);
   }, []);
 
   useEffect(() => {
