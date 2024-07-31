@@ -11,62 +11,101 @@ import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 import ReviewsOverlay from "../Reviews/ReviewsOverlay";
 import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
-import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { handleLog } from "../../services/HandleLog";
+import { handleDefaultRating } from "../../services/HandleDefaultRating";
 
 const LogCardComponent = ({ track }) => {
-  const { defaultRatingData, setDefaultRatingData } =
-    useContext(DefaultRatingContext);
+  const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
+  const {
+    defaultRatingData,
+    setDefaultRatingData,
+    defaultLikedData,
+    setDefaultLikedData,
+    defaultListenedData,
+    setDefaultListenedData,
+  } = useContext(DefaultRatingContext);
+
   const [rating, setRating] = useState(defaultRatingData);
+  const [liked, setLiked] = useState(defaultLikedData);
+  const [listened, setListened] = useState(defaultListenedData);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
   const [isClickedPlaylist, setClickedPlaylist] = useState(false);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
-  const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const [isVisible, setIsVisible] = useState(false);
   const { show, setShow } = useContext(ClickOutsideContext);
-  const [todayDate, setTodayDate] = useState(null);
   const [countRating, setCountRating] = useState(0);
-  useEffect(() => {
-    const today = new Date();
-    const options = { day: "2-digit", month: "short", year: "numeric" };
-    const formattedTodayDate = today
-      .toLocaleDateString("en-US", options)
-      .replace(",", "");
-    setTodayDate(formattedTodayDate);
-  }, []);
+  const [countLiked, setCountLiked] = useState(0);
 
   useEffect(() => {
     setIsVisible(false);
   }, [show]);
 
   useEffect(() => {
-    setRating(defaultRatingData);
+    const fetchDefaultRating = async () => {
+      const defaultInfo = await handleDefaultRating("zythee", track?.id);
+      setRating(defaultInfo?.rating);
+      setLiked(defaultInfo?.liked);
+      setListened(defaultInfo?.listened);
+    };
+    if (track) {
+      fetchDefaultRating();
+    }
   }, [track]);
 
-  const handleReviewSubmit = async () => {
-    const response = await handleLog("zythee", todayDate, track, 0, rating, "");
-    setDefaultRatingData(rating);
-  };
-
   useEffect(() => {
+    console.log("Rating: ", rating, countRating);
     setCountRating(countRating + 1);
+
+    const handleReviewSubmit = async () => {
+      const response = await handleLog(
+        "zythee",
+        track,
+        0,
+        liked,
+        listened,
+        rating,
+        ""
+      );
+      setDefaultRatingData(rating);
+    };
     countRating > 1 && handleReviewSubmit();
   }, [rating]);
+
+  useEffect(() => {
+    setCountLiked(countLiked + 1);
+
+    console.log("liked", liked, countLiked);
+    console.log("listened", listened, countLiked);
+    const handleReviewSubmit = async () => {
+      console.log("Rating: ", rating, track?.name);
+      setOverlayIsVisible(false);
+      const response = await handleLog(
+        "zythee",
+        track,
+        0,
+        liked,
+        listened,
+        rating,
+        ""
+      );
+    };
+    countLiked > 1 && handleReviewSubmit();
+  }, [liked, listened]);
 
   return (
     <>
       <div className={style.mainComponent}>
         <div className={style.threeIcons}>
           <img
-            src={isClickedTrack ? activetrackIcon : trackIcon}
+            src={listened ? activetrackIcon : trackIcon}
             alt="Track Icon"
-            onClick={() => setClickedTrack(!isClickedTrack)}
+            onClick={() => setListened(!listened)}
           />
           <img
-            src={isClickedLike ? activelikeIcon : likeIcon}
+            src={liked ? activelikeIcon : likeIcon}
             alt="Like button"
-            onClick={() => setClickedLike(!isClickedLike)}
+            onClick={() => setLiked(!liked)}
           />
           <img
             src={isClickedPlaylist ? activeplaylistIcon : addToPlaylistIcon}
@@ -92,7 +131,10 @@ const LogCardComponent = ({ track }) => {
             console.log("Clicado"),
               setSelectedTrack(track),
               setOverlayIsVisible(false),
-              setShow(true);
+              setShow(true),
+              setDefaultRatingData(rating),
+              setDefaultLikedData(liked),
+              setDefaultListenedData(listened);
           }}
         >
           <span>Review or Log</span>

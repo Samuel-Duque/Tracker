@@ -16,24 +16,15 @@ import { useNavigate } from "react-router-dom";
 
 const TrackCard = ({ track, index }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isClickedTrack, setClickedTrack] = useState(false);
-  const [isClickedLike, setClickedLike] = useState(false);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const { show, setShow } = useContext(ClickOutsideContext);
   const [rating, setRating] = useState(0);
-  const { setDefaultRatingData } = useContext(DefaultRatingContext);
-  const [todayDate, setTodayDate] = useState(null);
+  const [liked, setLiked] = useState(0);
+  const [listened, setListened] = useState(0);
+  const { setDefaultRatingData, setDefaultLikedData, setDefaultListenedData } =
+    useContext(DefaultRatingContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const today = new Date();
-    const options = { day: "2-digit", month: "short", year: "numeric" };
-    const formattedTodayDate = today
-      .toLocaleDateString("en-US", options)
-      .replace(",", "");
-    setTodayDate(formattedTodayDate);
-  }, []);
 
   useEffect(() => {
     setIsVisible(false);
@@ -41,8 +32,10 @@ const TrackCard = ({ track, index }) => {
 
   useEffect(() => {
     const fetchDefaultRating = async () => {
-      const defaultRating = await handleDefaultRating("zythee", track?.id);
-      setRating(defaultRating);
+      const defaultInfo = await handleDefaultRating("zythee", track?.id);
+      setRating(defaultInfo?.rating);
+      setLiked(defaultInfo?.liked);
+      setListened(defaultInfo?.listened);
     };
     if (track) {
       fetchDefaultRating();
@@ -55,9 +48,10 @@ const TrackCard = ({ track, index }) => {
       setOverlayIsVisible(false);
       const response = await handleLog(
         "zythee",
-        todayDate,
         track,
         0,
+        liked,
+        listened,
         rating,
         ""
       );
@@ -67,8 +61,27 @@ const TrackCard = ({ track, index }) => {
     }
   }, [rating]);
 
+  useEffect(() => {
+    const handleReviewSubmit = async () => {
+      console.log("Rating: ", rating, track?.name);
+      setOverlayIsVisible(false);
+      const response = await handleLog(
+        "zythee",
+        track,
+        0,
+        liked,
+        listened,
+        rating,
+        ""
+      );
+    };
+
+    if (isVisible) {
+      handleReviewSubmit();
+    }
+  }, [liked, listened]);
+
   const handleTrackPage = () => {
-    console.warn("Clicado - ", track?.id);
     navigate(null);
     navigate(`/track/${track?.id}`);
   };
@@ -87,14 +100,14 @@ const TrackCard = ({ track, index }) => {
           <div className={style.overlay} onClick={(e) => e.stopPropagation()}>
             <div className={style.moreOptions}>
               <img
-                src={isClickedTrack ? activetrackIcon : trackIcon}
+                src={listened ? activetrackIcon : trackIcon}
                 alt=""
-                onClick={() => setClickedTrack(!isClickedTrack)}
+                onClick={() => setListened(!listened)}
               />
               <img
-                src={isClickedLike ? activelikeIcon : likeIcon}
+                src={liked ? activelikeIcon : likeIcon}
                 alt=""
-                onClick={() => setClickedLike(!isClickedLike)}
+                onClick={() => setLiked(!liked)}
               />
               <img
                 src={threedotsIcon}
@@ -124,7 +137,6 @@ const TrackCard = ({ track, index }) => {
             <div className={style.overlayOptions}>
               <div className={style.overlayOptionReview}>
                 <Rating
-                  track={track}
                   value={rating}
                   setValue={setRating}
                   color={"#1A1B1E"}
@@ -138,6 +150,8 @@ const TrackCard = ({ track, index }) => {
                 onClick={() => {
                   setShow(true);
                   setDefaultRatingData(rating);
+                  setDefaultLikedData(liked);
+                  setDefaultListenedData(listened);
                   setOverlayIsVisible(false);
                   setIsVisible(false);
                 }}
@@ -173,6 +187,7 @@ const TrackCard = ({ track, index }) => {
               height="1em"
               viewBox="0 0 24 24"
             >
+              <title>Explicit</title>
               <path
                 fill="currentColor"
                 d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-5 6h-3v2h3c.55 0 1 .45 1 1s-.45 1-1 1h-3v2h3c.55 0 1 .45 1 1s-.45 1-1 1h-4c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1h4c.55 0 1 .45 1 1s-.45 1-1 1"

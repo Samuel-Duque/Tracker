@@ -10,6 +10,12 @@ export const handleDefaultRating = async (user, trackid) => {
   }
 
   const { rating: defaultRating } = logs[logs.length - 1];
+  const { liked: defaultLiked } = logs[logs.length - 1];
+  const { listened: defaultViewed } = logs[logs.length - 1];
 
-  return defaultRating;
+  return {
+    rating: defaultRating,
+    liked: defaultLiked,
+    listened: defaultViewed,
+  };
 };

@@ -57,12 +57,16 @@ const ReviewsOverlay = () => {
   const handleReviewSubmit = async () => {
     const response = await handleLog(
       "zythee",
-      todayDate,
       selectedTrack,
       selectedDate,
+      0,
+      isChecked ? 1 : 0,
       rating,
       review
     );
+    window.location.reload();
+
+    console.log(response);
     setShow(false);
   };
 
