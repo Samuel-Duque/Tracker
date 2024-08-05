@@ -16,18 +16,22 @@ import { useNavigate } from "react-router-dom";
 import Rating from "../RatingStar/RatingStar";
 import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
+import { handleLog } from "../../services/HandleLog";
 
 const SearchItem = ({ music }) => {
   const [track, setTrack] = useState(null);
   const [releaseDate, setReleaseDate] = useState(null);
   const [rating, setRating] = useState(0);
+  const [liked, setLiked] = useState(0);
+  const [listened, setListened] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const [isClickedTrack, setClickedTrack] = useState(false);
   const [isClickedLike, setClickedLike] = useState(false);
   const { setShow } = useContext(ClickOutsideContext);
   const { setSelectedTrack } = useContext(SelectedTrackContext);
-  const { setDefaultRatingData } = useContext(DefaultRatingContext);
+  const { setDefaultRatingData, setDefaultLikedData, setDefaultListenedData } =
+    useContext(DefaultRatingContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,17 +43,58 @@ const SearchItem = ({ music }) => {
 
   useEffect(() => {
     const fetchDefaultRating = async () => {
-      const defaultRating = await handleDefaultRating("zythee", music?.id);
-      setRating(defaultRating);
+      const defaultInfo = await handleDefaultRating("zythee", track?.id);
+      setRating(defaultInfo?.rating);
+      setLiked(defaultInfo?.liked);
+      setListened(defaultInfo?.listened);
     };
-    if (music) {
+    if (track) {
       fetchDefaultRating();
     }
-  }, [music]);
+  }, [track]);
 
   const handleTrackPage = () => {
     navigate(`/track/${music?.id}`);
   };
+
+  useEffect(() => {
+    const handleReviewSubmit = async () => {
+      console.log("Rating: ", rating, track?.name);
+      setOverlayIsVisible(false);
+      const response = await handleLog(
+        "zythee",
+        track,
+        0,
+        liked,
+        listened,
+        rating,
+        ""
+      );
+    };
+    if (overlayIsVisible) {
+      handleReviewSubmit();
+    }
+  }, [rating]);
+
+  useEffect(() => {
+    const handleReviewSubmit = async () => {
+      console.log("Rating: ", rating, track?.name);
+      setOverlayIsVisible(false);
+      const response = await handleLog(
+        "zythee",
+        track,
+        0,
+        liked,
+        listened,
+        rating,
+        ""
+      );
+    };
+
+    if (isVisible) {
+      handleReviewSubmit();
+    }
+  }, [liked, listened]);
 
   return (
     <>
@@ -76,19 +121,23 @@ const SearchItem = ({ music }) => {
                 >
                   <div className={style.moreOptions}>
                     <img
-                      src={isClickedTrack ? activetrackIcon : trackIcon}
+                      src={listened ? activetrackIcon : trackIcon}
                       alt=""
-                      onClick={() => setClickedTrack(!isClickedTrack)}
+                      onClick={() => setListened(!listened)}
                     />
                     <img
-                      src={isClickedLike ? activelikeIcon : likeIcon}
+                      src={liked ? activelikeIcon : likeIcon}
                       alt=""
-                      onClick={() => setClickedLike(!isClickedLike)}
+                      onClick={() => setLiked(!liked)}
                     />
                     <img
                       src={threedotsIcon}
                       alt=""
-                      onClick={() => setOverlayIsVisible(true)}
+                      onClick={() => {
+                        {
+                          setSelectedTrack(track), setOverlayIsVisible(true);
+                        }
+                      }}
                     />
                   </div>
                 </div>
@@ -140,9 +189,26 @@ const SearchItem = ({ music }) => {
           </div>
           <div className={style.sideinfo}>
             <div className={style.topTrackInfo}>
-              <div className={style.nameRelease}>
-                <span className={style.trackName}>{track?.name}</span>
-                <span className={style.trackReleaseDate}>{releaseDate}</span>
+              <div className={style.trackHeroInfo}>
+                <div className={style.trackHeroTitle}>
+                  <span className={style.TrackName}>{track?.name}</span>
+                  {track?.explicit && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-5 6h-3v2h3c.55 0 1 .45 1 1s-.45 1-1 1h-3v2h3c.55 0 1 .45 1 1s-.45 1-1 1h-4c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1h4c.55 0 1 .45 1 1s-.45 1-1 1"
+                      />
+                    </svg>
+                  )}
+                </div>
+                <span className={style.heroReleaseYear}>
+                  {track?.album?.release_date?.split("-")[0]}
+                </span>
               </div>
               <div>
                 <span className={style.trackArtistName}>

@@ -40,3 +40,26 @@
   color: var(--primary-color);
   cursor: pointer;
 }
+
+.trackHeroInfo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.trackHeroTitle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.trackHeroTitle svg {
+  color: var(--text-secondary-color);
+  width: 20px;
+  height: 20px;
+}
+
+.heroReleaseYear {
+  color: var(--text-secondary-color);
+  font-size: var(--font-size-base);
+}

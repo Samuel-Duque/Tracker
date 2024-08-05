@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 5;
-  background-color: #08183919;
+  background-color: #020c1f8f;
 }
 
 .reviewCard {
@@ -145,4 +145,27 @@
   flex-direction: column;
   gap: 10px;
   font-size: var(--font-size-minor);
+}
+
+.trackHeroInfo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.trackHeroTitle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.trackHeroTitle svg {
+  color: var(--text-secondary-color);
+  width: 16px;
+  height: 16px;
+}
+
+.heroReleaseYear {
+  color: var(--text-secondary-color);
+  font-size: var(--font-size-base);
 }

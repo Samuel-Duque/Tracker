@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./TrackProfileTabbedContent.module.css";
 import LyricsTab from "./LyricsTab/LyricsTab";
-const TrackProfileTabbedContent = ({ Track }) => {
+import { fetchTrackLyrics } from "../../services/FetchTrackLyrics";
+const TrackProfileTabbedContent = ({ track }) => {
   const [activeTab, setActiveTab] = useState("Lyrics");
+  const [lyrics, setLyrics] = useState("");
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case "Lyrics":
-        return <LyricsTab Track={Track} />;
-      case "Statistics":
-        return <div>Statistics</div>;
-      case "Badges":
-        return <div>Badges</div>;
-      case "About":
-        return <div>About</div>;
-      default:
-        return <LyricsTab Track={Track} />;
-    }
-  };
+  useEffect(() => {
+    console.log(track);
+    const fetchLyrics = async () => {
+      const lyrics = await fetchTrackLyrics(
+        track?.artists[0]?.name,
+        track?.name
+      );
+      setLyrics(lyrics);
+    };
+    fetchLyrics();
+  }, [track]);
   return (
     <>
       <div className={style.tabbedContent}>
@@ -47,7 +46,8 @@ const TrackProfileTabbedContent = ({ Track }) => {
             About
           </button>
         </div>
-        <div className={style.tabbedContentBody}>{renderContent()}</div>
+
+        {activeTab == "Lyrics" && <LyricsTab lyrics={lyrics} />}
       </div>
     </>
   );

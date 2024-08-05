@@ -26,6 +26,8 @@
   display: flex;
   height: 182px;
   border-radius: 5px;
+
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 .HeroTrackContentTrackInfo {
   display: flex;
@@ -108,15 +110,16 @@
   border: 2px solid var(--primary-color, #2871ff);
 }
 .TrackDetails {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  display: flex;
+  gap: 75px;
 }
 .TrackDetails_left {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
+  width: max-content;
   height: 100%;
+  text-wrap: nowrap;
   /* background-color: #2871ff; */
 }
 

@@ -28,6 +28,7 @@ const Search = () => {
           uniqueTracks.push(track);
         }
       });
+      uniqueTracks.sort((a, b) => b?.popularity - a?.popularity);
 
       setSearchSongs(uniqueTracks);
     };
