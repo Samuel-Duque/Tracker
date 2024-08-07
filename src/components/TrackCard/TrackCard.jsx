@@ -14,8 +14,11 @@ import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 import { handleLog } from "../../services/HandleLog";
 import { useNavigate } from "react-router-dom";
 import Explicit from "../Explicit/Explicit";
+import { UserLoggedContext } from "../../contexts/UserLoggedContext";
 
 const TrackCard = ({ track, index }) => {
+  const { userLogged } = useContext(UserLoggedContext);
+
   const [isVisible, setIsVisible] = useState(false);
   const [overlayIsVisible, setOverlayIsVisible] = useState(false);
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
@@ -33,7 +36,10 @@ const TrackCard = ({ track, index }) => {
 
   useEffect(() => {
     const fetchDefaultRating = async () => {
-      const defaultInfo = await handleDefaultRating("zythee", track?.id);
+      const defaultInfo = await handleDefaultRating(
+        userLogged?.username,
+        track?.id
+      );
       setRating(defaultInfo?.rating);
       setLiked(defaultInfo?.liked);
       setListened(defaultInfo?.listened);
@@ -48,7 +54,7 @@ const TrackCard = ({ track, index }) => {
       console.log("Rating: ", rating, track?.name);
       setOverlayIsVisible(false);
       const response = await handleLog(
-        "zythee",
+        userLogged?.username,
         track,
         0,
         liked,
@@ -67,7 +73,7 @@ const TrackCard = ({ track, index }) => {
       console.log("Rating: ", rating, track?.name);
       setOverlayIsVisible(false);
       const response = await handleLog(
-        "zythee",
+        userLogged?.username,
         track,
         0,
         liked,

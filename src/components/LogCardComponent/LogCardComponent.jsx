@@ -13,8 +13,11 @@ import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { ClickOutsideContext } from "../../contexts/ClickOutsideContext";
 import { handleLog } from "../../services/HandleLog";
 import { handleDefaultRating } from "../../services/HandleDefaultRating";
+import { UserLoggedContext } from "../../contexts/UserLoggedContext";
 
 const LogCardComponent = ({ track }) => {
+  const { userLogged } = useContext(UserLoggedContext);
+
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const {
     defaultRatingData,
@@ -43,7 +46,10 @@ const LogCardComponent = ({ track }) => {
 
   useEffect(() => {
     const fetchDefaultRating = async () => {
-      const defaultInfo = await handleDefaultRating("zythee", track?.id);
+      const defaultInfo = await handleDefaultRating(
+        userLogged?.username,
+        track?.id
+      );
       setRating(defaultInfo?.rating);
       setLiked(defaultInfo?.liked);
       setListened(defaultInfo?.listened);
@@ -59,7 +65,7 @@ const LogCardComponent = ({ track }) => {
 
     const handleReviewSubmit = async () => {
       const response = await handleLog(
-        "zythee",
+        userLogged?.username,
         track,
         0,
         liked,
@@ -81,7 +87,7 @@ const LogCardComponent = ({ track }) => {
       console.log("Rating: ", rating, track?.name);
       setOverlayIsVisible(false);
       const response = await handleLog(
-        "zythee",
+        userLogged?.username,
         track,
         0,
         liked,

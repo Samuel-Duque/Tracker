@@ -15,7 +15,10 @@ import { SelectedTrackContext } from "../../contexts/SelectedTrackContext";
 import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 import SkeletonTemplate from "../LoadingTrackCard/SkeletonTemplate/SkeletonTemplate";
+import { UserLoggedContext } from "../../contexts/UserLoggedContext";
 const TrackProfile = () => {
+  const { userLogged } = useContext(UserLoggedContext);
+
   const { trackQuery } = useParams();
   const { selectedTrack, setSelectedTrack } = useContext(SelectedTrackContext);
   const { setDefaultRatingData } = useContext(DefaultRatingContext);
@@ -33,7 +36,7 @@ const TrackProfile = () => {
   useEffect(() => {
     const fetchDefaultRating = async () => {
       const defaultRating = await handleDefaultRating(
-        "zythee",
+        userLogged?.username,
         selectedTrack?.id
       );
       setDefaultRatingData(defaultRating);

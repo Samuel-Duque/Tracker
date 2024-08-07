@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from "./TrackCardReview.module.css";
 import starIcon from "../../assets/icons/star-icon.svg";
 import songIcon from "../../assets/icons/song-icon.svg";
 import profilePic from "../../assets/icons/profile-pic-dark.svg";
+import { UserLoggedContext } from "../../contexts/UserLoggedContext";
+
 const TrackCardTracked = ({ track }) => {
+  const { userLogged } = useContext(UserLoggedContext);
+
   const review = {
-    user: "Zythee",
+    user: userLogged?.username,
     userImg: profilePic,
     track: track?.name,
     coverImg: track.album.images[1].url,
     type: "song",
     rating: 3,
   };
+
   return (
     <div className={style.cardContainer}>
       <div className={style.trackCover}>

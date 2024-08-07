@@ -4,7 +4,7 @@ import { fetchUser } from "../services/FetchUser";
 export const UserLoggedContext = React.createContext();
 
 export const UserLoggedProvider = ({ children }) => {
-  const [userId, setUserId] = useState(3);
+  const [userId, setUserId] = useState(2);
   const [userLogged, setUserLogged] = useState();
 
   useEffect(() => {

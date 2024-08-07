@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import style from "./SearchItem.module.css";
 import plusIcon from "../../assets/icons/more-icon.svg";
 import defaultImg from "../../assets/img/defautImage.png";
@@ -18,8 +18,11 @@ import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 import { handleLog } from "../../services/HandleLog";
 import Explicit from "../Explicit/Explicit";
+import { UserLoggedContext } from "../../contexts/UserLoggedContext";
 
 const SearchItem = ({ music }) => {
+  const { userLogged } = useContext(UserLoggedContext);
+
   const [track, setTrack] = useState(null);
   const [releaseDate, setReleaseDate] = useState(null);
   const [rating, setRating] = useState(0);
@@ -44,7 +47,10 @@ const SearchItem = ({ music }) => {
 
   useEffect(() => {
     const fetchDefaultRating = async () => {
-      const defaultInfo = await handleDefaultRating("zythee", track?.id);
+      const defaultInfo = await handleDefaultRating(
+        userLogged?.username,
+        track?.id
+      );
       setRating(defaultInfo?.rating);
       setLiked(defaultInfo?.liked);
       setListened(defaultInfo?.listened);
@@ -63,7 +69,7 @@ const SearchItem = ({ music }) => {
       console.log("Rating: ", rating, track?.name);
       setOverlayIsVisible(false);
       const response = await handleLog(
-        "zythee",
+        userLogged?.username,
         track,
         0,
         liked,
@@ -82,7 +88,7 @@ const SearchItem = ({ music }) => {
       console.log("Rating: ", rating, track?.name);
       setOverlayIsVisible(false);
       const response = await handleLog(
-        "zythee",
+        userLogged?.username,
         track,
         0,
         liked,

@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import axios from "axios";
 
 export const handleLog = async (
@@ -43,7 +42,7 @@ export const handleLog = async (
       console.log("Long review");
       await axios.post("https://trackerapi-8n4dl.ondigitalocean.app/logs/", {
         track_id: selectedTrack?.id,
-        username: "zythee",
+        username: user,
         date: todayDate,
         rating: rating,
         comment: review,
@@ -82,7 +81,7 @@ export const handleLog = async (
           "https://trackerapi-8n4dl.ondigitalocean.app/logs/",
           {
             track_id: selectedTrack?.id,
-            username: "zythee",
+            username: user,
             date: todayDate,
             rating: rating,
             comment: review,
