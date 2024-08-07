@@ -8,11 +8,6 @@
   animation: right 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .logo {
   font-size: var(--font-size-logo);
   font-weight: 800;
@@ -37,7 +32,6 @@ a {
   align-items: center;
   justify-content: space-between;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  /* transform: translateX(-20px); */
 }
 .navBarItensAnimationActive {
   display: flex;
@@ -79,15 +73,12 @@ a {
 .profile:hover {
   display: flex;
   background-color: var(--secondary-color);
-  /* border-bottom: var(--border-color) 1px solid; */
 }
 
 .dropdown {
   display: flex;
   width: 100%;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 5px 0;
   position: absolute;
   flex-direction: column;

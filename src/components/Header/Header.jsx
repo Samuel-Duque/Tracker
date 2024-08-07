@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./Header.module.css";
 import downArrow from "../../assets/icons/down-arrow.svg";
@@ -6,8 +6,10 @@ import plusIcon from "../../assets/icons/more-icon.svg";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import cancelIcon from "../../assets/icons/cancel-icon.svg";
 import profilePicDark from "../../assets/icons/profile-pic-dark.svg";
+import { UserLoggedContext } from "../../contexts/UserLoggedContext";
 
 function Header() {
+  const { userLogged } = useContext(UserLoggedContext);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isHovering, setIsHovering] = useState(false);
@@ -81,7 +83,9 @@ function Header() {
                       alt="profile"
                       className={style.profileImg}
                     />
-                    <span className={style.username}>Zythee</span>
+                    <span className={style.username}>
+                      {userLogged?.username}
+                    </span>
                   </div>
                   <img className={style.downArrow} src={downArrow} alt="" />
                 </div>
