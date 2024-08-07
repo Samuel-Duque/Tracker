@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "baseUrl": ".", // Define a pasta frontend como base
-    "module": "es6" // Habilita o suporte a módulos ES6
-  }
-}

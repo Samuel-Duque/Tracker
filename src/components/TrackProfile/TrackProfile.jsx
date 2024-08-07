@@ -22,18 +22,6 @@ const TrackProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentTrack, setCurrentTrack] = useState(null);
 
-  // useEffect(() => {
-  //   if (selectedTrack) {
-  //     console.log("selectedTrack", selectedTrack?.name);
-  //     setCurrentTrack(null);
-  //     const timer = setTimeout(() => {
-  //       setCurrentTrack(selectedTrack);
-  //     }, 700);
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [selectedTrack]);
-
   useEffect(() => {
     const handleFetchTrack = async () => {
       const track = await fetchTrack(trackQuery);

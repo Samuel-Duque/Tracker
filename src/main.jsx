@@ -9,6 +9,7 @@ import { ClickOutsideProvider } from "./contexts/ClickOutsideContext";
 import { SelectedTrackProvider } from "./contexts/SelectedTrackContext";
 import TrackProfileScreen from "./pages/TrackProfileScreen/TrackProfileScreen";
 import { DefaultRatingProvider } from "./contexts/DefaultRatingContext";
+import { UserLoggedProvider } from "./contexts/UserLoggedContext";
 
 const router = createBrowserRouter([
   {
@@ -29,13 +30,15 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ThemeProvider>
-      <SelectedTrackProvider>
-        <DefaultRatingProvider>
-          <ClickOutsideProvider>
-            <RouterProvider router={router} />
-          </ClickOutsideProvider>
-        </DefaultRatingProvider>
-      </SelectedTrackProvider>
+      <UserLoggedProvider>
+        <SelectedTrackProvider>
+          <DefaultRatingProvider>
+            <ClickOutsideProvider>
+              <RouterProvider router={router} />
+            </ClickOutsideProvider>
+          </DefaultRatingProvider>
+        </SelectedTrackProvider>
+      </UserLoggedProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -13,6 +13,7 @@ import { handleDefaultRating } from "../../services/HandleDefaultRating";
 import { DefaultRatingContext } from "../../contexts/DefaultRatingContext";
 import { handleLog } from "../../services/HandleLog";
 import { useNavigate } from "react-router-dom";
+import Explicit from "../Explicit/Explicit";
 
 const TrackCard = ({ track, index }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -180,20 +181,7 @@ const TrackCard = ({ track, index }) => {
       <div className={style.trackInfo}>
         <div className={style.trackHeroTitle}>
           <span className={style.TrackName}>{track?.name}</span>
-          {track?.explicit && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              viewBox="0 0 24 24"
-            >
-              <title>Explicit</title>
-              <path
-                fill="currentColor"
-                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-5 6h-3v2h3c.55 0 1 .45 1 1s-.45 1-1 1h-3v2h3c.55 0 1 .45 1 1s-.45 1-1 1h-4c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1h4c.55 0 1 .45 1 1s-.45 1-1 1"
-              />
-            </svg>
-          )}
+          {track?.explicit && <Explicit />}
         </div>
         <div className={style.rating}>#{index}</div>
       </div>
